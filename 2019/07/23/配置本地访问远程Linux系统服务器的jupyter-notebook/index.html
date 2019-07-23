@@ -195,7 +195,7 @@ jupyter notebo...">
 <p><code>jupyter notebook --generate-config</code></p>
 </li>
 <li><p>生成密码</p>
-<p>输出<code>ipython</code>打开ipython生成密钥：</p>
+<p>输入<code>ipython</code>打开ipython生成密钥：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</span><br><span class="line">In [<span class="number">2</span>]: passwd()</span><br><span class="line">Enter password:</span><br><span class="line">Verify password:</span><br><span class="line">Out[<span class="number">2</span>]: <span class="string">'sha1:ce23d945972f:34769685a7ccd3d08c84a18c63968a41f1140274'</span>  <span class="comment">#这段是密钥</span></span><br></pre></td></tr></table></figure>
 <p>把生成的密钥’sha1:ce2…’复制下来后面用，password是远程登录时需要输入的密码，要记住。</p>
 </li>
