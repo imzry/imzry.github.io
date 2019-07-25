@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>杨梓瑞当咸鱼的日子</title>
+  <title>杨同学当咸鱼的日子</title>
   
-  <subtitle>不要辜负了本该奋斗的青春</subtitle>
+  <subtitle>杨同学当咸鱼的日子</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>杨梓瑞</name>
+    <name>杨同学</name>
     
   </author>
   
