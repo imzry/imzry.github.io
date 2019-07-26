@@ -66,6 +66,21 @@
 
     
 
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
 </head>
 
 </html>
@@ -216,19 +231,44 @@
 <blockquote>
 <p>图2 将所提出的卷积滤波器(HetConv)与其他有效卷积滤波器进行比较。我们的异构过滤器的延迟为零，而其他过滤器(GWC+PWC或DWC+PWC)的延迟为一个单元。</p>
 </blockquote>
-<p>在标准卷积层中，假设输入(输入特征图)的大小为$D_i\times D_i\times M$。其中$D_i$为输入的正方形特征图空间宽度和高度，$M$为输入深度(输入通道数)。还要考虑$D_o\times D_o\times N$是输出特性映射。这里$D_o$是输出的正方形特征图空间宽度和高度，$N$是输出深度(输出通道数)。应用$K\times K\times M$大小的N个滤波器得到输出特征图。这里K是内核大小。因此，这一$L$层的总计算成本为：<br>$$<br>FL_S=D_o\times D_o \times M \times N \times K \times K<br>$$<br>由式(1)可以看出，计算代价与核大小(K)、feature map大小、输入通道M和输出通道n有关。这种计算代价非常高，可以通过精心设计新的卷积运算进一步降低。为了减少高计算量，提出了各种卷积，如DWC、PWC和GWC，这些卷积在许多最近的架构中被使用来减少FLOPs，但它们都增加了延迟。</p>
+<p>在标准卷积层中，假设输入(输入特征图)的大小为$D_i\times D_i\times M$。其中$D_i$为输入的正方形特征图空间宽度和高度，$M$为输入深度(输入通道数)。还要考虑$D_o\times D_o\times N$是输出特性映射。这里$D_o$是输出的正方形特征图空间宽度和高度，$N$是输出深度(输出通道数)。应用$K\times K\times M$大小的N个滤波器得到输出特征图。这里K是内核大小。因此，这一$L$层的总计算成本为：</p>
+<script type="math/tex; mode=display">
+FL_S=D_o\times D_o \times M \times N \times K \times K</script><p>由式(1)可以看出，计算代价与核大小(K)、feature map大小、输入通道M和输出通道n有关。这种计算代价非常高，可以通过精心设计新的卷积运算进一步降低。为了减少高计算量，提出了各种卷积，如DWC、PWC和GWC，这些卷积在许多最近的架构中被使用来减少FLOPs，但它们都增加了延迟。</p>
 <p>标准卷积运算和一些最近的卷积运算使用同构核(即，对于整个过滤器，每个内核的大小相同)。为了提高效率，我们使用了异构内核。对于同一个过滤器，它包含不同大小的内核。请参考图3来可视化特定层l上的所有过滤器。我们定义P部分，它控制卷积过滤器中不同类型内核的数量。对于第P部分，总内核中的$\frac{1}{P}$部分为$K\times K$大小，其余部分$(1-\frac1P)$为$1\times 1$大小。为了更好地理解，让我们举个例子，在一个$3\times3\times 256$标准CONV2D过滤器中，如果您将$(1-\frac1P)\times 256$、$3\times 3$个内核替换为$1\times 1$(沿着中轴)，您将得到一个带有$P$部分的HetConv过滤器。请参见图1和图2。</p>
 <p><img src="/images/HetConv-Heterogeneous-Kernel-Based-Convolutions-for-Deep-CNNs/1564122897289.png" alt="1564122897289"></p>
 <blockquote>
 <p>图3 第$L$层卷积滤波器：使用异构内核的卷积滤波器(HetConv)。在图中，每个通道由大小为$3 \times 3$和$1\times 1$的异构内核组成。在标准卷积滤波器中，用$1\times 1$的核替换$3 \times 3$的核，在保持精度的同时，大大减少了误操作。特定层的过滤器以移位的方式排列(即，如果第一个过滤器从第一个位置启动$3\times 3$内核，那么第二个过滤器从第二个位置启动$3 \times 3$内核，以此类推)。</p>
 </blockquote>
-<p>在层$L$上有$P$部分的Hetconv滤波器中，$k\times k$大小的核的计算成本如下所示：<br>$$<br>FL_K=\frac{(D_o \times D_o \times M \times N \times K \times K)}{P}<br>$$<br>它降低了P倍的成本，因为我们现在只有$\frac MP$个$K \times K$大小的核。</p>
-<p>其余的$(M-\frac MP)$内核大小为$1\times 1$。剩余的$1\times 1$个内核的计算成本为：<br>$$<br>FL_1 = (D_o \times D_o \times N) \times (M - \frac MP)<br>$$<br>因此，第$L$层的总计算成本为：<br>$$<br>FL_{HC} = FL_K + FL_1<br>$$<br>与标准卷积相比，计算的总减少量（R）可表示为：<br>$$<br>R_{HetConv} = \frac {FL_K + FL_1}{FL_S}<br>=\frac1P + \frac{1-\frac1P}{K^2}<br>$$<br>在方程5中，如果我们令$P = 1$，那么它就变成了标准卷积滤波器。</p>
+<p>在层$L$上有$P$部分的Hetconv滤波器中，$k\times k$大小的核的计算成本如下所示：</p>
+<script type="math/tex; mode=display">
+FL_K=\frac{(D_o \times D_o \times M \times N \times K \times K)}{P}</script><p>它降低了P倍的成本，因为我们现在只有$\frac MP$个$K \times K$大小的核。</p>
+<p>其余的$(M-\frac MP)$内核大小为$1\times 1$。剩余的$1\times 1$个内核的计算成本为：</p>
+<script type="math/tex; mode=display">
+FL_1 = (D_o \times D_o \times N) \times (M - \frac MP)</script><p>因此，第$L$层的总计算成本为：</p>
+<script type="math/tex; mode=display">
+FL_{HC} = FL_K + FL_1</script><p>与标准卷积相比，计算的总减少量（R）可表示为：</p>
+<script type="math/tex; mode=display">
+R_{HetConv} = \frac {FL_K + FL_1}{FL_S}
+=\frac1P + \frac{1-\frac1P}{K^2}</script><p>在方程5中，如果我们令$P = 1$，那么它就变成了标准卷积滤波器。</p>
 <p>通过将某些通道上的过滤器大小从$3\times 3$减小到$1 \times 1$，我们正在减小过滤器的空间范围。但是，通过在某些信道上保持$3\times 3$的大小，我们可以确保滤波器覆盖了某些信道上的空间相关性，并且不需要在所有信道上都具有相同的空间相关性。我们在实验部分观察到，通过这样做，我们可以获得与同构过滤器相似的精度。另一方面，如果我们避免并保留所有通道上的$1\times1$滤波器大小，那么我们就不会覆盖必要的空间相关信息，并且精度会受到影响。</p>
 <h2 id="3-1-Comparision-with-DepthWise-followed-by-PointWise-Convolution（比较深度卷积和点卷积）"><a href="#3-1-Comparision-with-DepthWise-followed-by-PointWise-Convolution（比较深度卷积和点卷积）" class="headerlink" title="3.1. Comparision with DepthWise followed by PointWise Convolution（比较深度卷积和点卷积）"></a>3.1. Comparision with DepthWise followed by PointWise Convolution（比较深度卷积和点卷积）</h2><p>在极端情况下，HetConv中$P=M$时，HetConv可以与DWC+PWC(深度卷积后点卷积)进行比较。MobileNet使用这种类型的卷积。虽然MobileNet比我们的极端情况有更多的FLOPs与更多的延迟，因为MobileNet有一个延迟。</p>
-<p>对于第$L$层，DWC+PWC (MobileNet)的总FLOPs数可以计算为：<br>$$<br>FL_{MobNet} =D_o \times D_o \times M \times K \times K + M \times N \times D_o \times D_o<br>$$<br>因此总的计算量比标准卷积减少了：<br>$$<br>R_{MobNet}=\frac{FL_{MobNet}}{FL_S}=\frac 1N + \frac{1}{K^2}<br>$$<br>从公式5可以清楚地看出，我们可以改变$P$部分的值来在精度和FLOPs之间进行权衡。 如果我们减小$P$值，产生的卷积将更接近标准卷积。 为了显示所提出的HetConv滤波器的有效性，我们在实验部分中显示了结果，其中HetConv使用类似的FLOP实现了明显更好的精度。</p>
-<p>在$P = M$的极端情况下，由公式5和7(对于MobileNet $N = M$)，我们可以得出结论：<br>$$<br>\frac 1M + \frac{(1-\frac1M)}{K^2}&lt; \frac 1M + \frac{1}{K^2}<br>$$<br>与标准卷积相比计算量的总减少：<br>$$<br>Speedup = \frac{1}{Reduction}<br>$$<br>因此，从公式8可以看出，MobileNet比我们的方法需要更多的计算。在我们的HetConv中，延迟为零，而MobileNet的延迟为1。在这种极端情况下，我们的精度明显高于MobileNet(请参阅实验部分)。</p>
-<h2 id="3-2-Comparision-with-GroupWise-followed-by-PointWise-Convolution（与GroupWise比较，然后是PointWise-Convolution）"><a href="#3-2-Comparision-with-GroupWise-followed-by-PointWise-Convolution（与GroupWise比较，然后是PointWise-Convolution）" class="headerlink" title="3.2. Comparision with GroupWise followed by PointWise Convolution（与GroupWise比较，然后是PointWise Convolution）"></a>3.2. Comparision with GroupWise followed by PointWise Convolution（与GroupWise比较，然后是PointWise Convolution）</h2><p>对于组大小为$G$的群向卷积和点态卷积(GWC+PWC)，第$L$层的GWC+PWC总的FLOPs次数可以计算为：<br>$$<br>FL_G = \frac{(D_o \times D_o \times M \times N \times K \times K)}{G+ M \times N \times D_o \times D_o}<br>$$<br>因此计算的总减少与标准的卷积比较：<br>$$<br>R_{Group} = \frac {FL_G}{FL_S} = \frac1G + \frac{1}{K^2}<br>$$<br>同样的，当$P=G$时，由公式5和11得到：<br>$$<br>\frac 1P + \frac{(1-\frac1P)}{K^2}&lt;\frac1P + \frac{1}{K^2}<br>$$<br>因此，从公式12可以看出，GWC+PWC的计算量明显大于我们的方法。在HetConv中，我们的延迟为零，而GWC+PWC的延迟为1。</p>
+<p>对于第$L$层，DWC+PWC (MobileNet)的总FLOPs数可以计算为：</p>
+<script type="math/tex; mode=display">
+FL_{MobNet} =D_o \times D_o \times M \times K \times K + M \times N \times D_o \times D_o</script><p>因此总的计算量比标准卷积减少了：</p>
+<script type="math/tex; mode=display">
+R_{MobNet}=\frac{FL_{MobNet}}{FL_S}=\frac 1N + \frac{1}{K^2}</script><p>从公式5可以清楚地看出，我们可以改变$P$部分的值来在精度和FLOPs之间进行权衡。 如果我们减小$P$值，产生的卷积将更接近标准卷积。 为了显示所提出的HetConv滤波器的有效性，我们在实验部分中显示了结果，其中HetConv使用类似的FLOP实现了明显更好的精度。</p>
+<p>在$P = M$的极端情况下，由公式5和7(对于MobileNet $N = M$)，我们可以得出结论：</p>
+<script type="math/tex; mode=display">
+\frac 1M + \frac{(1-\frac1M)}{K^2}< \frac 1M + \frac{1}{K^2}</script><p>与标准卷积相比计算量的总减少：</p>
+<script type="math/tex; mode=display">
+Speedup = \frac{1}{Reduction}</script><p>因此，从公式8可以看出，MobileNet比我们的方法需要更多的计算。在我们的HetConv中，延迟为零，而MobileNet的延迟为1。在这种极端情况下，我们的精度明显高于MobileNet(请参阅实验部分)。</p>
+<h2 id="3-2-Comparision-with-GroupWise-followed-by-PointWise-Convolution（与GroupWise比较，然后是PointWise-Convolution）"><a href="#3-2-Comparision-with-GroupWise-followed-by-PointWise-Convolution（与GroupWise比较，然后是PointWise-Convolution）" class="headerlink" title="3.2. Comparision with GroupWise followed by PointWise Convolution（与GroupWise比较，然后是PointWise Convolution）"></a>3.2. Comparision with GroupWise followed by PointWise Convolution（与GroupWise比较，然后是PointWise Convolution）</h2><p>对于组大小为$G$的群向卷积和点态卷积(GWC+PWC)，第$L$层的GWC+PWC总的FLOPs次数可以计算为：</p>
+<script type="math/tex; mode=display">
+FL_G = \frac{(D_o \times D_o \times M \times N \times K \times K)}{G+ M \times N \times D_o \times D_o}</script><p>因此计算的总减少与标准的卷积比较：</p>
+<script type="math/tex; mode=display">
+R_{Group} = \frac {FL_G}{FL_S} = \frac1G + \frac{1}{K^2}</script><p>同样的，当$P=G$时，由公式5和11得到：</p>
+<script type="math/tex; mode=display">
+\frac 1P + \frac{(1-\frac1P)}{K^2}<\frac1P + \frac{1}{K^2}</script><p>因此，从公式12可以看出，GWC+PWC的计算量明显大于我们的方法。在HetConv中，我们的延迟为零，而GWC+PWC的延迟为1。</p>
 <h2 id="3-3-Running-Latency（运行延迟）"><a href="#3-3-Running-Latency（运行延迟）" class="headerlink" title="3.3. Running Latency（运行延迟）"></a>3.3. Running Latency（运行延迟）</h2><p>大多数先前的方法设计了有效的卷积来减少FLOP，但它们增加了架构中的延迟。 不同类型卷积的延迟如图4所示。 在Inception模块中，一层被分解为两个或更多个连续层。因此，体系结构中的延迟大于零。 在Xception中应用第一个GWC，并且在GWC的输出上应用PWC。 PWC等待GWC的完成。 因此，这种方法减少了FLOP，但增加了系统的延迟。 类似地，在MobileNet中，第一个DWC然后应用PWC，因此它具有延迟1。 此延迟包括GPU等并行设备的延迟。在我们提出的方法中，任何层都不会被连续层替换，因此延迟为零。我们直接设计过滤器，这样可以在不增加任何延迟的情况下减少FLOP。 与先前的有效卷积相比，我们提出的方法在FLOP方面非常有竞争力，同时保持延迟为零。</p>
 <p><img src="/images/HetConv-Heterogeneous-Kernel-Based-Convolutions-for-Deep-CNNs/1564125300667.png" alt="1564125300667"></p>
 <blockquote>
@@ -435,5 +475,20 @@
 
 <script src="/js/app.js?rev=@@hash"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
