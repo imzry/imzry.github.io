@@ -84,7 +84,8 @@ window.onload = function() {
             var top = $toc.offsetTop;
             var left = $toc.offsetLeft;
             var width = $toc.offsetWidth;
-            if(getScrollTop() <= top){
+			var header_height = document.getElementById('header_id').style.height;
+            if(getScrollTop() <= 380){
                 $toc.style = "";
             } else {
                 $toc.style.position = "fixed";
@@ -105,7 +106,7 @@ window.onload = function() {
 	    timer = requestAnimationFrame(function fn() {
 	        var sTop = getScrollTop();
 	        if (sTop > 0) {
-	            $body.scrollTop = document.documentElement.scrollTop = sTop - 50;
+	            $body.scrollTop = document.documentElement.scrollTop = sTop - 300;
 	            timer = requestAnimationFrame(fn);
 	        } else {
 	            cancelAnimationFrame(timer);
