@@ -1,0 +1,1144 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="线程间通讯多个线程在处理同一资源,但是任务却不同.&nbsp;
+
+class Resource  
+{  
+    String name;  
+    String sex;  
+}  
+
+/...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之线程间的通信 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之线程间的通信">
+            
+	            Java学习个人备忘录之线程间的通信
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/04</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>690</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>线程间通讯</strong><br>多个线程在处理同一资源,但是任务却不同.&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Resource  
+{  
+    String name;  
+    String sex;  
+}  
+
+//输入  
+class Input implements Runnable  
+{  
+    Resource r;  
+    Input(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        int i = 0;  
+        while(true)  
+        {  
+            synchronized(r)  //保证两个线程用同一个锁  
+            {  
+                if (i==0)  
+                {  
+                    r.name = "mike";  
+                    r.sex = "nan";  
+                }  
+                else  
+                {  
+                    r.name = "丽丽";  
+                    r.name = "女女女女女女女女女";  
+                }  
+                x = (x+1)%2;  
+            }  
+        }  
+    }  
+}  
+
+//输出  
+class Output implements Runnable  
+{  
+    Resource r;  
+    Output(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            synchronized(r)  //保证两个线程用同一个锁  
+            {  
+                System.out.println(r.name+"....."+r.sex);  
+            }  
+        }  
+    }  
+}  
+
+class ResourceDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        //创建资源  
+        Resource r = new Resource();  
+        //创建任务  
+        Input in = new Input(r);  
+        Output out = new Output(r);  
+        //创建线程  
+        Thread t1 = new Thread(in);  
+        Thread t2 = new Thread(out);  
+        //开启线程  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>但是这样会造成大量的才重复, 没有交替性。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>等待唤醒机制</strong></span></p>
+<p>涉及的方法:<br>1. wait(): 让线程处于冻结状态, 被wait的线程会被存储到线程池中.<br>2. notify(): 唤醒线程池中一个线程(任意)<br>3. notifyAll(): 唤醒线程池中的所有线程. </p>
+<p>这些方法都必须定义在同步中,<br>因为这些方法都是用于操做线程状态的方法.<br>必须要明确到底操做的是哪个锁上的线程. </p>
+<p>为什么操做线程的方法wait notify notifyAll定义在了Object类中. </p>
+<p>因为这些方法时监视器的方法, 坚持其其实就是锁.<br>锁可以是任意的对象,任意的对象调用的方式一定定义在Object类中的.&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Resource  
+{  
+    String name;  
+    String sex;  
+    boolean flag = false;  
+}  
+
+//输入  
+class Input implements Runnable  
+{  
+    Resource r;  
+    Input(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        int i = 0;  
+        while(true)  
+        {  
+            synchronized(r)  //保证两个线程用同一个锁  
+            {  
+                if (r.flag)  
+                {  
+                    r.wait();  
+                }  
+                if (i==0)  
+                {  
+                    r.name = "mike";  
+                    r.sex = "nan";  
+                }  
+                else  
+                {  
+                    r.name = "丽丽";  
+                    r.name = "女女女女女女女女女";  
+                }  
+                r.flag = true;  
+                r.notify();  //唤醒对方  
+                x = (x+1)%2;  
+            }  
+        }  
+    }  
+}  
+
+//输出  
+class Output implements Runnable  
+{  
+    Resource r;  
+    Output(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            synchronized(r)  //保证两个线程用同一个锁  
+            {  
+                if (!r.flag)  
+                {  
+                    r.wait();  
+                }  
+                System.out.println(r.name+"....."+r.sex);  
+                r.flag = false;  
+                r.notify();  //唤醒对方  
+            }  
+        }  
+    }  
+}  
+
+class ResourceDemo2  
+{  
+    public static void main(String[] args)  
+    {  
+        //创建资源  
+        Resource r = new Resource();  
+        //创建任务  
+        Input in = new Input(r);  
+        Output out = new Output(r);  
+        //创建线程  
+        Thread t1 = new Thread(in);  
+        Thread t2 = new Thread(out);  
+        //开启线程  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>上面代码的优化</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Resource  
+{  
+    private String name;  //这里要私有化  
+    private String sex;  
+    boolean flag = false;  
+    public synchronized void set(String name,String sex)  //对数据要可控化  
+    {  
+        if (this.flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        this.name = name;  
+        this.sex = sex;  
+        flag = true;  
+        this.notify();  
+    }  
+    public synchronized void out()  
+    {  
+        if (this.flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        System.out.println(name+"....."+sex);  
+        flag = false;  
+        this.notify();  
+    }  
+}  
+
+//输入  
+class Input implements Runnable  
+{  
+    Resource r;  
+    Input(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        int i = 0;  
+        while(true)  
+        {  
+            if (i==0)  
+            {  
+                r.set("mike","nan");  
+            }  
+            else  
+            {  
+                r.set"丽丽","女女女女女女女女女");  
+            }  
+            x = (x+1)%2;  
+        }  
+    }  
+}  
+
+//输出  
+class Output implements Runnable  
+{  
+    Resource r;  
+    Output(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ResourceDemo3  
+{  
+    public static void main(String[] args)  
+    {  
+        //创建资源  
+        Resource r = new Resource();  
+        //创建任务  
+        Input in = new Input(r);  
+        Output out = new Output(r);  
+        //创建线程  
+        Thread t1 = new Thread(in);  
+        Thread t2 = new Thread(out);  
+        //开启线程  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>多生产者多消费者问题</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Resource  
+{  
+    private String name;  
+    private int count = 1;  
+    private boolean flag = false;  
+    public synchronized void set(String name)  
+    {  
+        if (flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        this.name = name + count;  
+        count++;  
+        System.out.println(Thread.currentThread().getName()+".....生产者....."+this.name);  
+        flag = true;  
+        notify();  
+    }  
+    public synchronized void out()  
+    {  
+        if (!flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        System.out.println(Thread.currentThread().getName()+".....消费者....."+this.name);  
+        flag = false;  
+        notify();  
+    }  
+}  
+
+class Producer implements Runnable  
+{  
+    private Resource r;  
+    Producer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while (true)  
+        {  
+            r.set("烤鸭");  
+        }  
+    }  
+}  
+
+class Consumer implements Runnable  
+{  
+    private Resource r;  
+    Consumer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ProducerConsumerDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Resource r = new Resource();  
+        Producer pro = new Producer(r);  
+        Consumer con = new Consumer(r);  
+        Thread t0 = new Thread(pro);  
+        Thread t1 = new Thread(pro);  
+        Thread t2 = new Thread(con);  
+        Thread t3 = new Thread(con);  
+        t0.start();  
+        t1.start();  
+        t2.start();  
+        t3.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>但是这样会出现安全隐患, 从这4个线程上看, 一共分了两组, t0和t1一组, t2和t3一组, 当t1 t2 t3 睡眠时, t0出来后再次唤醒t1, 这时t1是不用判断的if条件的,直接向下继续执行. 这样就又进行了”生产烤鸭”, 所以出现了安全隐患. 解决办法: 将两个if 换成 while, 这样在t1醒来的时候会继续判断flag是否为真. 但是这样又会出现死锁现象, 因为t1判断flag时, flag为真, 这时t1会再次等待,这时4个线程都进入等待状态—-死锁!!</p>
+<p>&nbsp;</p>
+<p><strong>解决办法1</strong><br>将notify换成notifyAll, 这样就一定会唤醒对方的线程,同时自己方的线程因为while循环出不去.&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Resource  
+{  
+    private String name;  
+    private int count = 1;  
+    private boolean flag = false;  
+    public synchronized void set(String name)  
+    {  
+        while (flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        this.name = name + count;  
+        count++;  
+        System.out.println(Thread.currentThread().getName()+".....生产者....."+this.name);  
+        flag = true;  
+        notifyAll();  
+    }  
+    public synchronized void out()  
+    {  
+        while (!flag)  
+            try{this.wait();}catch(InterruptedException e){}  
+        System.out.println(Thread.currentThread().getName()+".....消费者....."+this.name);  
+        flag = false;  
+        notifyAll();  
+    }  
+}  
+
+class Producer implements Runnable  
+{  
+    private Resource r;  
+    Producer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while (true)  
+        {  
+            r.set("烤鸭");  
+        }  
+    }  
+}  
+
+class Consumer implements Runnable  
+{  
+    private Resource r;  
+    Consumer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ProducerConsumerDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Resource r = new Resource();  
+        Producer pro = new Producer(r);  
+        Consumer con = new Consumer(r);  
+        Thread t0 = new Thread(pro);  
+        Thread t1 = new Thread(pro);  
+        Thread t2 = new Thread(con);  
+        Thread t3 = new Thread(con);  
+        t0.start();  
+        t1.start();  
+        t2.start();  
+        t3.start();  
+    }  
+}
+</pre>
+</div>
+> if判断标记只有一次, 会导致不该运行的线程运行了, 出现了数据错误的情况.&nbsp;while判断标记, 解决了线程获取执行权后, 是否要运行。
+> notify: 只能唤醒一个线程, 如果本方唤醒了本方, 就没有意义, 而且while判断标记notify会导致死锁.&nbsp;notifyAll解决了, 本方线程一定会唤醒对方线程.&nbsp;
+
+**解决办法2:** 
+JDK1.5新特征的解决办法--Lock 
+
+可以看出来, 上面的解决方法会造成多次无用的判断, 这会降低效率,可以用这面的方法解决.&nbsp;
+
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">Lock l = new ReentrantLock(); 
+void show() 
+{ 
+    l.lock(); //获取锁 
+    code... 
+    l.unlock(); //释放锁 
+}
+</pre>
+</div>
+
+<p>jdk1.5以后将同步和锁封装成了对象.<br>并将操作锁的隐式方法定义到了该对象中,<br>将隐式动作变成了显示动作. </p>
+<p>但是如果执行的代码抛出了异常, 这样代码就会一直持有锁,不释放,所以要如下</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">Lock l = new ReentrantLock(); 
+void show() 
+{ 
+    l.lock(); //获取锁 
+    try 
+    { 
+        code... 
+    } 
+    finally 
+    { 
+        l.unlock(); //释放锁 
+    } 
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">import java.util.concurrent.locks.*  
+class Resource  
+{  
+    private String name;  
+    private int count = 1;  
+    private boolean flag = false;  
+
+    Lock l = new ReentrantLock();//因为Lock是java.util.concurrent.locks包中的类, 所以要先导入包.  
+
+    public void set(String name) //这里的同步就可以去掉了  
+    {  
+        l.lock();  //在这里加上锁  
+        try  
+        {  
+            while (flag)  
+                try{this.wait();}catch(InterruptedException e){}  
+            this.name = name + count;  
+            count++;  
+            System.out.println(Thread.currentThread().getName()+".....生产者....."+this.name);  
+            flag = true;  
+            notifyAll();  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+    public void out()  
+    {  
+        l.lock();  
+        try  
+        {  
+            while (!flag)  
+                try{this.wait();}catch(InterruptedException e){}  
+            System.out.println(Thread.currentThread().getName()+".....消费者....."+this.name);  
+            flag = false;  
+            notifyAll();  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+}  
+
+class Producer implements Runnable  
+{  
+    private Resource r;  
+    Producer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while (true)  
+        {  
+            r.set("烤鸭");  
+        }  
+    }  
+}  
+
+class Consumer implements Runnable  
+{  
+    private Resource r;  
+    Consumer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ProducerConsumerDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Resource r = new Resource();  
+        Producer pro = new Producer(r);  
+        Consumer con = new Consumer(r);  
+        Thread t0 = new Thread(pro);  
+        Thread t1 = new Thread(pro);  
+        Thread t2 = new Thread(con);  
+        Thread t3 = new Thread(con);  
+        t0.start();  
+        t1.start();  
+        t2.start();  
+        t3.start();  
+    }  
+}
+</pre>
+</div>
+
+<p><strong>解决办法3:</strong><br>JDK1.5新特征的解决办法—Condition </p>
+<p>Condition在底层上是这样实现的:<br>interface Condition<br>{<br>    　　await();<br>    　　signal();<br>    　　signalAll();<br>} </p>
+<p>所以要这样实现, 如下:<br>Lock l = new ReectrantLock(); </p>
+<p>Condition c1 = l.newCondition(); </p>
+<p>Condition c2 = l.newCondition(); </p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">import java.util.concurrent.locks.*  
+class Resource  
+{  
+    private String name;  
+    private int count = 1;  
+    private boolean flag = false;  
+
+    //创建一个锁对象.  
+    Lock l = new ReentrantLock();//因为Lock是java.util.concurrent.locks包中的类, 所以要先导入包.  
+
+    //通过已有的锁获取该锁上的监视器对象.  
+    Condition con = l.newCondition();  
+
+    public void set(String name) //这里的同步就可以去掉了  
+    {  
+        l.lock();  //在这里加上锁  
+        try  
+        {  
+            while (flag)  
+//              try{this.wait();}catch(InterruptedException e){}   //这里用con.await()替换  
+                try{con.await();}catch(InterruptedException e){}  
+            this.name = name + count;  
+            count++;  
+            System.out.println(Thread.currentThread().getName()+".....生产者....."+this.name);  
+            flag = true;  
+//          notifyAll();  //这里用con.signalAll() 替换  
+            con.signalAll();  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+    public void out()  
+    {  
+        l.lock();  
+        try  
+        {  
+            while (!flag)  
+//              try{this.wait();}catch(InterruptedException e){}   //这里用con.await()替换  
+                try{con.await();}catch(InterruptedException e){}  
+            System.out.println(Thread.currentThread().getName()+".....消费者....."+this.name);  
+            flag = false;  
+//          notifyAll();  //这里用con.signalAll() 替换  
+            con.signalAll();  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+}  
+
+class Producer implements Runnable  
+{  
+    private Resource r;  
+    Producer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while (true)  
+        {  
+            r.set("烤鸭");  
+        }  
+    }  
+}  
+
+class Consumer implements Runnable  
+{  
+    private Resource r;  
+    Consumer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ProducerConsumerDemo2  
+{  
+    public static void main(String[] args)  
+    {  
+        Resource r = new Resource();  
+        Producer pro = new Producer(r);  
+        Consumer con = new Consumer(r);  
+        Thread t0 = new Thread(pro);  
+        Thread t1 = new Thread(pro);  
+        Thread t2 = new Thread(con);  
+        Thread t3 = new Thread(con);  
+        t0.start();  
+        t1.start();  
+        t2.start();  
+        t3.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>其实解决办法3和解决办法2没有太大的区别.并没有真的运用了1.5的新特征。</p>
+<p><strong>解决办法4</strong><br>这个解决办法才真正的运用到了1.5的新特征。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">import java.util.concurrent.locks.*  
+class Resource  
+{  
+    private String name;  
+    private int count = 1;  
+    private boolean flag = false;  
+
+    //创建一个锁对象.  
+    Lock l = new ReentrantLock();//因为Lock是java.util.concurrent.locks包中的类, 所以要先导入包.  
+
+    //通过已有的锁获取该锁上的监视器对象.  
+//  Condition con = l.newCondition();  
+
+    //通过已有的锁获取两组监视器, 一组监视生产者, 一组监视消费者.  
+    Condition producer_con = l.newCondition();  
+    Condition consumer_con = l.newCondition();  
+
+    public void set(String name) //这里的同步就可以去掉了  
+    {  
+        l.lock();  //在这里加上锁  
+        try  
+        {  
+            while (flag)  
+                try{producer_con.await();}catch(InterruptedException e){} //这里只让生产者等待  
+            this.name = name + count;  
+            count++;  
+            System.out.println(Thread.currentThread().getName()+".....生产者....."+this.name);  
+            flag = true;  
+            consumer_con.signal(); //这里直接唤醒消费者  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+    public void out()  
+    {  
+        l.lock();  
+        try  
+        {  
+            while (!flag)  
+                try{consumer_con.await();}catch(InterruptedException e){} //这里只让消费者等待  
+            System.out.println(Thread.currentThread().getName()+".....消费者....."+this.name);  
+            flag = false;  
+            producer_con.signalAll(); //这里只唤醒生产者  
+        }  
+        finally  
+        {  
+            l.unlock();  
+        }  
+    }  
+}  
+
+class Producer implements Runnable  
+{  
+    private Resource r;  
+    Producer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while (true)  
+        {  
+            r.set("烤鸭");  
+        }  
+    }  
+}  
+
+class Consumer implements Runnable  
+{  
+    private Resource r;  
+    Consumer(Resource r)  
+    {  
+        this.r = r;  
+    }  
+    public void run()  
+    {  
+        while(true)  
+        {  
+            r.out();  
+        }  
+    }  
+}  
+
+class ProducerConsumerDemo2  
+{  
+    public static void main(String[] args)  
+    {  
+        Resource r = new Resource();  
+        Producer pro = new Producer(r);  
+        Consumer con = new Consumer(r);  
+        Thread t0 = new Thread(pro);  
+        Thread t1 = new Thread(pro);  
+        Thread t2 = new Thread(con);  
+        Thread t3 = new Thread(con);  
+        t0.start();  
+        t1.start();  
+        t2.start();  
+        t3.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/04/scanf格式控制符的完整格式/" class="pre-post btn btn-default" title='scanf格式控制符的完整格式'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">scanf格式控制符的完整格式</span>
+        </a>
+    
+    
+        <a href="/2017/09/04/Java学习个人备忘录之多线程/" class="next-post btn btn-default" title='Java学习个人备忘录之多线程'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之多线程</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

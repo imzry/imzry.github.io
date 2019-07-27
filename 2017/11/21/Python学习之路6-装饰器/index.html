@@ -1,0 +1,534 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="装饰器定义：本质是函数，（装饰其他函数）就是为其他函数添加附加功能。原则：1.不能修改被装饰的函数的源代码      　　　2.不能修改被装饰的函数的调用方式
+实现装饰器的知识储备：　　1.函数...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Python学习之路6 - 装饰器 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python学习之路6 - 装饰器">
+            
+	            Python学习之路6 - 装饰器
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/11/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>612</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p><strong>定义</strong>：本质是函数，（装饰其他函数）就是为其他函数添加附加功能。<br><strong>原则</strong>：1.不能修改被装饰的函数的源代码<br>      　　　2.不能修改被装饰的函数的调用方式</p>
+<p><strong>实现装饰器的知识储备：</strong><br>　　1.函数即&ldquo;变量&rdquo;<br>　　2.高阶函数（满足下列条件之一就是高阶函数）</p>
+<ul>
+<li><ul>
+<li>a：把一个函数名当作形参传给另一个函数(在不修改被装饰函数源代码的情况下修改其功能,但是调用方式变了)</li>
+<li>b：返回值中包含函数名(不修改函数的调用方式,而修改函数功能)</li>
+</ul>
+</li>
+</ul>
+<p>　　3.嵌套函数</p>
+<p>&nbsp;</p>
+<p><strong>总结：</strong></p>
+<p>高阶函数+嵌套函数=&gt;装饰器</p>
+<hr>
+<h3 id="1-函数即变量"><a href="#1-函数即变量" class="headerlink" title="1. 函数即变量"></a>1. 函数即变量</h3><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def bar():  #这里定义个函数
+    print('this is bar...')
+
+func = bar  #将函数当变量一样赋值给func
+
+func()  #这是func加上()就可以当函数用了</pre>
+</div>
+
+<p>　　这就是函数即变量。</p>
+<h3 id="2-高阶函数"><a href="#2-高阶函数" class="headerlink" title="2. 高阶函数"></a>2. 高阶函数</h3><p><strong>a：</strong>把一个函数名当做形参传给另一函数（在不修改被装饰函数源代码的情况下修改其他功能，但是调用方式变了）</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def bar():
+    print('this is bar...')
+bar()
+print('----------------------------------')
+def test(func): #在这里增加了功能
+    print(func)
+test(bar)  #但是这里修改了调用方式</pre>
+</div>
+
+<p><strong>b：</strong>返回值中包含函数名（不修改函数的调用方式，而修改函数功能）</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def bar():
+    print('this is bar...')
+bar()
+print('----------------------------------')
+def test(func):   #在这里增加了功能
+    print(func)
+    return func        #这里返回了函数地址
+bar = test(bar)   #将函数地址赋给一个变量,该变量和传入函数同名
+bar()        #这个变量加上括号,就可以当函数用了,同时又没有修改函数的调用方式
+</pre>
+</div>
+
+<h3 id="3-嵌套函数"><a href="#3-嵌套函数" class="headerlink" title="3. 嵌套函数"></a>3. 嵌套函数</h3><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">x = 1
+def test1():
+    def test2():
+        def test3():
+            x = 3
+            print(x)
+        test3()
+    test2()
+test1()
+</pre>
+</div>
+
+<p>　　像这样在一个函数里面定义一个函数就叫做嵌套函数。</p>
+<p>&nbsp;</p>
+<p>现在三个知识点都已经解释过了，下面先实现一个原始版的装饰器。</p>
+<p><strong>原始版装饰器</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+
+def test1():  #这里是被装饰的函数
+    time.sleep(1)
+    print("this is test1....")
+
+def timer(func):  #这里是装饰器函数
+    def deco():
+        strat = time.time()
+        func()
+        stop = time.time()
+        print("run time %s" %(stop-strat))
+    return deco
+
+test1 = timer(test1)
+
+test1()</pre>
+</div>
+
+<p>　　这个装饰器的功能是测试test1函数的运行时间，deco函数有这个功能，所以这里其实我想运行的是deco函数，timer()函数的返回值也就是deco函数的地址；同时deco函数想要运行也要满足另一个条件，那就是需要调用timer函数，只有当timer函数运行的时候timer函数里面写的那些东西才会生效或者说被激活，deco函数才会定义成功。到此，test=timer(test1)这句代码的意思就是，先调用timer函数让deco函数的定义生效，同时将要被装饰的函数test1函数的地址传入，让deco函数里面的func函数生效，这是timer函数又会将deco函数的地址返回，并将地址赋值给test1这个变量。然后下面的test1后面加上括号，变成test1()的形式，就可以运行了。这样一个原始版的装饰器就写完了。</p>
+<p><strong>接下来要写一个真实装饰器的实例</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+
+def timer(func):
+    def deco():
+        start_time = time.time()
+        func()
+        stop_time = time.time()
+        print('the func run time is %s' %(stop_time-start_time))
+    return deco
+
+@timer  #这里等于 test = timer(test),要装饰哪个函数,就在哪个函数前面加上这个
+def test():
+    time.sleep(2)
+    print('this is test...')
+
+test()</pre>
+</div>
+
+<p>　　上面这些都是一些比较基本的，如果装饰有参数的函数且参数的个数还都不一定怎么办呢？下面写一个高级案例 — 有参数的装饰器</p>
+<p><strong>高级案例 — 有参数装饰器</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+
+def timer(func):
+    def deco(*args,**kwargs):　　#在这里接收参数
+        start_time = time.time()
+        func(*args,**kwargs)
+        stop_time = time.time()
+        print('the func run time is %s' %(stop_time-start_time))
+    return deco
+
+@timer
+def test(name):
+    time.sleep(2)
+    print('this is test...',name)
+
+test('vector')</pre>
+</div>
+
+<p>　　如果原test函数里面有返回值，被装饰后我们打印它print(test())，结果会是none。因为这时的test=deco，而deco没有返回值，所以打印不出来。这样就会出现一个问题，如果test函数有返回值，test函数的一个功能（返回值）就会被弄丢了。</p>
+<p>解决办法看下面案例。</p>
+<p><strong>高高级案例 — 有返回值的装饰器</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+def timer(func):
+    def deco(*args,**kwargs):
+        start_time = time.time()
+        res = func(*args,**kwargs)
+        stop_time = time.time()
+        print('the func run time is %s' %(stop_time-start_time))
+        return res  #这里将func的返回值返回
+    return deco
+
+@timer
+def test(name):
+    time.sleep(2)
+    print('this is test...',name)
+    return 'asdfasdfgdfgd'
+
+print(test('vector'))</pre>
+</div>
+
+<p>　　这样就可以打印出返回值了。</p>
+<p>还有些时候我们需要给装饰器进行传参，给内部使用。解决方案看下面。</p>
+<p><strong>高高高级案例 — 给装饰器传参</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+def timer(temp):
+    print('this is ',temp)  #这里是加进来的参数
+    def out(func):
+        def deco(*args,**kwargs):
+            start_time = time.time()
+            res = func(*args,**kwargs)
+            stop_time = time.time()
+            print('the func run time is %s' %(stop_time-start_time))
+            return res
+        return deco
+    return out
+
+@timer('temp')
+def test(name):
+    time.sleep(2)
+    print('this is test...',name)
+    return 'asdfasdfgdfgd'
+
+print(test('vector'))
+</pre>
+</div>
+
+<p>　　实际上就是整体又在外面加了一层内嵌函数。</p>
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/11/22/Python学习之路7-生成器-迭代器/" class="pre-post btn btn-default" title='Python学习之路7 - 生成器&迭代器'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Python学习之路7 - 生成器&迭代器</span>
+        </a>
+    
+    
+        <a href="/2017/09/19/Python学习之路5-函数/" class="next-post btn btn-default" title='Python学习之路5 - 函数'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python学习之路5 - 函数</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#装饰器"><span class="toc-text">装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数即变量"><span class="toc-text">1. 函数即变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-高阶函数"><span class="toc-text">2. 高阶函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-嵌套函数"><span class="toc-text">3. 嵌套函数</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

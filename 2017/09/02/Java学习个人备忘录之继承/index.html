@@ -1,0 +1,628 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="继承的好处1. 提高了代码的复用性。2. 让类与类之间产生了关系，给第三个特征多态提供了前提。
+java中支持单继承，不直接支持多继承，但对C++中的多继承机制进行改良。java支持多层继承。
+...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之继承 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之继承">
+            
+	            Java学习个人备忘录之继承
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/02</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>693</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><span style="font-size: 16px;"><strong>继承的好处</strong></span><br>1. 提高了代码的复用性。<br>2. 让类与类之间产生了关系，给第三个特征多态提供了前提。</p>
+<p>java中支持单继承，不直接支持多继承，但对C++中的多继承机制进行改良。<br><strong>java支持多层继承。</strong></p>
+<p>C继承B，B继承A，就会出现继承体系。</p>
+<p>当要使用一个继承体系时：<br>1. 查看该体系中的顶层类，了解该体系的基本功能。<br>2. 创建体系中的最子类对象，完成共能的使用。</p>
+<p><span style="font-size: 16px;"><strong>什么时候定义继承呢?</strong></span><br>当类与类之间存在着所属关系的时候，就定义继承，xxx是yyy中的一种，&nbsp; xxx extends yyy。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Person
+{
+    String name;
+    int age;
+}
+
+class Student extends Person   //继承
+{
+    // String name;
+    // int age;
+    void study()
+    {
+        System.out.println(name+"...student study...."+age);
+    }
+}
+
+class Worker extends Person
+{
+    // String name;
+    // int age;
+    void work()
+    {
+        System.out.println("worker work");
+    }
+}
+
+class ExtendsDemo
+{
+    public static void main(String[] args)
+    {
+        Student s = new Student();
+        s.name = "zhangsan";
+        s.age = 20;
+        s.study();
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>在子父类中，成员的特点体现</strong></span><br>1.成员变量<br>2.成员函数<br>3.构造函数</p>
+<p><span style="font-size: 16px;"><strong>1. 成员变量</strong></span><br>当本类的成员和局部变量同名时，用this区分；<br>当子父类中的成员变量同名时，用super区分父类。</p>
+<p>this和super的用法很相似。</p>
+<p>this：代表一个本类对象的引用。<br>super：代表一个父类的空间，并不代表父类对象。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu
+{
+    int num = 4;
+}
+
+class Zi extends Fu
+{
+    int num = 5;
+    void show()
+    {
+        System.out.println(super.num+"..."+num);
+    }
+}
+
+class ExtendsDemo2
+{
+    public static void main(String[] args)
+    {
+        Zi z = new Zi();
+        z.show();
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>2. 成员函数</strong></span><br>当子父类中出现成员函数一模一样的情况，会运行子类的函数。<br>这种现象，称为覆盖操作，这时函数在子父类中的特性。<br><strong>函数两个特性：</strong><br>1.重载. 同一个类中，overload<br>2.覆盖. 子类中，覆盖也称为重写，override</p>
+<p>覆盖注意事项：<br>1.子类方法覆盖父类方法时，子类权限必须要大于等于父类的权限。<br>2.静态只能覆盖静态，或被静态覆盖。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu
+{
+    void show()
+    {
+        System.out.println("fu show run");
+    }
+}
+
+class Zi extends Fu
+{
+    void show()
+    {
+        System.out.println("zi show run");
+    }
+}
+
+class ExtendsDemo2
+{
+    public static void main(String[] args)
+    {
+        Zi z = new Zi();
+        z.show();
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>什么时候使用覆盖?</strong></span></p>
+<p>当对一个类进行子类的扩展时，子类需要保留父类的功能声明。<br>但是要定义子类中该功能的特有内容时，就是用覆盖操作完成。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Phone
+{
+    void call()
+    {}
+    void show()
+    {
+        // System.out.println("pic");
+        // System.out.println("name");
+        System.out.println("number");
+    }
+}</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>应用场景</strong></span><br>现在手机升级了，加了显示姓名和图片的功能。<br>但是如果我直接在源代码上修改会增加修改成本，不好。<br>这时候我们就可以用继承来解决。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class NewPhone extends Phone
+{
+    void show()
+    {
+        System.out.println("pic");
+        System.out.println("name");
+        // System.out.println("number");
+        super.show();
+    }
+}
+
+class PhoneDemo
+{
+    public static void main(String[] args)
+    {
+        // Phone p = new Phone();
+        // p.show();
+        NewPhone p = new NewPhone();
+        p.show();
+    }
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>子父类中构造函数的继承</strong></span></p>
+<p>在子类构造对象时，发现访问子类构造函数时，父类也运行了。<br>为什么呢?<br>原因是：在子类的构造函数中第一行有一个默认的隐式语句—-super();</p>
+<p>子类的实例化过程：子类中所有的构造函数默认都会访问父类中的空参数的构造函数。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu
+{
+    Fu()
+    {
+        System.out.println("fu run");
+    }
+}
+class Zi extends Fu
+{
+    Zi()
+    {
+        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
+        System.out.println("zi run");
+    }
+}
+
+class ExtendsDemo4
+{
+    public static void main(String[] args)
+    {
+        new Zi();
+        /*
+        结果为:
+        fu run
+        zi run
+        */
+    }
+}</pre>
+</div>
+
+<p><strong>还有一种情况</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu
+{
+    Fu()
+    {
+        System.out.println("fu run");
+    }
+    Fu(int x)
+    {
+        System.out.println("fu run...."+x);
+    }
+}
+class Zi extends Fu
+{
+    Zi()
+    {
+        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
+        System.out.println("zi run...");
+    }
+    Zi(int x)
+    {
+        System.out.println("zi run...."+x);
+    }
+}
+
+class ExtendsDemo4
+{
+    public static void main(String[] args)
+    {
+        new Zi(4);
+        /*
+        结果为:
+        fu run
+        zi run....4
+        */
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>为什么子类实例化的时候要访问父类中的构造函数呢?</strong></span><br>那是因为子类继承了父类，获取到了父类中的内容(属性)，所以在使用父类内容之前，要先看父类是如何对自己的内容进行初始化的。</p>
+<p>所以子类在构造对象时，必须访问父类中的构造函数。<br>为什么完成这个必须的动作，就子啊子类的构造函数中加了super(). 语句。</p>
+<p>如果父类中没有定义空参数构造函数，那么子类的构造函数必须用super明确要调用父类中哪个构造函数。</p>
+<p>同时子类构造函数中如果使用this调用了本类构造函数时，<br>那么super就没有了，因为super和this都只能定义第一行.所以只能有一个。<br>但是可以保证的是，子类中肯定会有其他的构造函数访问父类的构造函数。</p>
+<p>注意：super语句必须要定义在子类构造函数的第一行，因为父类的初始化动作要先完成。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu
+{
+    Fu()
+    {
+        super();
+        show();
+        return;
+    }
+    void show()
+    {
+        System.out.println("fu show");
+    }
+}
+class Zi extends Fu
+{
+    int num = 8;
+    Zi()
+    {
+        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
+        //--&gt;通过super初始化父类内容时，子类的成员变量并未显示初始化.
+        //等super()父类初始化完毕后，才进行子类的成员变量显示初始化.
+        //也就是说要先忙完父类那边的事，然后才能忙自己的事.
+        System.out.println("zi cons run..."+num);
+    }
+    void show()
+    {
+        System.out.println("zi show ..."+num);
+    }
+}
+
+class ExtendsDemo5
+{
+    public static void main(String[] args)
+    {
+        Zi z = new Zi();
+        z.show();
+        /*
+        结果为:
+        zi show...0
+        zi cons run...8
+        zi show...8
+        */
+    }
+}</pre>
+</div>
+
+<p>一个对象实例化的过程：<br>Person p = new Person();<br>1. jvm会去读取指定路径下的Person.class文件，并加载进内存。<br>并会先加载Person的父类(如果有直接的父类的情况下)。<br>2. 在堆内存中的开辟空间，分配地址。<br>3. 并在对象空间中，对对象中的属性进行默认初始化。<br>4. 调用对应的构造函数进行初始化。<br>5. 在构造函数中，第一行会先调用父类中的构造函数进行初始化。<br>6. 父类初始化完毕后，再对子类的属性进行显示初始化。<br>7. 在进行子类构造函数的特定初始化。<br>8. 初始化完毕后，将地址赋值给引用变量。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/02/Java学习个人备忘录之关键字final/" class="pre-post btn btn-default" title='Java学习个人备忘录之关键字final'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之关键字final</span>
+        </a>
+    
+    
+        <a href="/2017/09/01/Java学习个人备忘录之文档注释/" class="next-post btn btn-default" title='Java学习个人备忘录之文档注释'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之文档注释</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

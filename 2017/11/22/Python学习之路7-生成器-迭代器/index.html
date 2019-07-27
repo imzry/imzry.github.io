@@ -1,0 +1,507 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="本章内容：
+
+列表生成式
+生成器
+yield
+迭代器
+
+
+列表生成式当我们要定义一个列表的时候，我们通常用这种方式a = [1,2,3]，但是如果我们定义了一个比较长的列表的时候，手动定义列表就...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Python学习之路7 - 生成器&amp;迭代器 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python学习之路7 - 生成器&amp;迭代器">
+            
+	            Python学习之路7 - 生成器&amp;迭代器
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/11/22</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>612</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>本章内容：</strong></p>
+<ul>
+<li>列表生成式</li>
+<li>生成器</li>
+<li>yield</li>
+<li>迭代器</li>
+</ul>
+<hr>
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>当我们要定义一个列表的时候，我们通常用这种方式a = [1,2,3]，但是如果我们定义了一个比较长的列表的时候，手动定义列表就会比较麻烦，这是我们通常的做法就是利用循环的手段来创建列表，例如创建如下的列表：</p>
+<p>L = [0,1,4,9,16,25,36,49,64,81]</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">L = []
+for x in range(1, 11):
+   L.append(x*x)
+</pre>
+</div>
+
+<p>　　这样我们就创建了一个较长的列表。</p>
+<p>但是这样写，我们用了三行代码，其实我们可以用一行代码就代替了它：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">L = [i*i for i in range(1,11)]
+</pre>
+</div>
+
+<p>　　这就是列表生成式。</p>
+<p>前面的i*i是运算式，也可以用函数，然后后面加上一个for循环就可以了。</p>
+<p>其实我们不难看出，for循环和列表生成式的关系，如下图：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201711/1204715-20171122141227493-1577974351.jpg" alt></p>
+<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">[x * x for x in range(1, 11) if x % 2 == 0]
+#结果为：
+#[4, 16, 36, 64, 100]</pre>
+</div>
+
+<p>还可以使用两层循环，可以生成全排列：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">[m + n for m in 'ABC' for n in 'XYZ']
+#结果为：
+#['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']</pre>
+</div>
+
+<p>三层用的就比较少了。</p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>上面的列表生成式的最外面是用中括号括起来的，如果把中括号变成小括号，也就是这样：</p>
+<p>L = (i*i for i in range(1,11))</p>
+<p>这样就是一个生成器了。</p>
+<p><strong>那么生成器有什么好处呢？</strong></p>
+<p>我们用列表生成式直接生成列表后，列表会直接放在内存中等待被使用。但是如果列表过于长了，但是我们暂时又用不到全部的元素，就会造成内存的浪费。生成器的好处就在于(i*i for i in range(1,11))这句话执行完毕后将返回一个算法给L，并不是直接将所有的数据放到内存中，当我们访问数据时，生成器就会根据算法现生成我们需要的书库，这样就避免了内存的浪费。</p>
+<p>但是生成器不能像列表一样a[100]这样直接取出某个数据，因为生成器还没有访问到第100个元素。生成器其实就像一个递推公式一样，想要知道第100个元素是什么，就必须要先知道第99个元素是什么，以此类推…</p>
+<p>下面用生成器生成一个列表并且遍历所有的数据</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">L = (i*i for i in range(1,11))
+for i in L:
+    print(i)</pre>
+</div>
+
+<p>也可以一个一个数据的访问，调用生成器中下一个数据</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">a = (i*i for i in range(1,11))
+a.__next__()    #这样就调用了下一个数据</pre>
+</div>
+
+<p>并且生成器也只有一个方法，就是<strong>next</strong>()方法，只能往下走，不能回头。</p>
+<p>&nbsp;</p>
+<h2 id="yield-nbsp"><a href="#yield-nbsp" class="headerlink" title="yield&nbsp;"></a>yield&nbsp;</h2><p>先来看一个菲波那切数列的迭代算法。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def fib(max):
+    n,a,b = 0,0,1
+    while n&lt;max:
+        #print(b)   #如果用print，那么这个函数就会直接输出数列的所有值
+        yield b     #如果用yield，那么这个函数就会变成一个生成器
+        a, b = b, a + b
+        n = n + 1
+    return '---done---' #如果程序抛异常，就会返回这个信息</pre>
+</div>
+
+<p>yield可以保存当前循环的状态，然后可以先做其他的事情，做完其他的事情，可以回来继续进行下一个循环。</p>
+<p>&nbsp;</p>
+<p><strong>yield的一个稍微复杂的应用</strong> - 利用yield模拟多线程</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+def consumer(name):
+    print("%s 准备吃包子了！" %name)
+    while True:
+        baozi = yield
+        print("包子[%s]来了，被[%s]吃了！" %(baozi,name))
+#当函数中有yield时，这个函数就会变成一个生成器
+c = consumer('lisi')    #将这个生成器赋值给c
+c.__next__()    #然后执行一次这个生成器，但是一次调用只会执行到含有yield的语句前面，
+                # 因为yield可以暂停并保存当前的状态，一到yield就会暂停，所以while循环里面的输出语句没有执行
+c.send('猪肉')  #send()函数，用来向yield里面传值，然后继续执行一次，直到再次碰到yield时就会再次暂停
+                #注意，第一次执行时一定要执行__next__()函数，后面才可以执行send()函数
+c.send('牛肉')    #再次传值，再次执行while里面的语句，注意，不会执行上面的print("%s 准备吃包子了！" %name)语句
+c.send('niurou')    #再次传值，再次执行while里面的语句
+c.__next__()    #这里再次调用__next__()函数，同样还是执行while里面的输出语句，但是不会向yield里面传值</pre>
+</div>
+
+<p>上面是手动执行这个生成器，下面写一个函数来调用这个生成器。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import time
+def consumer(name):
+    print("%s 准备吃包子了！" %name)
+    while True:
+        baozi = yield
+        print("包子[%s]来了，被[%s]吃了！" %(baozi,name))
+def producer():
+    c = consumer('A')
+    c2 = consumer('B')
+    c.__next__()
+    c2.__next__()
+    print('老子开始准备做包子了')
+    for i in range(10):
+        time.sleep(1)
+        print('做了一个包子，分两半')
+        c.send(i)
+        c2.send(i)
+producer()
+#这样就是一边做包子，一边吃包子了
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以被next()函数调用并不断返回下一个值的对象成为迭代器：Iterator。</p>
+<p>可以使用isinstance()判断一个对象是否是Iterator对象或者Iterable对象</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">from collections import Iterator    #需要先导入这个模块
+isinstance((x for x in range(10)),Iterator)
+    #第一个参数为想要判断的东西，第二个参数是想要判断的类型
+isinstance({},Iterator)
+from collections import Iterable
+isinstance((),Iterator)
+isinstance('abc',Iterator)
+</pre>
+</div>
+
+<p>生成器都是Iterator对象，但是list、dict、str虽然是Iterator，却不是Iterator。<br>把list、dict、str等Iterable变成Iterator可以使用iter()对象。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">isinstance(iter([]),Iterator)   #这样结果就是True了
+#例子
+a = [1,2,3]
+b = iter(a)
+b.__next__()
+</pre>
+</div>
+
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/11/22/Python学习之路8-内置方法/" class="pre-post btn btn-default" title='Python学习之路8 - 内置方法'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Python学习之路8 - 内置方法</span>
+        </a>
+    
+    
+        <a href="/2017/11/21/Python学习之路6-装饰器/" class="next-post btn btn-default" title='Python学习之路6 - 装饰器'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python学习之路6 - 装饰器</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-text">列表生成式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-text">生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yield-nbsp"><span class="toc-text">yield </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器"><span class="toc-text">迭代器</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

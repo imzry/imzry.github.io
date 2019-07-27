@@ -1,0 +1,520 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="被static标记的东西会放在内存中被共享的，对象用到时，就会来取的。
+
+class Person
+{
+    String name;  //成员变量，实例变量
+    static Stri...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之关键字static | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之关键字static">
+            
+	            Java学习个人备忘录之关键字static
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/01</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>694</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>被static标记的东西会放在内存中被共享的，对象用到时，就会来取的。</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Person
+{
+    String name;  //成员变量，实例变量
+    static String country = "CN";  //静态变量，类变量
+    public void show()
+    {
+        System.out.println(country+"："+name);
+    }
+}
+
+class StaticDemo
+{
+    public static void main(String[] args)
+    {
+        Person p = new Person();
+        System.out.println(p.country);
+        System.out.println(Person.country);
+    }
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>static的特点</strong></span><br>1. static是一个修饰符，用于修饰成员。<br>2. static修饰的成员被所有的对象所共享。<br>3. static优先于对象存在，因为static的成员随着类的加载就已经存在了。<br>4. static修饰的成员多了一种调用方式，可以直接被类名所调用. &nbsp;类名.静态成员。<br>5. static修饰的数据是共享数据，对象中的存储的特有数据。</p>
+<p><span style="font-size: 16px;"><strong>成员变量和静态变量的区别?</strong></span><br>1. 两个变量的声明周期不同<br>&nbsp; &nbsp; 成员变量随着对象的创建而存在，随着对象的被回收而释放。<br>&nbsp; &nbsp; 静态变量随着类的加载而存在，随着类的消失而消失。<br>2. 调用方式不同<br>&nbsp; &nbsp; 成员变量只能被对象调用。<br>&nbsp; &nbsp; 静态变量可以被对象调用，还可以被类名调用。<br>3. 别名不同<br>&nbsp; &nbsp; 成员变量也称为实例变量。<br>&nbsp; &nbsp; 静态变量称为类变量。<br>4. 数据存储位置不同<br>&nbsp; &nbsp; 成员变量数据存储在堆内存的对象中，所以也叫对象的特有数据。<br>&nbsp; &nbsp; 静态变量数据存储在方法区(共享数据区)的静态区,所以也叫对象的共享数据。</p>
+<p><span style="font-size: 16px;"><strong>静态使用的注意事项</strong></span><br>1. 静态方法只能访问静态成员。(非静态既可以访问静态，又可以访问非静态)<br>2. 静态方法中不可以定义this或者super关键字。<br>3. 主函数是静态的。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class StaticDemo
+{
+    int num = 4;
+    public static void main(String[] args)
+    {
+        new StaticDemo().show();  //在静态方法中调用非静态方法
+    }
+    public void show()
+    {
+        System.out.println(num);
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>main函数</strong></span><br><strong>public static void main(String[] args)</strong></p>
+<p>主函数特殊之处：<br>1.格式是固定的。<br>2.被jvm所识别和调用。</p>
+<p>public：因为权限必须是最大的。<br>static：java虚拟机在调用时，是不需要对象的。<br>void：主函数没有具体的返回值。<br>main：函数名，不是关键字，只是一个jvm识别的固定的名字。<br>String[] args：这是主函数的参数列表，是一个数组类型的参数，而且元素都是字符串类型。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class MainDemo
+{
+    public static void main(String[] args) //new String[0]  创建时虚拟机传进去一个数组
+    {
+        System.out.println(args);//[Ljava.lang.String;@c17164
+        System.out.println(args.length);  
+        System.out.println(args[0]);
+        /*
+        编译：
+            java MainDemo haha hehe xixi   # haha hehe xixi 是传进去的三个参数
+
+        输出：
+            3
+            haha
+        */
+        //传进去的是数组，所以也可以这样写
+        for (int x=0; x&lt;args.length ; x++ )
+        {
+            System.out.println(args[x]);
+        }
+    }
+}</pre>
+</div>
+
+<p><span style="font-size: 16px;"><strong>静态什么时候用?</strong></span><br>1. 静态变量<br>&nbsp; &nbsp; 当分析对象中所具备的成员变量的值都是相同的。<br>&nbsp; &nbsp; 这时这个成员就可以被静态修饰。<br>&nbsp; &nbsp; 只要数据在对象中都是不同的,就是对象特有数据，必须存储在对象中,是非静态的。<br>&nbsp; &nbsp; 如果是相同的数据，对象不需要做修改,只需要使用即可，不需要存储在对象中,定义成静态的。</p>
+<p>2. 静态函数<br>&nbsp; &nbsp; 函数是否用静态修饰，就参考一点，就是该函数功能是否访问到对象中的特有数据。<br>&nbsp; &nbsp; 简单点说，从源代码看,该功能是否需要访问非静态的成员变量,如果需要,该功能就是非静态的。<br>&nbsp; &nbsp; 如果不需要，就可以将该功能定义成静态的。</p>
+<p><span style="font-size: 16px;"><strong>静态代码块</strong></span><br>随着类的加载而执行，而且只执行一次。</p>
+<p>作用：<br>&nbsp; &nbsp; 用于给类进行初始化。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class StaticCode
+{
+    static  //定义静态代码块
+    {
+        System.out.println("hahahah");
+    }
+    void show()
+    {
+        System.out.println("show run");
+    }
+}
+class StaticDemo
+{
+    public static void main(String[] args)
+    {
+        new StaticCode().show();
+        new StaticCode().show();
+    }
+}
+/*
+hahahah
+show run
+show run
+*/
+
+//  给类进行初始化
+class StaticCode
+{
+    static int num;
+    static  //定义静态代码块
+    {
+        num = 10;
+        System.out.println("hahahah");
+    }
+    static void show()
+    {
+        System.out.println("show run");
+    }
+}
+class StaticDemo
+{
+    public static void main(String[] args)
+    {
+        StaticCode.show();
+        //这时候的初始化就不能用构造函数了，因为并没有创建对象.
+    }
+}</pre>
+</div>
+
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Person
+{
+    private String name;
+
+    { //构造代码块   可以所有对象进行初始化
+        System.out.println("person run");
+        cry(); //这样就不用在每个构造函数中都写了.
+    }
+
+    Person() //构造函数是给对应的对象进行针对性的初始化 
+    {
+        name = "baby";
+        //cry();
+    }
+    Person(String name)
+    {
+        this.name = name;
+        //cry();
+    }
+
+    public void cry()
+    {
+        System.out.println("哇哇");
+    }
+}
+class StaticDemo
+{
+    public static void main(String[] args)
+    {
+        Person p = new Person(); //person run
+    }
+}</pre>
+</div>
+
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/01/Java学习个人备忘录之数组工具类/" class="pre-post btn btn-default" title='Java学习个人备忘录之数组工具类'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之数组工具类</span>
+        </a>
+    
+    
+        <a href="/2017/08/31/Java学习个人备忘录之构造函数-this/" class="next-post btn btn-default" title='Java学习个人备忘录之构造函数&this'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之构造函数&this</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

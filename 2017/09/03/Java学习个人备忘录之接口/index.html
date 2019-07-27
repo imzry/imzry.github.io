@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="
+abstract class AbsDemo
+{
+    abstract void show1();
+    abstract void show2();
+}
+
+
+当一个抽象类中的方法都是抽...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之接口 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之接口">
+            
+	            Java学习个人备忘录之接口
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/03</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>691</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">abstract class AbsDemo
+{
+    abstract void show1();
+    abstract void show2();
+}</pre>
+</div>
+
+<p>当一个抽象类中的方法都是抽象的时候，这时可以将该抽象类用另一种形式定义和表示——-接口 &nbsp;interface</p>
+<p>定义接口使用的关键字不是class，是interface。</p>
+<p>对于接口当中常见的成员：而且这些成员都有固定的修饰符<br>1. 全局常量：public static final<br>2. 抽象方法：public abstract</p>
+<p>由此得出结论，接口中的成员都是公共的权限。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface Demo
+{
+    public static final int NUM = 4;
+    public abstract void show1();
+    public abstract void show2();
+}</pre>
+</div>
+
+<p>如果接口中不写固定修饰符，如下：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface Demo
+{
+    int NUM = 4;
+    void show1();
+    void show2();
+}</pre>
+</div>
+
+<p>编译的时候就会自动给你加上，所以这样写也是可以的。<br>但是不推荐这样写，影响阅读性。</p>
+<p><strong>实现implements</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface Demo
+{
+    public static final int NUM = 4;
+    public abstract void show1();
+    public abstract void show2();
+}</pre>
+</div>
+
+<p>类与类之间是继承关系，类与接口之间是实现关系。</p>
+<p>接口不可以实例化。<br>只能由实现了接口的子类并覆盖了接口中所有的抽象方法后，该子类才可以实例化。<br>否则，这个子类就是一个抽象类。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class DemoImpl implements /*实现*/ Demo
+{
+    public void show1()
+    {}
+    public void show2()
+    {}
+}
+
+class InterfaceDemo
+{
+    public static void main(String[] args)
+    {
+        DemoImpl d = new DemoImpl();
+        System.out.println(d.NUM);
+        System.out.println(DemoImpl.NUM);
+        System.out.println(Demo.NUM);
+        //这3中输出方法都可以
+    }
+}</pre>
+</div>
+
+<p><strong>多实现</strong></p>
+<p>在java中不直接支持多继承，因为会出现调用的不确定性。<br>所以java将多继承机制进行改良，在java中变成了多实现。</p>
+<p>一个类可以实现多个接口。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface A
+{
+    public abstract void show();
+}
+
+interface Z
+{
+    public abstract void show();
+}
+
+class Test implements A，Z //多实现
+{
+    public void show()//把上面两个show方法都覆盖了.
+    {
+    }
+}</pre>
+</div>
+
+<p><strong>一类在继承另一个类的同时，还可以实现多个接口。</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Q
+{
+    public void method()
+    {}
+}
+class Test2 extends Q implements A，Z
+{
+}
+//接口的出现避免了单继承的局限性
+
+class InterfaceDemo
+{
+    public static void main(String[] args)
+    {
+        Test t = new Test();
+        t.show();
+    }
+}</pre>
+</div>
+
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface CC
+{
+    void show();
+}
+interface MM
+{
+    void method();
+}
+
+interface QQ extends CC，MM //接口与接口之间是继承关系，可以多继承，因为没有方法体
+{
+}</pre>
+</div>
+
+<p><strong>笔记本电脑使用</strong><br>为了扩展笔记本的功能，但日后出现什么功能设备不知道。<br>就定义一个规则，只要日后出现的设备都符合这个规则就可以了。<br>规则在java中就是接口。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface USB//暴漏的规则
+{
+    public void open();
+    public void close();
+}
+class BookPC
+{
+    public static void main(String[] args)
+    {
+        //useMouse(null);
+        useUSB(new Upan()); //一年后  功能扩展
+        //接口类型的引用，用于接收(指向)接口的子类对象.
+        useUSB(new UsbMouse());
+    }
+
+    //使用规则
+    public static void useUSB(USB u)
+    {
+        u.open();
+        u.close();
+    }
+}
+//一年后，买了一个U盘
+//实现规则
+class Upan implements USB
+{
+    public void open()
+    {
+        System.out.println("upan open");
+    }
+    public void close()
+    {
+        System.out.println("upan close");
+    }
+}
+//这就是前期对外开放的接口，后期可以使用进来的设备
+class UsbMouse implements USB
+{
+    public void open()
+    {
+        System.out.println("UsbMouse open");
+    }
+    public void close()
+    {
+        System.out.println("UsbMouse close");
+    }
+}</pre>
+</div>
+
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/03/Java学习个人备忘录之多态/" class="pre-post btn btn-default" title='Java学习个人备忘录之多态'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之多态</span>
+        </a>
+    
+    
+        <a href="/2017/09/03/Java学习个人备忘录之抽象类/" class="next-post btn btn-default" title='Java学习个人备忘录之抽象类'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之抽象类</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

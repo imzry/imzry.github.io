@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="函数定义方式：
+
+def func():
+    " 这里面写函数的描述" 这里写代码 return x #如果没有返回值就叫"过程"，函数和过程的区别就是有无返回值 ...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Python学习之路5 - 函数 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python学习之路5 - 函数">
+            
+	            Python学习之路5 - 函数
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/19</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>675</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><strong>定义方式：</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def func():
+    "这里面写函数的描述"
+    这里写代码
+    return x    #如果没有返回值就叫"过程"，函数和过程的区别就是有无返回值
+</pre>
+</div>
+
+<p>实例</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def fun1():
+    "这里是测试"
+    print('这是第一个函数')
+    return 0
+
+fun1() #调用函数
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>函数传参</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def test(x,y,z):
+    print(x)
+    print(y)
+    print(z)
+
+test(3,3,5) #这样传的参数叫做位置参数, 位置是一一对应的
+test(x=5,y=4,z=3) #这样传的参数叫做关键参数, 位置可以不用一一对应
+</pre>
+</div>
+
+<p><strong>这里需要注意的是</strong>，关键参数是不能写在位置参数前面的。<br>例如 test(x=4,5,5) 这样x是用了关键参数，y和z用了位置参数，这样就是错的。<br>但是 test(3,y=4,z=6) 这样位置参数x在关键参数y和z的前面，这样就是可以的。<br>同理 test(3,z=6,y=4) 这样也是可以的。</p>
+<p>&nbsp;</p>
+<p><strong>参数组</strong><br>如果我要传入的参数数量不固定，就在形参列表里写 *变量名 来实现。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def test(*args):
+    print(args) #打印出来的是一个元组
+
+test(3,3,5) #这样我传多少个参数都没问题了
+test(*[3,4,5,6,6,4]) #这是第二种传值方式
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>传入字典</strong></p>
+<p>如果我想传入字典就在形参的位置用 **变量名 来实现</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def test(**args):
+    print(args) #打印出来的是一个字典
+
+test(name='vector',age=3)
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<h4 id="高阶函数（满足下列条件之一就是高阶函数）"><a href="#高阶函数（满足下列条件之一就是高阶函数）" class="headerlink" title="高阶函数（满足下列条件之一就是高阶函数）"></a>高阶函数（满足下列条件之一就是高阶函数）</h4><p>a：把一个函数名当作形参传给另一个函数(在不修改被装饰函数源代码的情况下修改其功能,但是调用方式变了)</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def bar():
+    print('this is bar...')
+bar()
+print('----------------------------------')
+def test(func): #在这里增加了功能
+    print(func)
+test(bar)  #但是这里修改了调用方式</pre>
+</div>
+
+<p>b：返回值中包含函数名(不修改函数的调用方式,而修改函数功能)</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">def bar():
+    print('this is bar...')
+bar()
+print('----------------------------------')
+def test(func):   #在这里增加了功能
+    print(func)
+    return func        #这里返回了函数地址
+bar = test(bar)   #将函数地址赋给一个变量,该变量和传入函数同名
+bar()        #这个变量加上括号,就可以当函数用了,同时又没有修改函数的调用方式
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<h4 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h4><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">x = 1
+def test1():
+    def test2():
+        def test3():
+            x = 3
+            print(x)
+        test3()
+    test2()
+test1()
+</pre>
+</div>
+
+<p>像这样在一个函数里面再定义一个函数就叫做嵌套函数。</p>
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/11/21/Python学习之路6-装饰器/" class="pre-post btn btn-default" title='Python学习之路6 - 装饰器'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Python学习之路6 - 装饰器</span>
+        </a>
+    
+    
+        <a href="/2017/09/19/Python学习之路4-文件操作-编码转换/" class="next-post btn btn-default" title='Python学习之路4 - 文件操作&编码转换'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python学习之路4 - 文件操作&编码转换</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#高阶函数（满足下列条件之一就是高阶函数）"><span class="toc-text">高阶函数（满足下列条件之一就是高阶函数）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#嵌套函数"><span class="toc-text">嵌套函数</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

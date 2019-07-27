@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="临时配置环境方式:查看path下的环境变量 set path修改path下的环境变量 set path=haha删除path下的环境变量 set path=查看当前java的版本 javac -...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之入门基础 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之入门基础">
+            
+	            Java学习个人备忘录之入门基础
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/08/31</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>695</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>临时配置环境方式:<br>查看path下的环境变量 set path<br>修改path下的环境变量 set path=haha<br>删除path下的环境变量 set path=<br>查看当前java的版本 javac -version<br>set path=路径;%path%</p>
+<p>===========================================================</p>
+<p>类文件路径配置:<br>就是运行.class文件的路径<br>set classpath=c:\myclass<br>查看是否配置过路径:<br>set classpath</p>
+<p>===========================================================</p>
+<p>关键字:</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">class</span><span style="color: #000000;"> Demo
+{
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] agrs)
+    {
+        System.out.println(</span>"hello java"<span style="color: #000000;">);
+    }
+}</span></pre>
+</div>
+
+<p>蓝色的为关键字(main也是关键字)</p>
+<p>===========================================================</p>
+<p>标识符:<br>在程序中自定义的一些名称.<br>由26个英文字母大小写,数字:0-9 符号:_和$组成<br>java中严格区分大小写</p>
+<p>===========================================================</p>
+<p>注释:<br>单行注释: //<br>多行注释: /<em> &nbsp;</em>/ &nbsp;多行注释中不能嵌套多行注释</p>
+<p>java特有的注释: /<em>* &nbsp;文档注释 &nbsp;</em>/<br>它的好处是可以通过java中的一个工具进行提取<br>工具是: &nbsp;javadoc.exe &nbsp;<br>提取出来可以生成一个说明书, 形成一个html文件</p>
+<p>===========================================================</p>
+<p>变量:<br>数据类型 &nbsp;变量名 = 初始化值<br>如: byte a = 3;&nbsp;<br>&nbsp;* 必须有初始化值</p>
+<p>===========================================================</p>
+<p>数据类型:</p>
+<p>基本数据类型:<br>数值型:<br>整数类型:<br>byte(一个字节 -128 — 127) -2^7 — +2^7-1&nbsp;<br>short(两个字节 ) -2^15 — +2^15-1 &nbsp;因为两个字节是16位<br>int(四个字节(默认)) -2^31 — +2^31-1<br>long(八个字节) … &nbsp;(long类型定义的值后面要加 l )<br>浮点类型:<br>float(四个字节)&nbsp;<br>double(八个字节(默认))<br>字符型:<br>char<br>布尔型:<br>boolean<br>引用数据类型:<br>类:<br>class<br>接口:<br>interface<br>数组:<br>[]</p>
+<p>===========================================================</p>
+<p>类型转换<br>byte b = 3;<br>b = (byte)(b + 4);//强制类型转换, 将int型转换为byte型</p>
+<p>===========================================================</p>
+<p>算术运算符 &nbsp;+ - <em> / % &nbsp; &nbsp;+(连接符)任何数据和字符串相加都叫连接<br>int x = 6370;<br>x = x / 1000 </em> 1000;<br>System.out.println(x); //6000<br>原因:<br>java是强类型语言,6370和1000都是整数,所以相除完后是6, 再乘以1000,就等于6000了.</p>
+<p>任何数据和字符串相加都叫连接 如<br>System.out.println(3+”2”);这样就得出字符串 32<br>System.out.println(“5+5=”+5+5);//5+5=55<br>System.out.println(“5+5=”+(5+5)); &nbsp;//5+5=10</p>
+<p>===========================================================</p>
+<p>byte 字节 = 8个二进制位</p>
+<p>进制的转换:&nbsp;<br>752= 7<em>10^2 + 5</em>10^1 + 2*10^0</p>
+<p>111 = 7</p>
+<p>1111 = 15</p>
+<p>-1010-1110</p>
+<p>010-101-110<br>&nbsp;2 &nbsp; 5 &nbsp; 6 &nbsp; &nbsp;==&gt;0256</p>
+<p>-1010-1110<br>&nbsp; 10 &nbsp; 14 &nbsp; &nbsp; ==&gt; 0xAE</p>
+<p>结论:<br>八进制数,其实就是二进制中 3个二进制位为一个八进制位<br>十六进制: 其实就是二进制中的4个二进制位为一个十六进制位.</p>
+<p>===========================================================</p>
+<p>负数的进制<br>其实就是这个数的整数的二进制取反, 再加1</p>
+<p>通常负数的二进制的最高位都是 1.</p>
+<p>===========================================================</p>
+<p>&amp;: 与<br>|: 或<br>^: 异或&nbsp;<br>true ^ true = false<br>true ^ false = true<br>false ^ true = true<br>false ^ false = false<br>&amp;&amp;: 与(短路)<br>||: 或(短路)</p>
+<p>===========================================================</p>
+<p>位运算符: 是用于二进制位运算的符号<br>&lt;&lt; &nbsp;左移<br>&gt;&gt; &nbsp;右移<br>num &gt;&gt; 4 &nbsp;右移4位<br>&gt;&gt;&gt; 无符号右移<br>数据进行右移时,高位出现的空位,无论原高位是什么,空位都用0补.<br>&amp; &nbsp; 与运算<br>| &nbsp; 或运算<br>^ &nbsp; 异或运算<br>~ &nbsp; 反码</p>
+<p>===========================================================</p>
+<p>局部代码块<br>可以定义局部变量的生命周期</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">{
+    </span><span style="color: #0000ff;">int</span> a = 3<span style="color: #000000;">;
+    System.out.println(a</span>+3<span style="color: #000000;">);
+}</span></pre>
+</div>
+
+<p>之后a就不用了,变量a在{}结束后,就会自动释放内存<br>这样就会节省内存空间</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/08/31/Java学习个人备忘录之数组/" class="pre-post btn btn-default" title='Java学习个人备忘录之数组'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之数组</span>
+        </a>
+    
+    
+        <a href="/2017/08/31/PHP设置时区/" class="next-post btn btn-default" title='PHP设置时区'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">PHP设置时区</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

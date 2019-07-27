@@ -1,0 +1,630 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="内部类: 将一个类定义在另一个类的里面,对里面那个类就称为内部类. &nbsp;
+
+class Outer  
+{  
+    private int num = 3;  
+    class ...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之内部类 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之内部类">
+            
+	            Java学习个人备忘录之内部类
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/03</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>691</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>内部类</strong>: 将一个类定义在另一个类的里面,对里面那个类就称为内部类. &nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Outer  
+{  
+    private int num = 3;  
+    class Inner //它想访问Outer中的num, 如果在外面就需要创建一个对象,然后通过公开的接口访问,但是现在Outer内部, 就可以直接访问了.这样方便  
+    {  
+        void show()  
+        {  
+            System.out.println("show run..." + num);  
+        }  
+    }  
+    //如果现在想访问Inner就需要这样  
+    public void method()  
+    {  
+        Inner in = new Inner();  
+        in.show();  
+    }  
+    //内部类由于在内部, 相当于定义在了成员的位置上, 所以可以用成员修饰符, 如:  
+    //private class Test{}  
+    static class Inner  
+    {  
+        static void function()  
+        {  
+            System.out.println("function run......"+num);  
+        }  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>内部类访问特点：</strong><br>1. 内部类可以直接访问外部类中的成员.<br>2. 外部类要访问内部类, 必须建立内部类的对象. </p>
+<p>一般用于类的设计。</p>
+<p>分析事物时, 发现该事物描述中还有事物,而且这个事物还在访问被描述事物的内容。<br>这时就把还有的事物定义成内部类来描述。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class InnerClassDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Outer out  = new Outer();  
+        out.method();  
+        //直接访问外部类中的内部类中的成员.  
+        Outer.Inner in = new Oouter().new Inner();  
+        in.show();  
+        //如果内部类是静态, 那就相当于一个外部类了.  
+        Outer.Inner in = new Outer.Inner();  
+        in.show();  
+        //如果内部类是静态的,成员是静态的.  
+        Outer.Inner.function();  
+
+        //如果内部类中定义了静态成员,该内部类也必须是静态的.  
+
+    }  
+}  
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>细节</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Outer  
+{  
+    int num = 3;  
+    class Inner  
+    {  
+        int num = 4;  
+        void show()  
+        {  
+            int num = 5;  
+            System.out.println(num);//5  
+            System.out.println(this.num);//4  
+            System.out.println(Outer.this.num);//3  
+        }  
+    }  
+    void method()  
+    {  
+        new Inner().show();  
+    }  
+}  
+
+class InnerClassDemo2  
+{  
+    public static void main(String[] args)  
+    {  
+        new Outer().method();  
+    }  
+}  
+</pre>
+</div>
+
+<p><strong>为什么内部类能直接访问外部类中成员呢?</strong><br>那是因为内部类持有了外部类的引用——-外部类名.this </p>
+<p>&nbsp;</p>
+<p>内部类可以存放在局部位置上</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Outer  
+{  
+    int num = 3;  
+    Object method()  
+    {  
+        final int x = 9;  
+        class Inner  
+        {  
+            void show()  
+            {  
+                System.out.println("show..."+num);  
+            }  
+        }  
+        Object in = new Inner();  
+        return in;//0x0045  
+    }  
+}  
+class InnerClassDemo3  
+{  
+    public static void main(String[] args)  
+    {  
+        Outer out = new Outer();  
+        Object obj = out.method();//0x0045  
+    }  
+}
+</pre>
+</div>
+
+<p>内部类在局部位置上只能访问局部中被final修饰的局部变量。</p>
+<p>&nbsp;</p>
+<p><strong>匿名内部类</strong>, 就是内部类的简写格式.<br>必须有前提:<br>    内部类必须继承或者实现一个外部类或者接口. </p>
+<p>匿名内部类: 其实就是一个匿名子类对象. </p>
+<p>格式: new 父类or接口(){子类内容}</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">abstract class Demo  
+{  
+    abstract void show();  
+}  
+
+class Outer  
+{  
+    int num = 4;  
+    class Inner extends Demo //这是正常情况  
+    {  
+        void show()  
+        {  
+            System.out.println("show...."+num);  
+        }  
+    }  
+    public void method()  
+    {  
+        new Demo()//这个就叫匿名内部类  
+        {  
+            void show()  
+            {  
+                System.out.println("show...."+num);  
+            }  
+        }  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>匿名内部类的应用</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">interface Inter  
+{  
+    void show1();  
+    void show2();  
+}  
+
+class Outer  
+{  
+    public void method()  
+    {  
+        new Inter()  
+        {  
+            public void show1()  
+            {}  
+            public void show2()  
+            {}  
+        }.show1();  //调用了show1的方法, 相当于  new Inner().show1();  
+
+        //或者用下面的方法  
+        Inter in = new Inter()  
+        {  
+            public void show1()  
+            {}  
+            public void show2()  
+            {}  
+        }  
+        in.show1();  
+        in.show2();  
+    }  
+}  
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>通常的使用场景之一:</strong><br>当函数参数是接口类型时,而且接口中的方法不超过三个.<br>可以用匿名内部类作为实际参数进行传递. </p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class InnerClassDemo5  
+{  
+    public static void main(String[] args)  
+    {  
+        show(new InterImpl());  
+    }  
+    public static void show(Inter in)  
+    {  
+        in.show1();  
+        in.show2();  
+    }  
+}  
+class InterImpl implements Inter  
+{
+}  
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>对象的初始化过程</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Fu  
+{  
+    int num = 9;  
+    {  
+        System.out.println("Fu");  
+    }  
+
+    Fu()  
+    {  
+        super();  
+        //显示初始化  
+        //构造代码块初始化  
+        show();  
+    }  
+    void show()  
+    {  
+        System.out.println("fu show..."+num); //被覆盖,运行子类  
+    }  
+}  
+class Zi extends Fu  
+{  
+    int num = 8;  
+    {  
+        System.out.println("Zi");  
+    }  
+    Zi()  
+    {  
+        super();  
+        //显示初始化  
+        //构造代码块初始化  
+        show();  
+    }  
+    void show()  
+    {  
+        System.out.println("zi show..."+num);  
+    }  
+}  
+
+class Inner  
+{  
+    public static void main(String[] args)  
+    {  
+        new Zi();  
+    }  
+}
+/*
+Fu
+zi show...0
+Zi
+zi show...8
+*/</pre>
+</div>
+
+<p>&nbsp;<img src="http://img.blog.csdn.net/20150117095127046?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcTFxMXgyeDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/04/Java学习个人备忘录之异常/" class="pre-post btn btn-default" title='Java学习个人备忘录之异常'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之异常</span>
+        </a>
+    
+    
+        <a href="/2017/09/03/Java学习个人备忘录之多态/" class="next-post btn btn-default" title='Java学习个人备忘录之多态'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之多态</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

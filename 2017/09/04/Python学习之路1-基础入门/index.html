@@ -1,0 +1,837 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="Python, 算法, 机器学习, 深度学习">
+
+
+    <meta name="description" content="本文内容
+
+Python介绍
+安装Python解释器
+输出
+变量
+输入
+条件判断语句
+循环语句
+模块讲解
+三元运算
+字符串和二进制的相互转化
+
+
+&nbsp;本系列文章使用的Python版本为3...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Python学习之路1 - 基础入门 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python学习之路1 - 基础入门">
+            
+	            Python学习之路1 - 基础入门
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/04</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>690</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>本文内容</p>
+<ol>
+<li>Python介绍</li>
+<li>安装Python解释器</li>
+<li>输出</li>
+<li>变量</li>
+<li>输入</li>
+<li>条件判断语句</li>
+<li>循环语句</li>
+<li>模块讲解</li>
+<li>三元运算</li>
+<li>字符串和二进制的相互转化</li>
+</ol>
+<hr>
+<p>&nbsp;本系列文章使用的Python版本为3.6.2</p>
+<p>使用开发工具为Pycharm2017</p>
+<p>&nbsp;</p>
+<h2 id="一、Python介绍"><a href="#一、Python介绍" class="headerlink" title="一、Python介绍"></a>一、Python介绍</h2><p>Python的创始人为吉多&middot;范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多&middot;范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。&nbsp;&nbsp;</p>
+<div class="page" title="Page 1">
+
+最新的TIOBE排行榜，Python赶超PHP占据第五，&nbsp;Python崇尚优美、清晰、简单，是一个优秀并广泛使用的语言。
+
+![](http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830190706483-1713022637.png)
+
+**目前Python主要应用领域：**
+
+*   **云计算：**云计算最火的语言， 典型应用OpenStack
+*   **WEB开发：**众多优秀的WEB框架，众多大型网站均为Python开发，Youtube, Dropbox, 豆瓣。。。， 典型WEB框架有Django
+*   **科学运算、人工智能：**典型库NumPy, SciPy, Matplotlib, Enthought librarys,pandas
+*   **系统运维：**运维人员必备语言
+*   **金融**：量化交易，金融分析，在金融工程领域，Python不但在用，且用的最多，而且重要性逐年提高。原因：作为动态语言的Python，语言结构清晰简单，库丰富，成熟稳定，科学计算和统计分析都很牛逼，生产效率远远高于c,c++,java,尤其擅长策略回测
+*   **图形GUI：**PyQT, WxPython,TkInter
+
+**Python在一些公司的应用：**
+
+*   谷歌：Google App Engine 、code.google.com 、Google earth 、谷歌爬虫、Google广告等项目都在大量使用Python开发
+*   CIA：美国中情局网站就是用Python开发的
+*   NASA：美国航天局(NASA)大量使用Python进行数据分析和运算
+*   YouTube：世界上最大的视频网站YouTube就是用Python开发的
+*   Dropbox：美国最大的在线云存储网站，全部用Python实现，每天网站处理10亿个文件的上传和下载
+*   Instagram：美国最大的图片分享社交网站，每天超过3千万张照片被分享，全部用python开发
+*   Facebook：大量的基础库均通过Python实现的
+*   Redhat：世界上最流行的Linux发行版本中的yum包管理工具就是用python开发的
+*   豆瓣：公司几乎所有的业务均是通过Python开发的
+*   知乎：国内最大的问答社区，通过Python开发(国外Quora)
+*   春雨医生：国内知名的在线医疗网站是用Python开发的
+*   除上面之外，还有搜狐、金山、腾讯、盛大、网易、百度、阿里、淘宝 、土豆、新浪、果壳等公司都在使用Python完成各种各样的任务。&nbsp;
+
+### **Python&nbsp;****是一门什么样的语言？**
+
+<span style="color: #ff0000;">编程语言主要从以下几个角度为进行分类，编译型和解释型、静态语言和动态语言、强类型定义语言和弱类型定义语言，每个分类代表什么意思呢，我们一起来看一下。</span>
+
+#### 编译和解释的区别
+
+编译器是把源程序的每一条语句都编译成机器语言，并保存成二进制文件，这样运行时计算机可以直接以机器语言来运行此程序，速度很快；&nbsp;
+
+而解释器则是只在执行程序时，才一条一条的解释成机器语言给计算机来执行，所以运行速度是不如编译后的程序运行的快的。&nbsp;
+
+这是因为计算机不能直接认识并执行我们写的语句，它只能认识机器语言(是二进制的形式)。
+
+就好像你想看一本英文书，编译器会将整本书翻译成中文供你观看，这时你看的就会很方便，怎么反复看都没有问题；解释器只会解释你当前想要看的语句，如果你想再次看一遍同样的语句则需要再次找解释器解释一遍，这样就会给你的阅读带来麻烦。
+
+&nbsp;
+
+**动态语言和静态语言**
+
+通常我们所说的动态语言、静态语言是指动态类型语言和静态类型语言。
+
+（1）动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型，该语言会在你第一次赋值给变量时，在内部将数据类型记录下来。Python和Ruby就是一种典型的动态类型语言，其他的各种脚本语言如VBScript也多少属于动态类型语言。
+
+（2）静态类型语言：静态类型语言与动态类型语言刚好相反，它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型，C/C++是静态类型语言的典型代表，其他的静态类型语言还有C#、JAVA等。
+
+&nbsp;
+
+**强类型定义语言和弱类型定义语言**
+
+（1）强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了。举个例子：如果你定义了一个整型变量a,那么程序根本不可能将a当作字符串类型处理。强类型定义语言是类型安全的语言。
+
+（2）弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。
+
+强类型定义语言在速度上可能略逊色于弱类型定义语言，但是强类型定义语言带来的严谨性能够有效的避免许多错误。另外，&ldquo;这门语言是不是动态语言&rdquo;与&ldquo;这门语言是否类型安全&rdquo;之间是完全没有联系的！
+例如：Python是动态语言，是强类型定义语言（类型安全的语言）; VBScript是动态语言，是弱类型定义语言（类型不安全的语言）; JAVA是静态语言，是强类型定义语言（类型安全的语言）。
+
+&nbsp;
+
+通过上面这些介绍，我们可以得出，python是一门动态解释性的强类型定义语言。那这些基因使成就了Python的哪些优缺点呢？我们继续往下看。
+
+&nbsp;
+
+**Python的优点**
+
+当你用一种语言开始作真正的软件开发时，你除了编写代码外，还需要很多基本的已经写好的现成的东西，来帮助你加快开发进度。比如说，要编写一个电子邮件客户端，如果先从最底层开始编写网络协议相关的代码，那估计一年半载也开发不出来。高级编程语言通常都会提供一个比较完善的基础代码库，让你能直接调用，比如，针对电子邮件协议的SMTP库，针对桌面环境的GUI库，在这些已有的代码库的基础上开发，一个电子邮件客户端几天就能开发出来。
+
+Python就为我们提供了非常完善的基础代码库，覆盖了网络、文件、GUI、数据库、文本等大量内容，被形象地称作&ldquo;内置电池（batteries included）&rdquo;。用Python开发，许多功能不必从零编写，直接使用现成的即可。
+
+除了内置的库外，Python还有大量的第三方库，也就是别人开发的，供你直接使用的东西。当然，如果你开发的代码通过很好的封装，也可以作为第三方库给别人使用。
+
+许多大型网站就是用Python开发的，例如YouTube、Instagram，还有国内的豆瓣。很多大公司，包括Google、Yahoo等，甚至NASA（美国航空航天局）都大量地使用Python。
+
+龟叔给Python的定位是&ldquo;优雅&rdquo;、&ldquo;明确&rdquo;、&ldquo;简单&rdquo;，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。
+
+总的来说，Python的哲学就是简单优雅，尽量写容易看明白的代码，尽量写少的代码。如果一个资深程序员向你炫耀他写的晦涩难懂、动不动就几万行的代码，你可以尽情地嘲笑他。
+
+那Python适合开发哪些类型的应用呢？
+
+首选是网络应用，包括网站、后台服务等等；
+
+其次是许多日常需要的小工具，包括系统管理员需要的脚本任务等等；
+
+另外就是把其他语言开发的程序再包装起来，方便使用。
+
+**Python的缺点**
+
+第一个缺点就是运行速度慢，和C程序相比非常慢，因为Python是解释型语言，你的代码在执行时会一行一行地翻译成CPU能理解的机器码，这个翻译过程非常耗时，所以很慢。而C程序是运行前直接编译成CPU能执行的机器码，所以非常快。
+
+但是大量的应用程序不需要这么快的运行速度，因为用户根本感觉不出来。例如开发一个下载MP3的网络应用程序，C程序的运行时间需要0.001秒，而Python程序的运行时间需要0.1秒，慢了100倍，但由于网络更慢，需要等待1秒，你想，用户能感觉到1.001秒和1.1秒的区别吗？这就好比F1赛车和普通的出租车在北京三环路上行驶的道理一样，虽然F1赛车理论时速高达400公里，但由于三环路堵车的时速只有20公里，因此，作为乘客，你感觉的时速永远是20公里。
+
+![](http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830172927483-1736869329.png)
+
+第二个缺点就是代码不能加密。如果要发布你的Python程序，实际上就是发布源代码，这一点跟C语言不同，C语言不用发布源代码，只需要把编译后的机器码（也就是你在Windows上常见的xxx.exe文件）发布出去。要从机器码反推出C代码是不可能的，所以，凡是编译型的语言，都没有这个问题，而解释型的语言，则必须把源码发布出去。
+
+这个缺点仅限于你要编写的软件需要卖给别人挣钱的时候。好消息是目前的互联网时代，靠卖软件授权的商业模式越来越少了，靠网站和移动应用卖服务的模式越来越多了，后一种模式不需要把源码给别人。
+
+再说了，现在如火如荼的开源运动和互联网自由开放的精神是一致的，互联网上有无数非常优秀的像Linux一样的开源代码，我们千万不要高估自己写的代码真的有非常大的&ldquo;商业价值&rdquo;。那些大公司的代码不愿意开放的更重要的原因是代码写得太烂了，一旦开源，就没人敢用他们的产品了。
+
+&nbsp;![](http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830172946187-1723418191.png)
+
+&nbsp;
+
+## 二、安装Python解释器
+
+### 在Mac上安装Python
+
+如果你正在使用Mac，系统是OS X 10.8~10.10，那么系统自带的Python版本是2.7。要安装最新的Python 3.6，有两个方法：
+
+方法一：从Python官网下载Python 3.6的安装程序（网速慢的同学请移步国内镜像），双击运行并安装；
+
+方法二：如果安装了Homebrew，直接通过命令`brew install python3`安装即可。
+
+### 在Linux上安装Python
+
+如果你正在使用Linux，那么基本代表你有着Linux管理经验，Linux上自带Python2，如果想升级到最新版应该难不倒你的。
+
+### 在Windows上安装Python
+
+首先，根据你的Windows版本（64位还是32位）从Python的官方网站下载Python 3.6对应的64位安装程序或32位安装程序，然后，运行下载的EXE安装包：
+
+![](http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830175523671-794653867.png)
+
+&nbsp;
+
+特别要注意勾上`Add Python 3.6 to PATH`，然后点&ldquo;Install Now&rdquo;即可完成安装。
+
+&nbsp;
+
+</div>
+
+<h2 id="三、输出"><a href="#三、输出" class="headerlink" title="三、输出"></a><span style="background-color: #ffffff;">三、输出</span></h2><p>输出方式经常使用的有两种，第一种是print()函数，下面我们输出hello world。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">print("hello world")</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830162914515-1283240545.png" alt></p>
+<p>第二种输出方式需要引入sys库，然后使用sys.stdout.write()函数输出。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import sys
+sys.stdout.write("afsd")</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830163223452-1631258494.png" alt></p>
+<blockquote>
+<p>从输出结果可以看出两种输出方式的差别，print()函数输出结果后会再加一个换行，而sys.stdout.write()则没有换行。</p>
+</blockquote>
+<p>&nbsp;Python和其他常用高级语言不同的地方是Python一条语句结束时不需要加分号，并且在Python中也不会用到大括号，Python的语句就只是用换行符和缩进来表示语句之间的关系。</p>
+<p>换行就表示一条语句的结束，缩进表示语句间的包含关系。</p>
+<h2 id="四、变量"><a href="#四、变量" class="headerlink" title="四、变量"></a>四、变量</h2><p>由于Python是动态类型语言，所以不需要定义变量类型，直接写变量名就可以。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = "my name is Vector"
+print(name)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830175954671-7016819.png" alt></p>
+<blockquote>
+<p>在Python3中是可以直接输入中文的，例如print（&ldquo;姓名&rdquo;）这样，但是在Python2中需要在文件的顶部加上 &nbsp;-<em>- coding:utf-8 -</em>- 这句话，因为Python3的默认字符为Unicode，而Python2的默认字符为ASCII。</p>
+</blockquote>
+<p>&nbsp;在Python中不仅有单行的字符串，还有多行的字符串，多行字符串用 ‘’’内容’’’ 标记，如下。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">msg = '''
+这里是第一行
+这里是第二行
+这里是第三行
+'''
+print(msg)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830180752015-1420839021.png" alt></p>
+<p>&nbsp;</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>Python中的单行注释用 # 来注释，如下。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">print('hello world') #这里即将输出hello world</pre>
+</div>
+
+<p>多行注释用三个单引号来标记 ‘’’内容’’’，如下。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">'''
+这里是第一行注释
+这里是第二行注释
+这里是第三行注释
+'''</pre>
+</div>
+
+<p>在Python中单引号和双引号没有区别，都不会转义其他字符。</p>
+<p>&nbsp;</p>
+<h2 id="五、输入"><a href="#五、输入" class="headerlink" title="五、输入"></a>五、输入</h2><p>&nbsp;用户输入通常我们用input()函数，如下。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">username = input('username:')
+password = input('password:')
+print(username,password)</pre>
+</div>
+
+<p>我们输入vector和asd123</p>
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830181933421-889670116.png" alt></p>
+<p>有了输入后，我们就可以控制格式化输出了。</p>
+<h3 id="第一种格式化输出方式"><a href="#第一种格式化输出方式" class="headerlink" title="第一种格式化输出方式"></a><strong>第一种格式化输出方式</strong></h3><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = input('name:')
+age = input('age:')
+
+info = '''
+------------- Info --------------
+Name:''' + name + '''
+age:''' + age + '''
+------------- Over --------------
+'''
+print(info)</pre>
+</div>
+
+<p>这里我们输入vector和18</p>
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830183857624-1962918674.png" alt></p>
+<h3 id="第二种格式化输出方式"><a href="#第二种格式化输出方式" class="headerlink" title="第二种格式化输出方式"></a>第二种格式化输出方式</h3><p>用 %s %d %f 等来控制格式，并在结尾一次传入参数，传参格式为 %(参数1,参数2,…)</p>
+<p>&nbsp;%s代表字符串，%d代表正数，%f代表浮点数。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = input('name:')
+age = int(input('age:'))
+
+info = '''
+------------- Info --------------
+Name:%s
+age:%d
+------------- Over --------------
+'''%(name,age)
+print(info)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830184550749-426232156.png" alt></p>
+<div class="cnblogs_code">
+<pre>如果想将输出的内容变成红色,则用\033[31;1m%s\033<span style="color: #000000;">[0m
+如果想将输出的内容变成绿色,则用\</span>033[32;1m%s\033<span style="color: #000000;">[0m
+
+格式：\</span>033<span style="color: #000000;">[显示方式;前景色;背景色m
+
+说明：
+前景色            背景色           颜色
+</span>---------------------------------------
+30                40<span style="color: #000000;">              黑色
+</span>31                41<span style="color: #000000;">              红色
+</span>32                42<span style="color: #000000;">              绿色
+</span>33                43<span style="color: #000000;">              黃色
+</span>34                44<span style="color: #000000;">              蓝色
+</span>35                45<span style="color: #000000;">              紫红色
+</span>36                46<span style="color: #000000;">              青蓝色
+</span>37                47<span style="color: #000000;">              白色
+
+显示方式           意义
+</span>-------------------------<span style="color: #000000;">
+0                终端默认设置
+</span>1<span style="color: #000000;">                高亮显示
+</span>4<span style="color: #000000;">                使用下划线
+</span>5<span style="color: #000000;">                闪烁
+</span>7<span style="color: #000000;">                反白显示
+</span>8<span style="color: #000000;">                不可见
+
+例子：
+\</span>033[1;31;40m    &lt;!--1-高亮显示 31-前景色红色  40-背景色黑色--&gt;<span style="color: #000000;">
+\</span>033[0m          &lt;!--采用终端默认设置，即取消颜色设置--&gt;</pre>
+</div>
+
+<p>下面演示一下输出结果带颜色的例子：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = input('name:')
+age = int(input('age:'))
+
+info = '''
+------------- Info --------------
+Name:\033[31;1m%s\033[0m  #输出结果为红色
+age:\033[32;1m%s\033[0m  #输出结果为绿色
+------------- Over --------------
+'''%(name,age)
+print(info)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830190045124-537519902.png" alt></p>
+<h3 id="第三种格式化输出方式"><a href="#第三种格式化输出方式" class="headerlink" title="第三种格式化输出方式"></a>第三种格式化输出方式</h3><p>在字符串中插入形参（形参用大括号标记{形参}），最后在结尾给形参赋值。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = input('name:')
+age = int(input('age:'))
+
+info = '''
+------------- Info --------------
+Name:{_name}
+age:{_age}
+------------- Over --------------
+'''.format(_name=name,_age=age)
+print(info)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830185538155-940502342.png" alt></p>
+<h3 id="第四种格式化输出方式"><a href="#第四种格式化输出方式" class="headerlink" title="第四种格式化输出方式"></a>第四种格式化输出方式</h3><p>形参用数字表示，在结尾直接按照顺序给形参赋值。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">name = input('name:')
+age = int(input('age:'))
+
+info = '''
+------------- Info --------------
+Name:{0}
+age:{1}
+------------- Over --------------
+'''.format(name,age)
+print(info)</pre>
+</div>
+
+<p>输出结果：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1204715/201708/1204715-20170830185711202-1001486243.png" alt></p>
+<p>&nbsp;</p>
+<h3 id="输入变成密文"><a href="#输入变成密文" class="headerlink" title="输入变成密文"></a>输入变成密文</h3><p>需要引入getpass模块。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">import getpass
+password = getpass.getpass("password:")</pre>
+<pre>print(password)</pre>
+</div>
+<pre>但是这个getpass()这个函数在pycharm中不好使，在其他工具中好使。</pre>
+
+## 六、条件判断语句
+
+格式：
+
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">if 条件1 and 条件2 or 条件3:
+    pass # 注意这里一定要有缩进
+elif 条件4 and 条件5:
+    pass
+else:
+    pass
+</pre>
+</div>
+
+<p>例子：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">_username = 'rev'
+_password = 'rev123'
+
+username = input('username:')
+password = input('password:')
+
+if _username == username and _password == password:
+    print('Welcome user {name} login...'.format(name = username))# 注意这里一定要有缩进
+elif _username == username and _password != password:
+    print('password error!')
+else:
+    print('login fail..')# 注意这里一定要有缩进
+</pre>
+</div>
+
+<h2 id="七、循环语句"><a href="#七、循环语句" class="headerlink" title="七、循环语句"></a>七、循环语句</h2><h3 id="循环语句之while"><a href="#循环语句之while" class="headerlink" title="循环语句之while"></a>循环语句之while</h3><p>Python中的while还有else处理。</p>
+<p>例子：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">while True:
+    print('this is loop...')
+    break
+else:
+    print('如果while循环条件不符合了，则执行这里的代码')
+</pre>
+</div>
+
+<h3 id="循环语句之for"><a href="#循环语句之for" class="headerlink" title="循环语句之for"></a>循环语句之for</h3><p><strong>格式1：</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">for i in range(10):
+    print('loop ',i)
+</pre>
+</div>
+> 这里的range代表循环次数，i 从0来是循环
+
+输出结果：
+
+![](http://images2017.cnblogs.com/blog/1204715/201709/1204715-20170905151712335-219987765.png)
+
+**格式2：**
+
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">for i in range(0,10,2):
+    print('loop ',i)
+</pre>
+</div>
+> range中的第一个参数代表从几开始，第二个参数代表到几结束（不包括10），第三个参数2代表隔一个执行一次
+
+**格式3：**
+
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">for i in "fasdfasd":
+    print('loop ',i)
+</pre>
+</div>
+> Python中的for循环还可以循环字符串、列表、元组等。
+
+&nbsp;输出结果：
+
+![](http://images2017.cnblogs.com/blog/1204715/201709/1204715-20170905152420554-1608007279.png)
+
+## 八、模块讲解
+
+### 模块之sys
+
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">print(sys.path) # 打印环境变量
+print(sys.argv) # 打印当前脚本的路径，在pycharm中打印绝对路径，在命令行中打印相对路径（本来打印的就是相对路径）
+one = sys.argv[1] #用来在外部调用的时候传参, 1代表传入的第一个参数,
+two = sys.argv[2] #2代表传入的第二个参数, 这样外部调用的时候就可以传多个参数了
+</pre>
+</div>
+
+<h3 id="模块之os"><a href="#模块之os" class="headerlink" title="模块之os"></a>模块之os</h3><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">print(os.system('dir')) # system函数就是命令行
+cmd = os.system('dir')
+print(cmd) # 这里输出的是 0 因为，system是直接把输出到屏幕上，并不是返回，如果输出成功则返回0
+
+cmd = os.popen('dir').read() #popen()方法返回的是该对象的地址，read()方法是将地址中的内容读出来
+print(cmd)
+
+# 创建目录函数
+os.mkdir('new_dir')
+</pre>
+</div>
+
+<h2 id="九、三元运算"><a href="#九、三元运算" class="headerlink" title="九、三元运算"></a>九、三元运算</h2><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">//result = 值1 if 条件 else 值2
+a,b,c = 1,3,5
+d = a if a&gt;b else c
+print(d) # d = c = 5
+# 如果条件为真：result = 值1
+# 如果条件为假：result = 值2
+</pre>
+</div>
+
+<h2 id="十、字符串和二进制的相互转化"><a href="#十、字符串和二进制的相互转化" class="headerlink" title="十、字符串和二进制的相互转化"></a>十、字符串和二进制的相互转化</h2><div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">msg = '我爱大延边日不落帝国'
+print(msg) # 字符串输出
+print(msg.encode(encoding='utf-8')) # 将字符串转换成二进制
+print(msg.encode(encoding='utf-8').decode(encoding='utf-8')) # 将二进制转换成字符串
+# 如果encode和decode不写参数，默认就是utf-8</pre>
+</div>
+
+<p>&nbsp;</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿的可好~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/05/Python学习之路2-列表和元组/" class="pre-post btn btn-default" title='Python学习之路2 - 列表和元组'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Python学习之路2 - 列表和元组</span>
+        </a>
+    
+    
+        <a href="/2017/09/04/thinkphp简洁、美观、靠谱的分页类/" class="next-post btn btn-default" title='thinkphp简洁、美观、靠谱的分页类'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">thinkphp简洁、美观、靠谱的分页类</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Python介绍"><span class="toc-text">一、Python介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、输出"><span class="toc-text">三、输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、变量"><span class="toc-text">四、变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、输入"><span class="toc-text">五、输入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种格式化输出方式"><span class="toc-text">第一种格式化输出方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种格式化输出方式"><span class="toc-text">第二种格式化输出方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三种格式化输出方式"><span class="toc-text">第三种格式化输出方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第四种格式化输出方式"><span class="toc-text">第四种格式化输出方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入变成密文"><span class="toc-text">输入变成密文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、循环语句"><span class="toc-text">七、循环语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环语句之while"><span class="toc-text">循环语句之while</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环语句之for"><span class="toc-text">循环语句之for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块之os"><span class="toc-text">模块之os</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、三元运算"><span class="toc-text">九、三元运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、字符串和二进制的相互转化"><span class="toc-text">十、字符串和二进制的相互转化</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
