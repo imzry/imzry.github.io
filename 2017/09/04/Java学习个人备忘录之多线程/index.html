@@ -1,0 +1,1001 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="java">
+
+
+    <meta name="description" content="
+进程：正在进行中的程序(直译)。
+线程：就是进程中一个负责程序执行的控制单元(执行路径)一个进程中可以有多个执行路径，称之为多线程。
+一个进程中至少要有一个线程。
+开启多个线程是为了同时运行多...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java学习个人备忘录之多线程 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java学习个人备忘录之多线程">
+            
+	            Java学习个人备忘录之多线程
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/闲扯/">闲扯</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/java/">java</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/09/04</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="http://img.blog.csdn.net/20150123185344974?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcTFxMXgyeDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<p><strong>进程</strong>：正在进行中的程序(直译)。</p>
+<p><strong>线程</strong>：就是进程中一个负责程序执行的控制单元(执行路径)<br>一个进程中可以有多个执行路径，称之为多线程。</p>
+<p>一个进程中至少要有一个线程。</p>
+<p>开启多个线程是为了同时运行多部分代码。</p>
+<p>每一个线程都有自己运行的内容。这个内容可以称为线程要执行的任务。</p>
+<p>多线程的好处：解决了多部分同时运行的问题。</p>
+<p>多线程的弊端：线程太多回到效率的降低。</p>
+<p>其实应用程序的执行都是cpu在做着快速的切换完成的。这个切换是随机的。</p>
+<p>jvm启动时就启动了多个线程，至少有两个线程可以分析的出来。</p>
+<p>1。执行main函数的线程<br>    该线程的任务代码都定义在main函数中<br>2。负责垃圾回收的线程. </p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Demo extends Object  
+{  
+    public void finalize()  //用来回收  
+    {  
+        System.out.println("demo ok");  
+    }  
+}  
+
+class ThreadDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        new Demo();  
+        new Demo();  
+        new Demo();  
+        System.gc();  
+        System.out.println("Hello World!");  
+    }  
+}  
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>多线程的创建方式—继承Thread类</strong> </span></p>
+<p>步骤：<br>1。定义一个类继承Thread类<br>2。覆盖Thread类中的run方法<br>3。直接创建Thread的子类对象创建线程<br>4。调用start方法开启线程并调用线程的任务run方法执行。</p>
+<p>可以通过Thread的getName获取线程的名称Thread-编号(从0开始) </p>
+<p>主线程的名字就是main. </p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Demo extends Thread  
+{   
+    private String name;  
+    Demo(String name)  
+    {  
+        super(name);//自定义线程的名称  
+        this.name = name;  
+    }  
+    public void run()  
+    {  
+        show();  
+    }  
+    public void show()  
+    {  
+//      System.out.println(name+"........x="+x+".......name="+getName());  
+        System.out.println(name+"........x="+x+".......name="+Thread.currentThread().getName());//当前运行线程的名称。 
+    }  
+}  
+
+class ThreadDemo2  
+{  
+    public static void main(String[] args)  
+    {  
+        /* 
+        创建线程的母的是为了开启一条执行路径，去运行指定的代码和其他代码实现同时运行。
+
+        而运行的指定代码就是这个执行路径的任务。
+
+        jvm创建的主线程的任务都定义在了主函数中。
+
+        而自定义的线程它的任务在哪儿呢? 
+        Thread类用于描述线程，线程是需要任务的，所以Thread类也对任务的描述。
+        这个任务就是通过Thread类中的run方法来体现。也就是说，run方法就是封装自定义线程运行任务的函数。
+
+        run方法中定义就是线程要运行的任务代码。
+
+        开启线程是为了运行指定代码，所以只有继承Thread类，并复写run方法。
+        将运行的代码定义在run方法中即可。
+
+        */  
+        Demo d1 = new Demo("旺财");  
+        Demo d2 = new Demo("xiaoqiang");  
+        //d1.run();  
+        //d2.run();  
+        d1.start(); //开启线程，调用run方法  
+        d2.start();  
+        System.out.println("over....."+Thread.currentThread().getName());  
+    }  
+}  
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>创建多线程的第二种方式—实现Runnable接口</strong></span></p>
+<p>1。定义类实现Runnable接口<br>2。覆盖接口中的run方法，将线程的任务代码封装到run方法中。<br>3。通过Thread类创建线程对象，并将Runnable接口的子类对象作为Thread类的构造函数的参数进行传递。<br>    　　为什么? 因为线程的任务都封装在Runnable接口子类对象的run方法中<br>        　　所以要在线程对象创建时就必须明确要运行的任务。<br>4。调用线程对象的start方法开启线程. </p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Demo implements Runnable  
+{  
+    public void run()  //Runnable里只有一个run方法  
+    {  
+        show();  
+    }  
+    public void show()  
+    {  
+        for (int x=0; x&lt;20 ; x++ )  
+        {  
+            System.out.println(Thread.currentThread().getName()+"....."+x);  
+        }  
+    }  
+}  
+class TreadDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Demo d = new Demo();  
+        Thread t1 = new Thread(d); //将d传进去  
+        Thread t2 = new Thread(d);  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong>实现Runnable接口的好处</strong>：</span><br>1。将线程的任务从线程的子类中分离出来，进行了单独的封装。<br>    按照面向对象的思想将任务的封装成对象。<br>2。避免了java单继承的局限性。</p>
+<p>所以，创建线程的第二种方式较为常用. </p>
+<p>&nbsp;</p>
+<p>例子：卖票。<br>四个人一起卖100张票 </p>
+<div class="dp-highlighter bg_java">第一种方法</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket extends Thread  
+{  
+    private static int num = 100; //这个变量要共享，所以要加静态  
+
+    public void run()  
+    {  
+        sale();  
+    }  
+
+    public void sale()  
+    {  
+        while(true)  
+        {  
+            if (num&gt;0)  
+            {  
+                System.out.println(num--);  
+            }  
+        }  
+    }  
+}  
+class TicketDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t1 = new Ticket();  
+        Ticket t2 = new Ticket();  
+        Ticket t3 = new Ticket();  
+        Ticket t4 = new Ticket();  
+
+        t1.start();  
+        t2.start();  
+        t3.start();  
+        t4.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>第二种方法</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket implements Runnable  
+{  
+    private int num = 100;  
+
+    public void run()  
+    {  
+        sale();  
+    }  
+
+    public void sale()  
+    {  
+        while(true)  
+        {  
+            if (num&gt;0)  
+            {  
+                try{Thread.sleep(10);}catch(InterruptedException e){}  
+                System.out.println(Thread.currentThread().getName()+"....."+num--);  
+            }  
+        }  
+    }  
+}  
+class TicketDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t = new Ticket();     
+            //因为只创建了一个对象，但是下面开启了4个进程，所以就等于4个人卖共同卖100张票  
+        Thread t1 = new Thread(t);  
+        Thread t2 = new Thread(t);  
+        Thread t3 = new Thread(t);  
+        Thread t4 = new Thread(t);  
+
+        t1.start();  
+        t2.start();  
+        t3.start();  
+        t4.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">
+
+**线程安全问题产生的原因**：
+
+1。多个线程在操作共享数据。
+2。操作共享数据的线程代码有多条。
+
+当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，
+就会导致线程安全问题的产生。
+
+解决思路：
+就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，
+其他线程是不可以参与运算的。
+必须要当前线程把这些代码都执行完毕后，其他线程才可以参与运算。
+
+在java中用，同步代码块就可以解决这个问题. 
+
+</div>
+<div class="dp-highlighter bg_java">&nbsp;</div>
+<div class="dp-highlighter bg_java"><span style="font-size: 16px;">**同步代码块**</span></div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">格式：
+synchronized(对象) 
+{ 
+    需要被同步的代码 
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket implements Runnable  
+{  
+    private int num = 100;  
+    Object obj = new Object();  
+
+    public void run()  
+    {  
+        sale();  
+    }  
+
+    public void sale()  
+    {  
+    //Object obj = new Object();  //它在这是错误的，这样每开启一个线程，就创建一把锁，一同是4个线程4个锁  
+        while(true)  
+        {  
+            synchronized(obj)  //同步代码块  
+            {  
+                if (num&gt;0)  
+                {  
+                    try{Thread.sleep(10);}catch(InterruptedException e){}  
+                    System.out.println(Thread.currentThread().getName()+"....."+num--);  
+                }  
+            }  
+        }  
+    }  
+}  
+class TicketDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t = new Ticket();  
+        Thread t1 = new Thread(t);  
+        Thread t2 = new Thread(t);  
+        Thread t3 = new Thread(t);  
+        Thread t4 = new Thread(t);  
+
+        t1.start();  
+        t2.start();  
+        t3.start();  
+        t4.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>同步的好处：解决了线程的安全问题。<br>同步的弊端：相对降低了效率，因为同步外的线程的都会判断同步锁。<br>同步的前提：必须有多个线程并使用同一锁. </p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">&nbsp;</div>
+<div class="dp-highlighter bg_java">实例：储户，两个，每个都到银行存钱，每次存100，共存三次。</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Bank  
+{  
+    private int sum;  
+//  private Object obj = new Object();  
+    public synchronized void add(int num)  //也可以用同步函数  
+    {  
+//      synchronized(obj)  
+//      {  
+            sum = sum + num;  
+            System.out.println("sum="+sum);  
+//      }  
+    }  
+}  
+
+class Cus implements Runnable  
+{  
+    private Bank b = new Bank();  
+    public void run()  
+    {  
+        for (int x=0; x&lt;3 ; x++ )  
+        {  
+            b.add(100);  
+        }  
+    }  
+}  
+
+class BankDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Cus c = new Cus();  
+        Thread t1 = new Thread(c);  
+        Thread t2 = new Thread(c);  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">**验证同步函数的锁**</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket implements Runnable  
+{  
+    private int num = 100;  
+    Object obj = new Object();  
+    boolean flag = true;  
+    public void run()  
+    {  
+//      Object obj = new Object();  //它在这是错误的，这样每开启一个线程，就创建一把锁，一同是4个线程4个锁  
+        if (flag)  
+        {  
+            while(true)  
+            {  
+                synchronized(this)  //同步代码块  
+                {  
+                    if (num&gt;0)  
+                    {  
+                        try{Thread.sleep(10);}catch(InterruptedException e){}  
+                        System.out.println(Thread.currentThread().getName()+"...obj..."+num--);  
+                    }  
+                }  
+            }  
+        }  
+        else   
+            while(true)  
+            show();  
+    }  
+
+    public synchronized void show()  //但是可以这样用，把需要同步的代码封装起来。 
+    {  
+        if (num&gt;0)  
+        {  
+            try{Thread.sleep(10);}catch(InterruptedException e){}  
+            System.out.println(Thread.currentThread().getName()+"...function..."+num--);  
+        }  
+    }  
+}  
+
+class SynFunctionLockDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t = new Ticket();  
+        Thread t1 = new Thread(t);  
+        Thread t2 = new Thread(t);  
+
+        t1.start();  
+        try{Thread.sleep(10);}catch(InterruptedException e){}  
+        t.flag = false;  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>同步函数使用的锁是this。</p>
+<p>同步函数和同步代码块的区别：<br>    　　同步函数的锁是固定的this。<br>    　　同步代码块的锁是任意对象。</p>
+<p>建议使用同步代码块. </p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">&nbsp;</div>
+<div class="dp-highlighter bg_java"><span style="font-size: 16px;">**验证静态同步函数的锁**</span></div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket implements Runnable  
+{  
+    private static int num = 100;  
+    Object obj = new Object();  
+    boolean flag = true;  
+    public void run()  
+    {  
+        //Object obj = new Object();  //它在这是错误的，这样每开启一个线程，就创建一把锁，一同是4个线程4个锁  
+        if (flag)  
+        {  
+        while(true)  
+        {  
+        synchronized(this)  //同步代码块  
+        {  
+        if (num&gt;0)  
+        {  
+        try{Thread.sleep(10);}catch(InterruptedException e){}  
+        System.out.println(Thread.currentThread().getName()+"...obj..."+num--);  
+        }  
+        }  
+        }  
+        }  
+        else   
+        while(true)  
+        this.show();  
+    }  
+
+    public static synchronized void show(Ticket.class)  //但是可以这样用，把需要同步的代码封装起来。 
+    {  
+        if (num&gt;0)  
+        {  
+            try{Thread.sleep(10);}catch(InterruptedException e){}  
+            System.out.println(Thread.currentThread().getName()+"...function..."+num--);  
+        }  
+    }  
+}  
+
+class SynFunctionLockDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t = new Ticket();  
+        Thread t1 = new Thread(t);  
+        Thread t2 = new Thread(t);  
+
+        t1.start();  
+        try{Thread.sleep(10);}catch(InterruptedException e){}  
+        t.flag = false;  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>静态的同步函数使用的锁是该函数所属字节码文件对象可以用getClass方法获取，也可以用当前 类名.class 表示.</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">&nbsp;</div>
+<div class="dp-highlighter bg_java"><span style="font-size: 16px;">**多线程下的单例**</span></div>
+<div class="dp-highlighter bg_java">**饿汉式**</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Single  
+{  
+    private static final Single s = new Single();  
+    private Single(){}  
+    public static Single getInstance()  
+    {  
+        return s;  
+    }  
+}//这个方法没有安全隐患
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>懒汉式</strong></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Single  
+{  
+    private static Single s = null;  
+    private Single(){}  
+    public static synchronized Single getInstance()  
+    {  
+        if (s==null)  
+        //--&gt;0  --&gt;1    //懒汉式本身有安全隐患，所以要加同步 synchronized  
+        s = new Single();  
+        return s;  
+    }  
+}//虽然这样解决的安全隐患，但是每次获取数据s时都要判断锁，这样效率不高，解决如下： 
+
+class Single  
+{  
+    private static final Single s = null;  
+    private Single(){}  
+    public static Single getInstance()  
+    {  
+        if (s==null)  
+        {  
+            synchronized(Single.class)  
+            {  
+                if (s==null)  
+                {  
+                    s = new Single();  
+                }  
+            }  
+        }  
+        return s;  
+    }  
+}//可以用这种双重判断的方式解决懒汉式的安全隐患。
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java"><span style="font-size: 16px;">**死锁示例**</span></div>
+<div class="dp-highlighter bg_java">死锁：常见情景之一：同步的嵌套。</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Ticket implements Runnable  
+{  
+    private static int num = 100;  
+    Object obj = new Object();  
+    boolean flag = true;  
+    public void run()  
+    {  
+        if (flag)  
+        {  
+            while(true)  
+            {  
+                synchronized(obj)  //同步代码块里面嵌套着同步函数  
+                {  
+                    show();  //同步函数  
+                }  
+            }  
+        }  
+        else   
+        while(true)  
+        this.show();  
+    }  
+
+    public static synchronized void show()  //同步函数里面嵌套着同步代码块  
+    {  
+        synchronized(obj)  //同步代码块  
+        {  
+            if (num&gt;0)  
+            {  
+                try{Thread.sleep(10);}catch(InterruptedException e){}  
+                System.out.println(Thread.currentThread().getName()+"...sale..."+num--);  
+            }  
+        }  
+    }  
+}  
+
+class SynFunctionLockDemo  
+{  
+    public static void main(String[] args)  
+    {  
+        Ticket t = new Ticket();  
+        Thread t1 = new Thread(t);  
+        Thread t2 = new Thread(t);  
+
+        t1.start();  
+        try{Thread.sleep(10);}catch(InterruptedException e){}  
+        t.flag = false;  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">**一种死锁示例**</div>
+<div class="dp-highlighter bg_java">
+<div class="cnblogs_Highlighter">
+<pre class="brush:java;gutter:true;">class Test implements Runnable  
+{  
+    private boolean flag;  
+    Test(boolean flag)  
+    {  
+        this.flag = flag;  
+    }  
+
+    public void run()  
+    {  
+        if (flag)  
+        {  
+            while(true)  
+            {  
+                synchronized(MyLock.locka)  
+                {  
+                    System.out.println(Thread.currentThread().getName()+"...if   locka......");  
+                    synchronized(MyLock.lockb)  
+                    {  
+                        System.out.println(Thread.currentThread().getName()+"...if    lockb.....");  
+                    }  
+                }  
+            }  
+        }  
+        else  
+        {  
+            while(true)  
+            {  
+                synchronized(MyLock.lockb)  
+                {  
+                    System.out.println(Thread.currentThread().getName()+"...else   lockb......");  
+                    synchronized(MyLock.locka)  
+                    {  
+                        System.out.println(Thread.currentThread().getName()+"...else   locka......");  
+                    }  
+                }  
+            }  
+        }  
+    }  
+}  
+
+class MyLock  
+{  
+    public static final Object locka = new Object();  
+    public static final Object lockb = new Object();  
+}  
+
+class DeadLockTest  
+{  
+    public static void main(String[] args)  
+    {  
+        Test a = new Test(true);  
+        Test b = new Test(false);  
+
+        Thread t1 = new Thread(a);  
+        Thread t2 = new Thread(b);  
+        t1.start();  
+        t2.start();  
+    }  
+}
+</pre>
+</div>
+
+<p>&nbsp;</p>
+<p>&lt;/div&gt;</p>
+<div class="dp-highlighter bg_java">&nbsp;</div></div></div></div></div></div></div></div></div>
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿得可好啊~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/09/04/Java学习个人备忘录之线程间的通信/" class="pre-post btn btn-default" title='Java学习个人备忘录之线程间的通信'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之线程间的通信</span>
+        </a>
+    
+    
+        <a href="/2017/09/04/Java学习个人备忘录之异常/" class="next-post btn btn-default" title='Java学习个人备忘录之异常'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之异常</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

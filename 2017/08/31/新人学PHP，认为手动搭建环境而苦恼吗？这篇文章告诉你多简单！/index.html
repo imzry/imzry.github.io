@@ -1,0 +1,555 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="PHP,搭建环境">
+
+
+    <meta name="description" content="本教程适用于初学PHP，想了解手动搭建PHP环境的童鞋。
+一键环境和高手勿喷。
+
+本教程以下列版本软件为例：
+
+所需软件目录
+我在这里的目录结构是(个人习惯)
+
+安装与配置 apache双击安装...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单！ | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单！">
+            
+	            新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单！
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/闲扯/">闲扯</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/PHP/">PHP</a> <a class="tag-link" href="/tags/搭建环境/">搭建环境</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/08/31</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>本教程适用于初学PHP，想了解手动搭建PHP环境的童鞋。</strong></p>
+<p>一键环境和高手勿喷。</p>
+<p><img src="https://p1.pstatp.com/large/31f90000ef968bc73f70" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><strong>本教程以下列版本软件为例：</strong></p>
+<p><img src="https://p3.pstatp.com/large/31f9000085da2ba026bb" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>所需软件目录</p>
+<p>我在这里的目录结构是(个人习惯)</p>
+<p><img src="https://p3.pstatp.com/large/3205000086a9a0ba5ec9" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<h1 id="安装与配置-apache"><a href="#安装与配置-apache" class="headerlink" title="安装与配置 apache"></a>安装与配置 apache</h1><p>双击安装Apache</p>
+<p><img src="https://p1.pstatp.com/large/32010000eb7ea0ac78af" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里我们选择第一个，然后点击 Next。</p>
+<p><img src="https://p3.pstatp.com/large/31f10001bd7ef57a2ff0" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里随便填一个域名，随便填一个 email 就可以了。</p>
+<p><img src="https://p3.pstatp.com/large/32010000eb7f1ffc42ac" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后选择<img src="https://p9.pstatp.com/large/31ed00049c826a6ace39" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>默认占用 80 端口就 OK 了点击 Next。</p>
+<p>点击 Next。</p>
+<p><img src="https://p3.pstatp.com/large/31f9000087ad5a47e129" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里选择安装路径</p>
+<p><img src="https://p1.pstatp.com/large/31f30001c0fec97d4364" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p9.pstatp.com/large/32010000ecfedb1743b3" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后点击intall</p>
+<p><img src="https://p9.pstatp.com/large/32010000ecff5b0621bf" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>正在安装中</p>
+<p><img src="https://p1.pstatp.com/large/31f90000891f5074bdfb" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>安装完成</p>
+<p><img src="https://p3.pstatp.com/large/32010000ed0073d22058" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>右下角这里是绿色的表示成功了！</p>
+<p><img src="https://p1.pstatp.com/large/31ed00049df51d14435e" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这时我们在地址栏里输入 localhost 就会显示 It works！</p>
+<p><img src="https://p1.pstatp.com/large/31ed00049df627e97ff3" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>到此Apache就安装完了。</p>
+<p>这里我可以介绍一下Apache的安装目录</p>
+<p>APACHE2.2 目录</p>
+<p>├─bin —&gt; binary,二进制文件,是 apache 的主程序及控制台等可执行程序的目录</p>
+<p>├─cgi-bin —&gt; 公共网关接口方式存放程序的目录</p>
+<p>├─conf ——&gt;config 的缩写,配置文件目录</p>
+<p>│ ├─extra —-&gt; 辅配置文件</p>
+<p>│ ├─original—-&gt; 原始的配置文件,可以在修改失败后来恢复用 │</p>
+<p>└─httpd.conf —&gt;主配置文件,引入 extra 里面的各子配置文件</p>
+<p>├─error —-&gt;存入一些请求错误时,所给客户回应的信息.</p>
+<p>├─htdocs —-&gt; 网页的主目录</p>
+<p>├─icons —-&gt;一些小图标</p>
+<p>├─logs —-&gt; 日志信息,其中 error.log 是错误日志信息,对我们调试很有帮助.</p>
+<p>├─manual —&gt; 手册,帮助文档</p>
+<p>└─modules —&gt; 模块目录,放置各种功能模块</p>
+<h1 id="下面介绍一下如何修改默认主页"><a href="#下面介绍一下如何修改默认主页" class="headerlink" title="下面介绍一下如何修改默认主页"></a>下面介绍一下如何修改默认主页</h1><p>新安装的 apache 它的默认主页是 index.html</p>
+<p>首先我们来到Apache2.2conf目录下面，找到 httpd.conf 文件</p>
+<p>我们随便用一个文编编辑器打开它</p>
+<p>然后我们搜索 index.html</p>
+<p>在大约 241 行找到</p>
+<p><img src="https://p1.pstatp.com/large/32010000ed01c32ff91b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>如果你只指定了一个目录，没有指定访问的网页，它就会默认访问指定目录下的index.html 文件，</p>
+<p>这个文件是可以设置多个的，并且优先级是从前到后。</p>
+<p>这里我们可以将它设置为 index.html index.php</p>
+<p><img src="https://p1.pstatp.com/large/31f30001c0ff48585733" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这样服务器默认先访问 index.html，如果没有，则默认访问 index.php</p>
+<p>注意：我们改完了 apache 配置文件后要重启一下才会生效。</p>
+<p>我们可以用命令行重启它(这里我们要用管理模式启动命令行)：</p>
+<p>先输入net stop apache2.2</p>
+<p>再输入net start apache2.2</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e11ef992d395" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>或者在计算机管理里面重启 Apache服务</p>
+<p><img src="https://p3.pstatp.com/large/31f900008921113cb8ab" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>还可以用 Apache自带的管理器重启</p>
+<p><img src="https://p3.pstatp.com/large/31f9000089225a822483" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<h1 id="如何修改服务器根目录"><a href="#如何修改服务器根目录" class="headerlink" title="如何修改服务器根目录"></a>如何修改服务器根目录</h1><p>在 httpd.conf 文件里搜索 DocumentRoot 在大约 179 行 我们来修改它的根路径</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e11f99e2dadf" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后再下面大约 206 行处也要修改一下，注意要和上面修改的一样</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e120810e78b8" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<h1 id="如何修改-Apache-的监听端口"><a href="#如何修改-Apache-的监听端口" class="headerlink" title="如何修改 Apache 的监听端口"></a>如何修改 Apache 的监听端口</h1><p>我们接着在 httpd.conf 文件里搜索 80 在大约46行找到 Listen。</p>
+<p><img src="https://p9.pstatp.com/large/31f10001befad3b6a42f" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>Listen 是听的意思，也就是说它在监听 80 端口如果我们将它更改为 81 ，然后重启 Apache 这时我们再次访问 localhost</p>
+<p><img src="https://p1.pstatp.com/large/32010000ed026fbf03d0" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这是因为浏览器请求 http 协议的时候默认访问的是 80 端口，也就是说如果只写localhost，那它实际访问的是 localhost：80，但是我们现在把监听的端口改成了 81，那么我们输入网址时就应该这样写 localhost：81。</p>
+<p><img src="https://p3.pstatp.com/large/31f30001c101507ff775" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>当然我们也可以让它监听多个端口，如下图：</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e121532555a6" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<h1 id="安装与配置-PHP-解释器"><a href="#安装与配置-PHP-解释器" class="headerlink" title="安装与配置 PHP 解释器"></a>安装与配置 PHP 解释器</h1><p>现在我们在根目录新建一个a.php 文件，然后输入 &lt;?php echo ‘hello world’; ?&gt;</p>
+<p><img src="https://p3.pstatp.com/large/32050000890d14483dab" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后我们用浏览器打开它将显示如下图内容</p>
+<p><img src="https://p1.pstatp.com/large/31ed00049df91c6c5228" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>貌似不太对劲啊！？可以看出来 php 文件并没有被解析，而是原样输出了…</p>
+<p>这是为什么呢?</p>
+<p>因为Apache是一个服务器，它只能响应一些静态的东西，如html、图片等等。</p>
+<p>但是像这样的程序，它就不能解析了这时我们就要请出PHP的解释器</p>
+<p><img src="https://p3.pstatp.com/large/31f10001befb7fa4ece9" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>解压 PHP，并配置 php.ini</p>
+<p>我们将它解压到文件夹 PHP5.3.2 中然后配置 php.ini</p>
+<p>我们发现在目录中找不到 php.ini 但是我们能找到这两个文件</p>
+<p><img src="https://p1.pstatp.com/large/31f30001c10249848b30" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我们现在是处于学习阶段，所以我们用development这个文件我们将php.ini-development文件复制一份并重命名为 php.ini</p>
+<p><img src="https://p9.pstatp.com/large/32010000ed048e884424" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里我们有两个地方需要配置，其中一个是我们将 php 解压到如下图的目录中了</p>
+<p><img src="https://p1.pstatp.com/large/31ea0000e12364380294" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>PHP 和 Apache 一样都有很多个扩展模块，放在ext这个目录中了。</p>
+<p><img src="https://p1.pstatp.com/large/31f10001befd5ea7e534" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>Ext 是 extension 的简写，所以我们要明确的告诉 php 它的 extension_dir 在哪个位置。</p>
+<p>我们在 php.ini 中搜索 extension_dir 在大约807 行中找到extension_dir = “./“</p>
+<p><img src="https://p1.pstatp.com/large/31ea0000e124e75605c8" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我们看到在 extension_dir 的前面有一个分号&ldquo;;&rdquo;，这个是注释的意思，就是说extension_dir 被注释掉了，现在我们将分号去掉 ，并将路径更改为D：ampPHP5.3.2ext（你实际的PHP目录）</p>
+<p><img src="https://p3.pstatp.com/large/31f10001befeb84d2295" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这是第一个要配置的地方。</p>
+<p>第二个要配置的地方，我们搜索timezone在大约996行找到</p>
+<p><img src="https://p9.pstatp.com/large/31ea0000e125097a54c2" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>Timezone是用来调时区用的，因为 php 有一些函数用来显示时间的，我们所在的时区是东八区，所以让 timezone= PRC 同时还是将前面的分号去掉。</p>
+<p><img src="https://p3.pstatp.com/large/32050000890ed988fcdf" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>现在我们配置完了 php 解释器，接下来我们要把php解释器和Apache整合起来。</p>
+<h1 id="整合-php-解释器和-Apache"><a href="#整合-php-解释器和-Apache" class="headerlink" title="整合 php 解释器和 Apache"></a>整合 php 解释器和 Apache</h1><p>让Apache引入php模块，或者说引入php解释引擎。</p>
+<p>我们在 Apache 的配置文件httpd.conf中随便找个地方告诉 Apache，php 的配置目录在哪，也就是php.ini在哪。</p>
+<p><img src="https://p3.pstatp.com/large/32010000ed050ad06e85" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>在文件中随便找个地方输入PHPIniDir “D：/amp/PHP5.3.2” （这里填写你的PHP的实际目录）</p>
+<p>这样就告诉 Apache 服务器 php.ini 的路径了。</p>
+<p><img src="https://p3.pstatp.com/large/31f30001c105d3b06bfc" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后我们看 php 的目录下有一个php5apache2_2.dll的文件，php 和 Apache 的连接全靠它。</p>
+<p><img src="https://p9.pstatp.com/large/32050000890f318b3696" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后我们在httpd.conf文件中搜索 .so，然后再 .so 的最后面加上 php5apache2_2.dll 的路径，</p>
+<p>输入LoadModule php5_module “D：/amp/PHP5.3.2/php5apache2_2.dll”</p>
+<p><img src="https://p3.pstatp.com/large/31ed00049dfc8341662e" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>最后我们告诉 Apache 如果遇到以.php 结尾的文件，就调用 php 解释引擎解析。</p>
+<p>我们搜索Addtype，在大约 383 行找到，</p>
+<p>然后再下面加上 AddType application/x-httpd-php .php .phtml</p>
+<p><img src="https://p9.pstatp.com/large/31ed00049dfb3c08c28a" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>意思是如果碰到了以.php 结尾或者.phtml 结尾的文件就调用 php 解释器来解析。</p>
+<p>现在我们重启一下Apache，这次我们再次打开 a.php 文件就会正常解析了。</p>
+<p><img src="https://p3.pstatp.com/large/32010000ed06c97bce4d" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>接下来开启php的功能模块</p>
+<p>在php.ini中搜索extension=php我们找到如下</p>
+<p><img src="https://p3.pstatp.com/large/320500008914525ff075" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我们将需要的功能模块开启就 OK 了。</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e1298fa9cc0c" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我暂时就需要以上这些模块，通常新手也就用到这些然后我们重启Apache。</p>
+<p>在开启某些模块后，重启Apache的时候会报错，这是因为兼容性的问题为了解决这个问题我们还要在 http.conf 文件中引入两个文件</p>
+<p>LoadFile “D：/amp/PHP5.3.2/libeay32.dll”</p>
+<p>LoadFile “D：/amp/PHP5.3.2/ssleay32.dll”</p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e127ee5114e1" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这样就解决了。</p>
+<p>这时我们在 a.php 中输入&lt;?php phpinfo(); ?&gt;</p>
+<p><img src="https://p3.pstatp.com/large/32010000ed08fb69c0ca" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>就可以看到 php 的信息了。</p>
+<p><img src="https://p3.pstatp.com/large/320500008918fcc4bd35" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>如果在最后重启的时候失败了，我们就用命令行进行重启试一下，如果报了如下错误</p>
+<p><img src="https://p3.pstatp.com/large/320500008917a5003f14" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这是因为系统上没有安装相应的 VC 编译器的库文件和头文件，安装后就会解决此问题。</p>
+<h1 id="安装与配置-Mysql"><a href="#安装与配置-Mysql" class="headerlink" title="安装与配置 Mysql"></a>安装与配置 Mysql</h1><p>双击打开MySQL</p>
+<p><img src="https://p9.pstatp.com/large/31f30001c1079cbc5f2b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>点击 Next</p>
+<p><img src="https://p1.pstatp.com/large/31f90000892b88ad9277" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p1.pstatp.com/large/31f90000892df3d8e71b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p3.pstatp.com/large/31f30001c108e72be0f6" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我们将它设置完后，点击 Next 继续安装。</p>
+<p><img src="https://p1.pstatp.com/large/31f10001bf07d7b158b3" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p1.pstatp.com/large/31f90000892ecb06d59b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>正在安装中…</p>
+<p><img src="https://p3.pstatp.com/large/31f9000089304fa1ec87" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p3.pstatp.com/large/31ea0000e12b66e93f76" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p1.pstatp.com/large/32010000ed0cd24e3321" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>现在开始配置 mysql，点击 Next继续。</p>
+<p><img src="https://p3.pstatp.com/large/32050000891b3db2c7e7" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>我们在这里选择细节配置，然后点击 Next。</p>
+<p><img src="https://p9.pstatp.com/large/31f30001c10c58e263e7" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>选择第一个，然后点击 Next。</p>
+<p><img src="https://p3.pstatp.com/large/32050000891e623cc799" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p3.pstatp.com/large/32010000ed0e6aea48b1" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里我们可以将innoDB库也放在data下面。</p>
+<p><img src="https://p3.pstatp.com/large/31f10001bf0aee8dc5d2" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p><img src="https://p9.pstatp.com/large/31f10001bf0e9512f1d2" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>点击 Next</p>
+<p><img src="https://p1.pstatp.com/large/3205000089205cad9741" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>Next！<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单](https://p3.pstatp.com/large/32010000ed0fb18cb5c0)</span><br><span class="line"></span><br><span class="line">Next！</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://p1.pstatp.com/large/31f900008933192a5953" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>NNNNNNext！！！！！</p>
+<p><img src="https://p9.pstatp.com/large/31f30001c10e028c14ec" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>这里根据自己的需求是否可以远程登录，反正我是没有允许，然后点击next。</p>
+<p><img src="https://p3.pstatp.com/large/31f900008935c6844544" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>最后一步</p>
+<p><img src="https://p3.pstatp.com/large/320500008923219b6e63" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>点击 Execute 就可以了</p>
+<p>经过漫长的等待…..</p>
+<p>终于！！</p>
+<p>哈哈！！ OK！！</p>
+<p><img src="https://p3.pstatp.com/large/31f90000893792d9901f" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>最后点击 Finish，就此安装完毕我们打开命令行试一下。</p>
+<p>输入 mysql &ndash;uroot &ndash;p 密码</p>
+<p>如果显示如下内容就说明安装成功了 !</p>
+<p><img src="https://p3.pstatp.com/large/31ed00049e0890fb0d56" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<h1 id="安装phpMyAdmin"><a href="#安装phpMyAdmin" class="headerlink" title="安装phpMyAdmin"></a>安装phpMyAdmin</h1><p>这一步应该是最简单的。</p>
+<p><img src="https://p3.pstatp.com/large/31f900008936265b434d" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>Phpmyadmin 是一个B/S软件，是一个可视化管理 Mysql 的软件，我们直接将它解压到，根目录中就可以了。</p>
+<p><img src="https://p9.pstatp.com/large/320500008925a55f8fae" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>然后我们直接在浏览器中打开它</p>
+<p><img src="https://p9.pstatp.com/large/31f10001bf1023a9b94b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>如果正常显示登录页面就代表成功了。</p>
+<p>如果出现下面这种情况</p>
+<p><img src="https://p1.pstatp.com/large/31f10001bf0ff8b58054" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>出现这个问题，是因为 PHP 的 mbstring 扩展没有打开，或者说 PHP 扩展路径没有被正确指定，请打开 php.ini，将 ;extension=php_mbstring.dll 前面的分号（;）去掉，在php.ini 中 增 加 一 句 extension_dir=”D：ampPHP5.3.2ext”; 其 中D：ampPHP5.3.2ext 是指 php_mbstring.dll 文件存放的目录，也就是PHP 扩展目录（PHP 目录下的 ext 目录），请修改此目录路径为你的实际路径。</p>
+<p>修改完后重新启动服务器即可。</p>
+<p><img src="https://p1.pstatp.com/large/31f30001c1123ae6419b" alt="新人学PHP，认为手动搭建环境而苦恼吗？这篇文章告诉你多简单"></p>
+<p>phpMyAdmin安装到此就结束了。</p>
+<p>本教程适合想了解手动搭建PHP环境的新童鞋，不喜勿喷，谢谢！</p>
+<p><strong>本教程到此结束。</strong></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿得可好啊~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/08/31/html-css基础-个人备忘录/" class="pre-post btn btn-default" title='html+css基础 - 个人备忘录'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">html+css基础 - 个人备忘录</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装与配置-apache"><span class="toc-text">安装与配置 apache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下面介绍一下如何修改默认主页"><span class="toc-text">下面介绍一下如何修改默认主页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何修改服务器根目录"><span class="toc-text">如何修改服务器根目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何修改-Apache-的监听端口"><span class="toc-text">如何修改 Apache 的监听端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装与配置-PHP-解释器"><span class="toc-text">安装与配置 PHP 解释器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#整合-php-解释器和-Apache"><span class="toc-text">整合 php 解释器和 Apache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装与配置-Mysql"><span class="toc-text">安装与配置 Mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装phpMyAdmin"><span class="toc-text">安装phpMyAdmin</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

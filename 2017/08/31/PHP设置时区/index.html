@@ -1,0 +1,498 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨同学的日常闲扯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://imzry.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="PHP">
+
+
+    <meta name="description" content="php时间函数出错及解决方法 php date_default_timezone_set()函数用法date.timezone时间区
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbs...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>PHP设置时区 | 杨同学的日常闲扯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨同学的日常闲扯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
+    <div class="main-header-box">
+        <a class="header-avatar"  title='杨同学'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2 style="font-size:2em"> 杨同学的日常闲扯 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://imzry.github.io">杨同学的日常闲扯</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python/"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>深度学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/论文阅读/"><i class="fa "></i>论文阅读</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="PHP设置时区">
+            
+	            PHP设置时区
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/闲扯/">闲扯</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/PHP/">PHP</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/08/31</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <div>php时间函数出错及解决方法 php date_default_timezone_set()函数用法date.timezone时间区</div>
+<div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP时间函数出错及解决方法：php&nbsp;date_default_timezone_set()函数date.timezone时间区这些因素都是影响php时间的，最主要的问题是默认php时间函数用的是格林威治标准时间和我们的时间（北京时间）差了正好8个小时，这也是php时间函数出错解决的人口。
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前碰到一个问题问题，就是echo date("y-m-dh:i:s",time())回来的时间总是与实际时间对不上，今天终于在网上找到了原因和解决方法，分享如下：
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从php5.1.0开始，php.ini里加入了date.timezone时间区这个选项，默认情况下是关闭的也就是显示的时间（无论用什么php命令）都是格林威治标准时间和我们的时间（北京时间）差了正好8个小时，有以下3中方法可以恢复正常的时间。
+
+1，最简单的方法就是不要用php5.1以上的版本
+
+2，如果一定要用，而且不能修改php.ini，则需要在关于时间的初始化的语句的
+上面加上 date_default_timezone_set (XXX);
+
+3，一劳永逸，仅限能修改php.ini。打开php.ini查找date.timezone时间区去掉前面的分号
+=后面加XXX，重启http服务（如apache2或iis等）即可。如果php.ini找不到date.timezone时间区这行，是不是就没办法了呢，当然不是啦，哈哈没有的话就自己加嘛，自己动手丰衣足食。我加了这样一句date.timezone= "PRC"，问题就搞定了，高兴一下.
+
+关于XXX，大陆内地可用的值是：Asia/Chongqing ，Asia/Shanghai ，Asia/Urumqi（依次为重庆，上海，乌鲁木齐）
+港台地区可用：Asia/Macao ，Asia/Hong_Kong ，Asia/Taipei （依次为澳门，香港，台北）
+还有新加坡：Asia/Singapore
+老外好像把北京漏调了
+其他可用的值是：Etc/GMT-8 ，Singapore ，Hongkong ，PRC
+PRC是什么？PRC是中华人民共和国啊-_-
+---------------------------------------------------------------------------------------------------------------------
+解决方式:
+
+在页头使用date_default_timezone_set()函数设置我的默认时区为北京时间
+
+date_default_timezone_set('PRC');
+echo date('Y-m-d H:i:s');
+
+时间和服务器当前时间一样了!!祝贺之
+
+附date_default_timezone_set()函数用法如下
+
+--------------------------------
+date_default_timezone_set()
+
+(PHP 5 &gt;= 5.1.0RC1)
+date_default_timezone_set ()-- 设定用于一个脚本中所有日期时间函数的默认时区
+说明
+bool date_default_timezone_set ( string timezone_identifier )
+
+date_default_timezone_set() 设定用于所有日期时间函数的默认时区。
+
+&nbsp;&nbsp;&nbsp;&nbsp;注: 自 PHP5.1.0 起（此版本日期时间函数被重写了），如果时区不合法则每个对日期时间函数的调用都会产生一条 E_NOTICE级别的错误信息。
+
+参数
+
+timezone_identifier
+
+&nbsp;&nbsp;&nbsp;&nbsp;时区标识符，例如UTC 或 Europe/Lisbon
+
+返回值
+本函数永远返回 TRUE（即使 timezone_identifier 参数不合法）。
+
+------------------------------------------------------------------------------------------
+
+再附上时区标识符:
+
+CET
+CST6CDT
+Cuba
+EET
+Egypt
+Eire
+EST
+EST5EDT
+Etc/GMT
+Etc/GMT+0
+Etc/GMT+1
+Etc/GMT+10
+Etc/GMT+11
+Etc/GMT+12
+Etc/GMT+2
+Etc/GMT+3
+Etc/GMT+4
+Etc/GMT+5
+Etc/GMT+6
+Etc/GMT+7
+Etc/GMT+8
+Etc/GMT+9
+Etc/GMT-0
+Etc/GMT-1
+Etc/GMT-10
+Etc/GMT-11
+Etc/GMT-12
+Etc/GMT-13
+Etc/GMT-14
+Etc/GMT-2
+Etc/GMT-3
+Etc/GMT-4
+Etc/GMT-5
+Etc/GMT-6
+Etc/GMT-7
+Etc/GMT-8
+Etc/GMT-9
+Etc/GMT0
+Etc/Greenwich
+Etc/UCT
+Etc/Universal
+Etc/UTC
+Etc/Zulu
+Factory
+GB
+GB-Eire
+GMT
+GMT+0
+GMT-0
+GMT0
+Greenwich
+Hongkong
+HST
+Iceland
+Iran
+Israel
+Jamaica
+Japan
+Kwajalein
+Libya
+MET
+MST
+MST7MDT
+Navajo
+NZ
+NZ-CHAT
+Poland
+Portugal
+PRC
+PST8PDT
+ROC
+ROK
+Singapore
+Turkey
+UCT
+Universal
+UTC
+W-SU
+WET
+
+还可以用 ini_set() 来设置时区
+
+可以在文件开头加入 ini_set('date.timezone','Asia/Shanghai'); &nbsp; //'Asia/Shanghai' 为上海时区
+
+</div>
+    </div>
+    
+        <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wepay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">爷，玩儿得可好啊~</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/08/31/Java学习个人备忘录之入门基础/" class="pre-post btn btn-default" title='Java学习个人备忘录之入门基础'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java学习个人备忘录之入门基础</span>
+        </a>
+    
+    
+        <a href="/2017/08/31/PHPCMS-v9的表单向导实现问答咨询功能的方法/" class="next-post btn btn-default" title='PHPCMS v9的表单向导实现问答咨询功能的方法'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">PHPCMS v9的表单向导实现问答咨询功能的方法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'DoBQUlOMpBr6E33vBGmV31ny-gzGzoHsz',
+            appKey: 'UPEFxyJCJRv10Wwy9pCcQWV3',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            notify: false,
+            verify: true,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
