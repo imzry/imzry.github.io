@@ -412,7 +412,7 @@ phpcms v9内容管理系统本身是没有问答模块的，只有表单向导�
         
     <div class="widget">
         <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文阅读/"><i class="fa" aria-hidden="true">论文阅读</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/闲扯/"><i class="fa" aria-hidden="true">闲扯</i></a><span class="category-list-count">35</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文阅读/"><i class="fa" aria-hidden="true">论文阅读</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/闲扯/"><i class="fa" aria-hidden="true">闲扯</i></a><span class="category-list-count">35</span></li></ul>
     </div>
 
 
@@ -443,6 +443,8 @@ phpcms v9内容管理系统本身是没有问答模块的，只有表单向导�
         <div class="content friends-link">
         
             <a href="https://blog.csdn.net/q1q1x2x2" class="fa" target="_blank">CSDN博客</a>
+        
+            <a href="https://www.cnblogs.com/imzry/" class="fa" target="_blank">博客园</a>
         
             <a href="https://www.zhihu.com/people/yzhiren/activities" class="fa" target="_blank">知乎</a>
         
@@ -504,5 +506,20 @@ phpcms v9内容管理系统本身是没有问答模块的，只有表单向导�
 
 <script src="/js/app.js?rev=@@hash"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
