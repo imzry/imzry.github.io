@@ -192,148 +192,34 @@
     </div>
     
     <div class="post-body post-content">
-        <p><span style="font-size: 16px;"><strong>对象，其实就是该类事物实实在在存在的个体。</strong></span></p>
+        <p><strong>对象，其实就是该类事物实实在在存在的个体。</strong></p>
 <p><strong>类与对象之间的关系?</strong><br>类：一类事物的描述。<br>对象：该类事物的实例。在java中通过new来创建的。<br>举例来说，类就是汽车说明书，类只能在理论上造一辆汽车，并且这个说明书非常明确的写了汽车有哪些部件、可以干什么等等信息，我们可以通过这个说明书（类）得知这辆车全方位的信息；对象就是按照这个说明书造出来的一辆汽车实体，是真实存在的，可以开走的。</p>
 <p>下面我们用类描述一辆小汽车：</p>
 <p>分析：<br>1，属性<br>轮胎数.<br>颜色.<br>2，行为<br>运行.</p>
 <p>定义类其实就是在定义类中的成员<br>成员：成员变量就是属性，成员函数就是行为。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Car
-{
-    int num;  //成员变量，汽车的属性
-    String color;//成员变量
-
-    void run()  //成员函数汽车的功能
-    {
-        System.out.println(num + "..." + color);
-    }
-}
-
-class CarDemo
-{
-    public static void main(String[] arge)
-    {
-        //在计算机中创建一个car的实例，通过new关键字
-        Car c = new Car(); //就是一个类类型的引用变量，指向了该类的对象
-        c.num = 4;
-        c.color = "red";
-        c.run();
-    }
-}
-</pre>
-</div>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 16px;"><strong>成员变量和局部变量的区别</strong></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num;  <span class="comment">//成员变量，汽车的属性</span></span><br><span class="line">	String color;<span class="comment">//成员变量</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>  <span class="comment">//成员函数汽车的功能</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(num + <span class="string">"..."</span> + color);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] arge)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//在计算机中创建一个car的实例，通过new关键字</span></span><br><span class="line">		Car c = <span class="keyword">new</span> Car(); <span class="comment">//就是一个类类型的引用变量，指向了该类的对象</span></span><br><span class="line">		c.num = <span class="number">4</span>;</span><br><span class="line">		c.color = <span class="string">"red"</span>;</span><br><span class="line">		c.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>成员变量和局部变量的区别</strong></p>
 <p>1，成员变量定义在类中，整个类中都可以访问；局部变量定义在函数、语句、局部代码块中，只在所属的区域有效。</p>
 <p>2，成员变量存在于堆内存的对象中；局部变量存在于栈内存的方法中。</p>
 <p>3，成员变量随着对象的创建而存在，随着对象的消失而消失；局部变量随着所属区域的执行而存在，随着所属区域的结束而释放。</p>
 <p>4，成员变量都有默认初始化值；局部变量没有默认初始化值。</p>
-<p><strong><span style="font-size: 16px;">类类型参数</span></strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class CarDemo
-{
-    public static void main(String[] args)
-    {
-        Car c1 = new Car();
-        Car c2 = new Car();
-        show(c1);
-        show(c2);
-    }
-
-    //汽车改装厂
-    public static void show(Car c)//类类型的变量一定指向对象，要不就是null.
-    {
-        c.num = 3;
-        c.color = "black";
-        System.out.println(c.num + "..." + c.color);
-    }
-}
-</pre>
-</div>
-
-<p>&nbsp;</p>
-<p><strong><span style="font-size: 16px;">匿名对象</span></strong><br>new car(); &nbsp;//匿名对象，其实就是定义对象的简写格式<br>new Car().run();</p>
+<p><strong>类类型参数</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Car c1 = <span class="keyword">new</span> Car();</span><br><span class="line">		Car c2 = <span class="keyword">new</span> Car();</span><br><span class="line">		show(c1);</span><br><span class="line">		show(c2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//汽车改装厂</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(Car c)</span><span class="comment">//类类型的变量一定指向对象，要不就是null.</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		c.num = <span class="number">3</span>;</span><br><span class="line">		c.color = <span class="string">"black"</span>;</span><br><span class="line">		System.out.println(c.num + <span class="string">"..."</span> + c.color);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>匿名对象</strong><br>new car(); &nbsp;//匿名对象，其实就是定义对象的简写格式<br>new Car().run();</p>
 <p>没有将car对象赋值给某一变量。</p>
 <p>1，当对象对方法仅进行一次调用的时候，就可以简化成匿名对象<br>2，匿名对象可以作为实际参数进行传递</p>
-<p><span style="font-size: 16px;"><strong>基本数据类型参数传递</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Demo
-{
-    public static void main(String[] args)
-    {
-        int x = 3;
-        show(x);
-        System.out.println("x="+x);
-    }
-    public static void show(int x)
-    {
-        x = 4;
-        return ;
-    }
-}</pre>
-</div>
-> 这道题的结果是3。
-> 首先执行主函数，主函数进栈，然后执行int x = 3; 现在x的值为3。然后调用show函数，所以show 函数进栈，将x = 3 传进去，show函数将x赋值为4，show函数return，show函数出栈，这时，栈中只剩下了主函数中的x = 3 ，然后输出。所以结果为3。
-
-&nbsp;
-
-<span style="font-size: 16px;">**引用数据类型参数传递**</span>
-
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Demo
-{
-    int x = 3;
-    public static void main(String[] args)
-    {
-        Demo d = new Demo();
-        d.x = 9;
-        show(d);
-        System.out.println(d.x);
-    }
-    public static void show(Demo d)
-    {
-        d.x = 4;
-    }
-}</pre>
-</div>
-> 结果为4。
-> 首先执行主函数，主函数进栈，然后执行Demo d = new Demo(); 这时就在堆中开辟一块空间，同时将它的地址赋值给栈中的d，它中的x赋值为3，执行 d.x = 9; 堆中的x就被赋值为9;执行show(d); &nbsp;show函数进栈，将对象d传入，堆中的x又被赋值为4;show函数执行完毕，show函数出栈;这时输出d.x。结果就为4。
-
-&nbsp;
-
-<span style="font-size: 16px;">**函数的封装**</span>
-
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Person
-{
-    private int age;
-    public void setAge(int a)
-    {
-        if (a &lt; 0)
-    {
-        System.out.println("年龄不能为负数");
-        return;
-    }
-        age = a;
-        speak();
-    }
-    void speak()
-    {
-        System.out.println("age=" + age);
-    }
-}
-
-class Test
-{
-    public static void main(String[] args)
-    {
-        Person p = new Person();
-        p.setAge(20);
-    }
-}</pre>
-</div>
+<p><strong>基本数据类型参数传递</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">3</span>;</span><br><span class="line">		show(x);</span><br><span class="line">		System.out.println(<span class="string">"x="</span>+x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这道题的结果是3。<br>首先执行主函数，主函数进栈，然后执行int x = 3; 现在x的值为3。然后调用show函数，所以show 函数进栈，将x = 3 传进去，show函数将x赋值为4，show函数return，show函数出栈，这时，栈中只剩下了主函数中的x = 3 ，然后输出。所以结果为3。</p>
+</blockquote>
+<p><strong>引用数据类型参数传递</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">3</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Demo d = <span class="keyword">new</span> Demo();</span><br><span class="line">		d.x = <span class="number">9</span>;</span><br><span class="line">		show(d);</span><br><span class="line">		System.out.println(d.x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(Demo d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		d.x = <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果为4。<br>首先执行主函数，主函数进栈，然后执行Demo d = new Demo(); 这时就在堆中开辟一块空间，同时将它的地址赋值给栈中的d，它中的x赋值为3，执行 d.x = 9; 堆中的x就被赋值为9;执行show(d); &nbsp;show函数进栈，将对象d传入，堆中的x又被赋值为4;show函数执行完毕，show函数出栈;这时输出d.x。结果就为4。</p>
+</blockquote>
+<p><strong>函数的封装</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a &amp;lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"年龄不能为负数"</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">		age = a;</span><br><span class="line">		speak();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"age="</span> + age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Person p = <span class="keyword">new</span> Person();</span><br><span class="line">		p.setAge(<span class="number">20</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     
         <div class="reward" ontouchstart>
@@ -489,20 +375,5 @@ class Test
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

@@ -198,128 +198,9 @@ Array...">
 <p>多行注释有两种，第一种是 /<em> 内容 </em>/，第二种是/<em>* 内容 </em>/。</p>
 <p>这两种多行注释的区别是/<em>* 内容 </em>/这种注释可以生成一个该文件的注释文档，下面是演示代码。</p>
 <p><strong>ArrayTool.java文件</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">/**
-建立一个用于操作数组的工具类,其中包含着常见的对数组操作的函数,如: 最值,排序等.
-@author 纸人
-@version v1.0
-*/
-
-//ArrayTool.java文件
-public class ArrayTool //加上public后,文件名和类名要一致
-{
-    private ArrayTool(){};
-    //该类中的方法都是静态的,所以该类是不需要创建对象的.
-    //为了保证不让其他人创建对象,可以讲构造函数私有化.
-
-    /**
-    获取整型数组的最大值
-    @param arr 接收一个元素为int类型的数组
-    @return 该数组的最大的元素值
-    */
-    public static int getMax(int[] arr)
-    {
-        int maxIndex = 0;
-        for (int x=1; x&lt;arr.length ; x++ )
-        {
-            if (arr[x]&gt;arr[maxIndex])
-            {
-                maxIndex = x;
-            }
-        }
-        return arr[maxIndex];
-    }
-
-    /**
-    对数组进行选择排序
-    @param arr 接收一个元素为int类型的数组
-    */
-    public static void selectSort(int[] arr)
-    {
-        for (int x=0; x&lt;arr.length-1 ; x++ )
-        {
-            for (int y=x+1; y&lt;arr.length ; y++ )
-            {
-                if (arr[x]&gt;arr[y])
-                {
-                    swap(arr,x,y);
-                }
-            }
-        }
-    }
-
-    /**
-    用于给数组进行元素的位置置换
-    @param arr 接收一个元素为int类型的数组
-    @param a
-    @param b
-    */
-    private static void swap(int [] arr,int a,int b)
-    {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = arr[a];
-    }
-
-    /**
-    获取指定的元素在指定数组中的索引.
-    @param arr 接收一个元素为int类型的数组
-    @param key 要找的元素.
-    @return 返回来元素第一次出现的位置, 如果不存在返回-1.
-    */
-    public static int getIndex(int[] arr,int key)
-    {
-        for (int x=0; x&lt;arr.length ; x++ )
-        {
-            if (arr[x]==key)
-            {
-                return x;
-            }
-        }
-        return -1;
-    }
-
-    /**
-    将int数组转成字符串. 格式为: [e1,e2,e3,....]
-    @param arr 接收一个元素为int类型的数组
-    @return 返回该数组的字符串表现形式.
-    */
-    public static String arrayToString(int[] arr)
-    {
-        String str = "[";
-        for (int x=0; x&lt;arr.length ; x++ )
-        {
-            if (x != arr.length-1)
-                str = str + arr[x] + ", ";
-            else
-                str = str + arr[x] + "]";
-        }
-        return str;
-    }
-}
-</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">建立一个用于操作数组的工具类,其中包含着常见的对数组操作的函数,如: 最值,排序等.</span></span><br><span class="line"><span class="comment"><span class="doctag">@author</span> 纸人</span></span><br><span class="line"><span class="comment"><span class="doctag">@version</span> v1.0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ArrayTool.java文件</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayTool</span> //加上<span class="title">public</span>后,文件名和类名要一致</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">ArrayTool</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="comment">//该类中的方法都是静态的,所以该类是不需要创建对象的.</span></span><br><span class="line">	<span class="comment">//为了保证不让其他人创建对象,可以讲构造函数私有化.</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	获取整型数组的最大值</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> arr 接收一个元素为int类型的数组</span></span><br><span class="line"><span class="comment">	<span class="doctag">@return</span> 该数组的最大的元素值</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxIndex = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">1</span>; x&amp;lt;arr.length ; x++ )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[x]&amp;gt;arr[maxIndex])</span><br><span class="line">			&#123;</span><br><span class="line">				maxIndex = x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> arr[maxIndex];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	对数组进行选择排序</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> arr 接收一个元素为int类型的数组</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>; x&amp;lt;arr.length-<span class="number">1</span> ; x++ )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> y=x+<span class="number">1</span>; y&amp;lt;arr.length ; y++ )</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (arr[x]&amp;gt;arr[y])</span><br><span class="line">				&#123;</span><br><span class="line">					swap(arr,x,y);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	用于给数组进行元素的位置置换</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> arr 接收一个元素为int类型的数组</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> [] arr,<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = arr[a];</span><br><span class="line">		arr[a] = arr[b];</span><br><span class="line">		arr[b] = arr[a];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	获取指定的元素在指定数组中的索引.</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> arr 接收一个元素为int类型的数组</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> key 要找的元素.</span></span><br><span class="line"><span class="comment">	<span class="doctag">@return</span> 返回来元素第一次出现的位置, 如果不存在返回-1.</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getIndex</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> key)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>; x&amp;lt;arr.length ; x++ )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[x]==key)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	将int数组转成字符串. 格式为: [e1,e2,e3,....]</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> arr 接收一个元素为int类型的数组</span></span><br><span class="line"><span class="comment">	<span class="doctag">@return</span> 返回该数组的字符串表现形式.</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">arrayToString</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String str = <span class="string">"["</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>; x&amp;lt;arr.length ; x++ )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (x != arr.length-<span class="number">1</span>)</span><br><span class="line">				str = str + arr[x] + <span class="string">", "</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				str = str + arr[x] + <span class="string">"]"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> str;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>ArrayToolDemo.java文件</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class ArrayToolDemo
-{
-    public static void main(String[] args)
-    {
-        int[] arr = {4,8,2,9,7,6};
-
-        // ArrayTool tool = new ArrayTool();
-
-        int max = ArrayTool.tool.getMax(arr);
-        System.out.println("max="+max);
-
-        int index = ArrayTool.tool.getIndex(arr,10);
-        System.out.println("index="+index);
-    }
-}</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayToolDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123;<span class="number">4</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// ArrayTool tool = new ArrayTool();</span></span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> max = ArrayTool.tool.getMax(arr);</span><br><span class="line">		System.out.println(<span class="string">"max="</span>+max);</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">int</span> index = ArrayTool.tool.getIndex(arr,<span class="number">10</span>);</span><br><span class="line">		System.out.println(<span class="string">"index="</span>+index);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>ArrayTool.java文件已经写好了，现在我们使用命令生成ArrayTool.java文件的注释文档。</p>
 <p>用法：javadoc [选项] [软件包] [源文件] [@file]<br>  javadoc [参数可以是多个] [存放的路径] [源文件] [描述]</p>
 <p>例：javadoc -d myhelp -author -version ArrayTool.java</p>
@@ -479,20 +360,5 @@ public class ArrayTool //加上public后,文件名和类名要一致
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

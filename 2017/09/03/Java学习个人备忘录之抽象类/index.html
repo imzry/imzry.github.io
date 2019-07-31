@@ -192,53 +192,13 @@
     </div>
     
     <div class="post-body post-content">
-        <p><span style="font-size: 16px;"><strong>抽象类</strong></span></p>
+        <p><strong>抽象类</strong></p>
 <p><strong>特点：</strong><br>1. 方法只有声明没有实现时，该方法就是抽象方法，需要被abstract修饰，抽象方法必须定义在抽象类中。该类必须也被abstract修饰<br>2. 抽象类不可以被实例化. 为什么? &nbsp;因为调用抽象方法没意义。<br>3. 抽象类必须有其子类覆盖了所有的抽象方法后，该子类才可以实例化，否则，这个子类还是抽象类。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">abstract class 犬科
-{ 
-    abstract/*抽象*/ void show();
-}//抽象方法所在的类也必须的抽象的.
-
-class 狗 extends 犬科
-{
-    void 吼叫()
-    {
-        System.out.println("汪汪");
-    }
-}
-
-class 狼 extends 犬科
-{
-    void 吼叫()
-    {
-        System.out.println("嗷嗷");
-    }
-}
-
-class AbstractDemo
-{
-    public static void main(String[] args)
-    {
-
-    }
-}</pre>
-</div>
-
-<p><span style="font-size: 16px;"><strong>细节理解：</strong></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 犬科</span></span><br><span class="line"><span class="class"></span>&#123; </span><br><span class="line">	<span class="keyword">abstract</span><span class="comment">/*抽象*/</span> <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;<span class="comment">//抽象方法所在的类也必须的抽象的.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 狗 <span class="keyword">extends</span> 犬科</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> 吼叫()</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"汪汪"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 狼 <span class="keyword">extends</span> 犬科</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> 吼叫()</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"嗷嗷"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>细节理解：</strong></p>
 <p><strong>1. 抽象类中有构造函数吗?</strong><br>有，用于给子类对象进行初始化.</p>
 <p><strong>2. 抽象类可以不定义抽象方法吗?</strong><br>可以，但是很少见，目的就是不让该类创建对象. AWT的适配器对象就是这种类.<br>通常这个类中的方法有方法体，但是却没有内容.</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">abstract class Demo
-{
-    void show1()
-    {}
-
-    void show2()
-    {}
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>3. 抽象关键字不可以和哪些关键字共存?</strong><br>private &nbsp;因为抽象方法要被覆盖<br>static &nbsp;有它就不需要创建对象<br>final 不能被继承</p>
 <p><strong>4. 抽象类和一般类的区别</strong><br>相同点：<br>抽象类和一般类都是用来描述事物的，都在内部定了成员。<br>不同点：<br>　　1. 一般类有足够的信息描述事物，抽象类描述事物的信息有可能不足。<br>　　2. 一般类中不能定义抽象方法，抽象类中可以定义抽象方法。<br>　　3. 一般类可以被实例化，抽象类不可以被实例化。</p>
 <p><strong>5. 抽象类一定是个父类吗?</strong><br>是的，因为需要子类覆盖其方法后才可以对子类实例化。</p>
@@ -247,57 +207,11 @@ class AbstractDemo
 <p>程序员和经理不存在着直接继承关系，<br>但是程序员和经理却具有共性内容。<br>可以进行抽取. 因为他们都是公司的雇员。</p>
 <p>可以将程序员和经理进行抽取，建立体系。</p>
 <p><strong>描述雇员</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">abstract class Employee
-{
-    private String name;
-    private String id;
-    private double pay;
-    Employee(String name，String id，double pay)
-    {
-        this.name = name;
-        this.id = id;
-        this.pay = pay;
-    }
-
-    public abstract void work();
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String id;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> pay;</span><br><span class="line">	Employee(String name，String id，<span class="keyword">double</span> pay)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">		<span class="keyword">this</span>.pay = pay;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>描述程序员</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Programmer extends Employee
-{
-    Programmer(String name，String id，double pay)
-    {
-        super(name，id，pay);
-    }
-    public void work()
-    {
-        System.out.println("code....");
-    }
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Programmer</span> <span class="keyword">extends</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Programmer(String name，String id，<span class="keyword">double</span> pay)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">super</span>(name，id，pay);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"code...."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>描述经理</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Manager extends Employee
-{
-    private int bonus;
-    Manager(String name，String id，double pay，int bonus)
-    {
-        super(name，id，pay);
-        this.bonus = bonus;
-    }
-    public void work()
-    {
-        System.out.println("manage");
-    }
-}</pre>
-</div>
-
-<p>&nbsp;</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span> <span class="keyword">extends</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> bonus;</span><br><span class="line">	Manager(String name，String id，<span class="keyword">double</span> pay，<span class="keyword">int</span> bonus)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">super</span>(name，id，pay);</span><br><span class="line">		<span class="keyword">this</span>.bonus = bonus;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"manage"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     
         <div class="reward" ontouchstart>
@@ -453,20 +367,5 @@ class AbstractDemo
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

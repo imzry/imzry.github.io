@@ -193,278 +193,37 @@ java中支持单继承，不直接支持多继承，但对C++中的多继承机�
     </div>
     
     <div class="post-body post-content">
-        <p><span style="font-size: 16px;"><strong>继承的好处</strong></span><br>1. 提高了代码的复用性。<br>2. 让类与类之间产生了关系，给第三个特征多态提供了前提。</p>
+        <p><strong>继承的好处</strong><br>1. 提高了代码的复用性。<br>2. 让类与类之间产生了关系，给第三个特征多态提供了前提。</p>
 <p>java中支持单继承，不直接支持多继承，但对C++中的多继承机制进行改良。<br><strong>java支持多层继承。</strong></p>
 <p>C继承B，B继承A，就会出现继承体系。</p>
 <p>当要使用一个继承体系时：<br>1. 查看该体系中的顶层类，了解该体系的基本功能。<br>2. 创建体系中的最子类对象，完成共能的使用。</p>
-<p><span style="font-size: 16px;"><strong>什么时候定义继承呢?</strong></span><br>当类与类之间存在着所属关系的时候，就定义继承，xxx是yyy中的一种，&nbsp; xxx extends yyy。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Person
-{
-    String name;
-    int age;
-}
-
-class Student extends Person   //继承
-{
-    // String name;
-    // int age;
-    void study()
-    {
-        System.out.println(name+"...student study...."+age);
-    }
-}
-
-class Worker extends Person
-{
-    // String name;
-    // int age;
-    void work()
-    {
-        System.out.println("worker work");
-    }
-}
-
-class ExtendsDemo
-{
-    public static void main(String[] args)
-    {
-        Student s = new Student();
-        s.name = "zhangsan";
-        s.age = 20;
-        s.study();
-    }
-}</pre>
-</div>
-
-<p><span style="font-size: 16px;"><strong>在子父类中，成员的特点体现</strong></span><br>1.成员变量<br>2.成员函数<br>3.构造函数</p>
-<p><span style="font-size: 16px;"><strong>1. 成员变量</strong></span><br>当本类的成员和局部变量同名时，用this区分；<br>当子父类中的成员变量同名时，用super区分父类。</p>
+<p><strong>什么时候定义继承呢?</strong><br>当类与类之间存在着所属关系的时候，就定义继承，xxx是yyy中的一种，&nbsp; xxx extends yyy。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span>   //继承</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="comment">// String name;</span></span><br><span class="line">	<span class="comment">// int age;</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">study</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(name+<span class="string">"...student study...."</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="comment">// String name;</span></span><br><span class="line">	<span class="comment">// int age;</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"worker work"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Student s = <span class="keyword">new</span> Student();</span><br><span class="line">		s.name = <span class="string">"zhangsan"</span>;</span><br><span class="line">		s.age = <span class="number">20</span>;</span><br><span class="line">		s.study();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>在子父类中，成员的特点体现</strong><br>1.成员变量<br>2.成员函数<br>3.构造函数</p>
+<p><strong>1. 成员变量</strong><br>当本类的成员和局部变量同名时，用this区分；<br>当子父类中的成员变量同名时，用super区分父类。</p>
 <p>this和super的用法很相似。</p>
 <p>this：代表一个本类对象的引用。<br>super：代表一个父类的空间，并不代表父类对象。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Fu
-{
-    int num = 4;
-}
-
-class Zi extends Fu
-{
-    int num = 5;
-    void show()
-    {
-        System.out.println(super.num+"..."+num);
-    }
-}
-
-class ExtendsDemo2
-{
-    public static void main(String[] args)
-    {
-        Zi z = new Zi();
-        z.show();
-    }
-}</pre>
-</div>
-
-<p><span style="font-size: 16px;"><strong>2. 成员函数</strong></span><br>当子父类中出现成员函数一模一样的情况，会运行子类的函数。<br>这种现象，称为覆盖操作，这时函数在子父类中的特性。<br><strong>函数两个特性：</strong><br>1.重载. 同一个类中，overload<br>2.覆盖. 子类中，覆盖也称为重写，override</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">5</span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="keyword">super</span>.num+<span class="string">"..."</span>+num);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo2</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Zi z = <span class="keyword">new</span> Zi();</span><br><span class="line">		z.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. 成员函数</strong><br>当子父类中出现成员函数一模一样的情况，会运行子类的函数。<br>这种现象，称为覆盖操作，这时函数在子父类中的特性。<br><strong>函数两个特性：</strong><br>1.重载. 同一个类中，overload<br>2.覆盖. 子类中，覆盖也称为重写，override</p>
 <p>覆盖注意事项：<br>1.子类方法覆盖父类方法时，子类权限必须要大于等于父类的权限。<br>2.静态只能覆盖静态，或被静态覆盖。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Fu
-{
-    void show()
-    {
-        System.out.println("fu show run");
-    }
-}
-
-class Zi extends Fu
-{
-    void show()
-    {
-        System.out.println("zi show run");
-    }
-}
-
-class ExtendsDemo2
-{
-    public static void main(String[] args)
-    {
-        Zi z = new Zi();
-        z.show();
-    }
-}</pre>
-</div>
-
-<p><span style="font-size: 16px;"><strong>什么时候使用覆盖?</strong></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu show run"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi show run"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo2</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Zi z = <span class="keyword">new</span> Zi();</span><br><span class="line">		z.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>什么时候使用覆盖?</strong></p>
 <p>当对一个类进行子类的扩展时，子类需要保留父类的功能声明。<br>但是要定义子类中该功能的特有内容时，就是用覆盖操作完成。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Phone
-{
-    void call()
-    {}
-    void show()
-    {
-        // System.out.println("pic");
-        // System.out.println("name");
-        System.out.println("number");
-    }
-}</pre>
-</div>
-
-<p>&nbsp;</p>
-<p><span style="font-size: 16px;"><strong>应用场景</strong></span><br>现在手机升级了，加了显示姓名和图片的功能。<br>但是如果我直接在源代码上修改会增加修改成本，不好。<br>这时候我们就可以用继承来解决。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class NewPhone extends Phone
-{
-    void show()
-    {
-        System.out.println("pic");
-        System.out.println("name");
-        // System.out.println("number");
-        super.show();
-    }
-}
-
-class PhoneDemo
-{
-    public static void main(String[] args)
-    {
-        // Phone p = new Phone();
-        // p.show();
-        NewPhone p = new NewPhone();
-        p.show();
-    }
-}
-</pre>
-</div>
-
-<p>&nbsp;</p>
-<p><span style="font-size: 16px;"><strong>子父类中构造函数的继承</strong></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// System.out.println("pic");</span></span><br><span class="line">		<span class="comment">// System.out.println("name");</span></span><br><span class="line">		System.out.println(<span class="string">"number"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>应用场景</strong><br>现在手机升级了，加了显示姓名和图片的功能。<br>但是如果我直接在源代码上修改会增加修改成本，不好。<br>这时候我们就可以用继承来解决。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewPhone</span> <span class="keyword">extends</span> <span class="title">Phone</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"pic"</span>);</span><br><span class="line">		System.out.println(<span class="string">"name"</span>);</span><br><span class="line">		<span class="comment">// System.out.println("number");</span></span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PhoneDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// Phone p = new Phone();</span></span><br><span class="line">		<span class="comment">// p.show();</span></span><br><span class="line">		NewPhone p = <span class="keyword">new</span> NewPhone();</span><br><span class="line">		p.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>子父类中构造函数的继承</strong></p>
 <p>在子类构造对象时，发现访问子类构造函数时，父类也运行了。<br>为什么呢?<br>原因是：在子类的构造函数中第一行有一个默认的隐式语句—-super();</p>
 <p>子类的实例化过程：子类中所有的构造函数默认都会访问父类中的空参数的构造函数。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Fu
-{
-    Fu()
-    {
-        System.out.println("fu run");
-    }
-}
-class Zi extends Fu
-{
-    Zi()
-    {
-        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
-        System.out.println("zi run");
-    }
-}
-
-class ExtendsDemo4
-{
-    public static void main(String[] args)
-    {
-        new Zi();
-        /*
-        结果为:
-        fu run
-        zi run
-        */
-    }
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Fu()</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu run"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Zi()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.</span></span><br><span class="line">		System.out.println(<span class="string">"zi run"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo4</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">new</span> Zi();</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		结果为:</span></span><br><span class="line"><span class="comment">		fu run</span></span><br><span class="line"><span class="comment">		zi run</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>还有一种情况</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Fu
-{
-    Fu()
-    {
-        System.out.println("fu run");
-    }
-    Fu(int x)
-    {
-        System.out.println("fu run...."+x);
-    }
-}
-class Zi extends Fu
-{
-    Zi()
-    {
-        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
-        System.out.println("zi run...");
-    }
-    Zi(int x)
-    {
-        System.out.println("zi run...."+x);
-    }
-}
-
-class ExtendsDemo4
-{
-    public static void main(String[] args)
-    {
-        new Zi(4);
-        /*
-        结果为:
-        fu run
-        zi run....4
-        */
-    }
-}</pre>
-</div>
-
-<p><span style="font-size: 16px;"><strong>为什么子类实例化的时候要访问父类中的构造函数呢?</strong></span><br>那是因为子类继承了父类，获取到了父类中的内容(属性)，所以在使用父类内容之前，要先看父类是如何对自己的内容进行初始化的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Fu()</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu run"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Fu(<span class="keyword">int</span> x)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu run...."</span>+x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Zi()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.</span></span><br><span class="line">		System.out.println(<span class="string">"zi run..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Zi(<span class="keyword">int</span> x)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi run...."</span>+x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo4</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">new</span> Zi(<span class="number">4</span>);</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		结果为:</span></span><br><span class="line"><span class="comment">		fu run</span></span><br><span class="line"><span class="comment">		zi run....4</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>为什么子类实例化的时候要访问父类中的构造函数呢?</strong><br>那是因为子类继承了父类，获取到了父类中的内容(属性)，所以在使用父类内容之前，要先看父类是如何对自己的内容进行初始化的。</p>
 <p>所以子类在构造对象时，必须访问父类中的构造函数。<br>为什么完成这个必须的动作，就子啊子类的构造函数中加了super(). 语句。</p>
 <p>如果父类中没有定义空参数构造函数，那么子类的构造函数必须用super明确要调用父类中哪个构造函数。</p>
 <p>同时子类构造函数中如果使用this调用了本类构造函数时，<br>那么super就没有了，因为super和this都只能定义第一行.所以只能有一个。<br>但是可以保证的是，子类中肯定会有其他的构造函数访问父类的构造函数。</p>
 <p>注意：super语句必须要定义在子类构造函数的第一行，因为父类的初始化动作要先完成。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Fu
-{
-    Fu()
-    {
-        super();
-        show();
-        return;
-    }
-    void show()
-    {
-        System.out.println("fu show");
-    }
-}
-class Zi extends Fu
-{
-    int num = 8;
-    Zi()
-    {
-        //super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.
-        //--&gt;通过super初始化父类内容时，子类的成员变量并未显示初始化.
-        //等super()父类初始化完毕后，才进行子类的成员变量显示初始化.
-        //也就是说要先忙完父类那边的事，然后才能忙自己的事.
-        System.out.println("zi cons run..."+num);
-    }
-    void show()
-    {
-        System.out.println("zi show ..."+num);
-    }
-}
-
-class ExtendsDemo5
-{
-    public static void main(String[] args)
-    {
-        Zi z = new Zi();
-        z.show();
-        /*
-        结果为:
-        zi show...0
-        zi cons run...8
-        zi show...8
-        */
-    }
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Fu()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		show();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu show"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">8</span>;</span><br><span class="line">	Zi()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//super();  //默认的隐式语句.  调用的就是父类中的空参数的构造函数.</span></span><br><span class="line">		<span class="comment">//--&amp;gt;通过super初始化父类内容时，子类的成员变量并未显示初始化.</span></span><br><span class="line">		<span class="comment">//等super()父类初始化完毕后，才进行子类的成员变量显示初始化.</span></span><br><span class="line">		<span class="comment">//也就是说要先忙完父类那边的事，然后才能忙自己的事.</span></span><br><span class="line">		System.out.println(<span class="string">"zi cons run..."</span>+num);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi show ..."</span>+num);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendsDemo5</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Zi z = <span class="keyword">new</span> Zi();</span><br><span class="line">		z.show();</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		结果为:</span></span><br><span class="line"><span class="comment">		zi show...0</span></span><br><span class="line"><span class="comment">		zi cons run...8</span></span><br><span class="line"><span class="comment">		zi show...8</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个对象实例化的过程：<br>Person p = new Person();<br>1. jvm会去读取指定路径下的Person.class文件，并加载进内存。<br>并会先加载Person的父类(如果有直接的父类的情况下)。<br>2. 在堆内存中的开辟空间，分配地址。<br>3. 并在对象空间中，对对象中的属性进行默认初始化。<br>4. 调用对应的构造函数进行初始化。<br>5. 在构造函数中，第一行会先调用父类中的构造函数进行初始化。<br>6. 父类初始化完毕后，再对子类的属性进行显示初始化。<br>7. 在进行子类构造函数的特定初始化。<br>8. 初始化完毕后，将地址赋值给引用变量。</p>
 
     </div>
@@ -622,20 +381,5 @@ class ExtendsDemo5
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

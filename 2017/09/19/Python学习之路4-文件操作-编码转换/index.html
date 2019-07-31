@@ -27,11 +27,9 @@
 操作文件。
 把文件关上。
 
-&nbsp;
 打开文件
 打开文件用open()函数，打开成功后返回一个资源，具体语法如下。
-
-open(要打开的文件,打...">
+123open(要打开的文件,打开方式,打...">
 
 
 
@@ -207,16 +205,9 @@ open(要打开的文件,打...">
 <li>操作文件。</li>
 <li>把文件关上。</li>
 </ol>
-<p>&nbsp;</p>
 <p><strong>打开文件</strong></p>
 <p>打开文件用open()函数，打开成功后返回一个资源，具体语法如下。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">open(要打开的文件,打开方式,打开文件的格式，默认为utf-8)
-#例如
-f = open('passengers.txt','r',encoding='utf-8')
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">open(要打开的文件,打开方式,打开文件的格式，默认为utf<span class="number">-8</span>)</span><br><span class="line"><span class="comment">#例如</span></span><br><span class="line">f = open(<span class="string">'passengers.txt'</span>,<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
 <p>上例用open以只读的模式打开文件，因为该文本是utf-8编码的，所以第三个参数是utf-8</p>
 <ul>
 <li>w 模式是写入，是创建一个新文件的写，所以如果已经有了该文件就会被覆盖掉，注意安全!</li>
@@ -239,111 +230,29 @@ f = open('passengers.txt','r',encoding='utf-8')
 <li>wb #用二进制打印出来的结果会包裹在 b’ 和 ‘ 中</li>
 <li>ab</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>读取文件</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">data = f.read() #然后用read读取文件，里面可以传参输入5就是读5个字符，不输入就是读所有字符
-    #读取所有内容，文件指针就移动到了文件末尾
-
-data = f.readline() #读取一行内容
-data = f.readlines() #将每一行变成一个元素，组成一个列表
-    #注意，readlines是将文件内容读取后放到内存里，所以它只能读小文件,不能读大文件
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = f.read() <span class="comment">#然后用read读取文件，里面可以传参输入5就是读5个字符，不输入就是读所有字符</span></span><br><span class="line">    <span class="comment">#读取所有内容，文件指针就移动到了文件末尾</span></span><br><span class="line"></span><br><span class="line">data = f.readline() <span class="comment">#读取一行内容</span></span><br><span class="line">data = f.readlines() <span class="comment">#将每一行变成一个元素，组成一个列表</span></span><br><span class="line">    <span class="comment">#注意，readlines是将文件内容读取后放到内存里，所以它只能读小文件,不能读大文件</span></span><br></pre></td></tr></table></figure>
 <p>下面是读取大文件最好的方式</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">for line in f:
-    print(line) 
-#这是读取大文件最好的方式，每次只读一行到内存当中，读下一行的时候就会覆盖当前内存当中的数据
-</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    print(line) </span><br><span class="line"><span class="comment">#这是读取大文件最好的方式，每次只读一行到内存当中，读下一行的时候就会覆盖当前内存当中的数据</span></span><br></pre></td></tr></table></figure>
 <p><strong>写入文件</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">f.write('这里是写入的内容') #用write来写入内容
-
-print(f.tell()) #返回指针的位置
-f.seek(0) #移动指针的位置，0代表移动到第0个的位置上
-print(f.encoding) #打印文件的编码
-print(f.fileno()) #打印文件的编号
-print(f.name) #打印打开的文件名字
-print(f.seekable()) #判断文件是否可读
-print(f.writable()) #判断文件是否可写
-print(f.flush()) #强制刷新缓存
-print(f.closed) #判断文件是否关闭
-f.truncate(10) #从头开始截取10个字符
-</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">f.write(<span class="string">'这里是写入的内容'</span>) <span class="comment">#用write来写入内容</span></span><br><span class="line"></span><br><span class="line">print(f.tell()) <span class="comment">#返回指针的位置</span></span><br><span class="line">f.seek(<span class="number">0</span>) <span class="comment">#移动指针的位置，0代表移动到第0个的位置上</span></span><br><span class="line">print(f.encoding) <span class="comment">#打印文件的编码</span></span><br><span class="line">print(f.fileno()) <span class="comment">#打印文件的编号</span></span><br><span class="line">print(f.name) <span class="comment">#打印打开的文件名字</span></span><br><span class="line">print(f.seekable()) <span class="comment">#判断文件是否可读</span></span><br><span class="line">print(f.writable()) <span class="comment">#判断文件是否可写</span></span><br><span class="line">print(f.flush()) <span class="comment">#强制刷新缓存</span></span><br><span class="line">print(f.closed) <span class="comment">#判断文件是否关闭</span></span><br><span class="line">f.truncate(<span class="number">10</span>) <span class="comment">#从头开始截取10个字符</span></span><br></pre></td></tr></table></figure>
 <p><strong>关闭文件</strong></p>
 <p>手动关闭文件用close()函数。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">f.close() #关闭文件
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.close() <span class="comment">#关闭文件</span></span><br></pre></td></tr></table></figure>
 <p>自动关闭文件。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">with open() as f1:
-    pass
-    pass
-    # 资源只会在with里面打开，如果执行完毕则会自动关闭资源
-
-#并且可以用下面这种方式同时打开多个资源
-with open() as f1，open() as f2 ,\
-    open() as f3，open() as f4:
-    pass
-    pass</pre>
-</div>
-
-<p>&nbsp;</p>
-<h6 id="下面是一个修改文件的案例"><a href="#下面是一个修改文件的案例" class="headerlink" title="########下面是一个修改文件的案例"></a>########下面是一个修改文件的案例</h6><div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">f = open('passengers','r',encoding='utf-8')
-f_new = open('new','w',encoding='utf-8')
-for line in f:
-    if "漂浮在一片无奈" in line:
-        line = line.replace('漂浮在一片无奈','人类的渺小')  # replace函数在字符串操作文章中可见
-    f_new.write(line)
-f.close() </pre>
-</div>
-
-<p>　　其实就是将一个文件的内容在内存中修改完后写入到另一个文件中<br>　　因为Python中没有直接修改文件内容的方法。</p>
-<p>&nbsp;</p>
-<h6 id="修改文件的另一种方法"><a href="#修改文件的另一种方法" class="headerlink" title="#######修改文件的另一种方法"></a>#######修改文件的另一种方法</h6><div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">file_data = ""
-with open(file，"r"，encoding="utf-8") as f:
-    for line in f:
-        if old_str in line:
-            line = line.replace(old_str,new_str)
-        file_data += line
-with open(file,"w",encoding="utf-8") as f:
-    f.write(file_data)
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open() <span class="keyword">as</span> f1:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 资源只会在with里面打开，如果执行完毕则会自动关闭资源</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#并且可以用下面这种方式同时打开多个资源</span></span><br><span class="line"><span class="keyword">with</span> open() <span class="keyword">as</span> f1，open() <span class="keyword">as</span> f2 ,\</span><br><span class="line">    open() <span class="keyword">as</span> f3，open() <span class="keyword">as</span> f4:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h6 id="下面是一个修改文件的案例"><a href="#下面是一个修改文件的案例" class="headerlink" title="########下面是一个修改文件的案例"></a>########下面是一个修改文件的案例</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'passengers'</span>,<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">f_new = open(<span class="string">'new'</span>,<span class="string">'w'</span>,encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">"漂浮在一片无奈"</span> <span class="keyword">in</span> line:</span><br><span class="line">        line = line.replace(<span class="string">'漂浮在一片无奈'</span>,<span class="string">'人类的渺小'</span>)  <span class="comment"># replace函数在字符串操作文章中可见</span></span><br><span class="line">    f_new.write(line)</span><br><span class="line">f.close() </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">　　其实就是将一个文件的内容在内存中修改完后写入到另一个文件中</span><br><span class="line">　　因为Python中没有直接修改文件内容的方法。</span><br></pre></td></tr></table></figure>
+<h6 id="修改文件的另一种方法"><a href="#修改文件的另一种方法" class="headerlink" title="#######修改文件的另一种方法"></a>#######修改文件的另一种方法</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">file_data = <span class="string">""</span></span><br><span class="line"><span class="keyword">with</span> open(file，<span class="string">"r"</span>，encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="keyword">if</span> old_str <span class="keyword">in</span> line:</span><br><span class="line">            line = line.replace(old_str,new_str)</span><br><span class="line">        file_data += line</span><br><span class="line"><span class="keyword">with</span> open(file,<span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(file_data)</span><br></pre></td></tr></table></figure>
 <p>　　这种方法是先将所以的内容都读出来，并且再写到同一个文件中。</p>
-<p>&nbsp;</p>
 <h3 id="编码之间的转换"><a href="#编码之间的转换" class="headerlink" title="编码之间的转换"></a>编码之间的转换</h3><p><strong>需知：</strong><br>1.在python2默认编码是ASCII，python3里默认是unicode。<br>2.unicode 分为 utf-32(占4个字节),utf-16(占两个字节)，utf-8(占1-4个字节)，so utf-16就是现在最常用的unicode版本，不过在文件里存的还是utf-8，因为utf8省空间。<br>3.在py3中encode,在转码的同时还会把string 变成bytes类型，decode在解码的同时还会把bytes变回string。</p>
 <p>原理图：</p>
 <p><img src="http://images2017.cnblogs.com/blog/1204715/201709/1204715-20170919165527868-620629636.png" alt></p>
-<p>&nbsp;</p>
 <p>utf-8转gbk：<br>    我需要先用decode()解码成为Unicode，然后再用encode()转换成gbk<br>    decode()函数传入一个参数，参数为我当前的编码是什么，或者说我要将什么编码转换成Unicode;<br>    encode()函数传入一个参数，参数为我要转换成什么编码<br>        如果不传参则默认是utf-8<br>gbk转utf-8也是同理</p>
 <p>也就是说Unicode作为中间编码，用来完成utf-8和gbk之间的转换。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">str = '你好' #假设当前为utf-8   注意:Python3里面的默认编码为Unicode
-str = str.decode('utf-8') #将utf-8转换为Unicode
-str = str.encode('gbk') #将Unicode转换为gbk
-print(str)
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'你好'</span> <span class="comment">#假设当前为utf-8   注意:Python3里面的默认编码为Unicode</span></span><br><span class="line">str = str.decode(<span class="string">'utf-8'</span>) <span class="comment">#将utf-8转换为Unicode</span></span><br><span class="line">str = str.encode(<span class="string">'gbk'</span>) <span class="comment">#将Unicode转换为gbk</span></span><br><span class="line">print(str)</span><br></pre></td></tr></table></figure>
 <p>如果该文件为gbk，同时Python3的默认编码又是Unicode，则需要告诉程序不要按照默认的编码去执行，要按照gbk的编码去执行，这时就要在文件最顶端声明文件编码格式如下：</p>
 <h1 id="coding-gbk"><a href="#coding-gbk" class="headerlink" title="-- coding:gbk --"></a>-<em>- coding:gbk -</em>-</h1><p>Python3默认是Unicode,而文件又是utf-8类型,两个编码不统一输入中文还不会乱码是因为utf-8是Unicode的一个扩展集,所以Python3默认支持中文不乱码。</p>
 <p>在Python3中执行了encode()后，除了将编码改变了之外，还将它变为byte类型。</p>
-<p>&nbsp;</p>
 
     </div>
     
@@ -500,20 +409,5 @@ print(str)
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

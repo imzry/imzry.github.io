@@ -30,10 +30,7 @@
 
 
 字符串操作&nbsp;常用的字符串处理
-
-name = 'vector'
-
-pri...">
+123456789101112131415...">
 
 
 
@@ -203,7 +200,7 @@ pri...">
     </div>
     
     <div class="post-body post-content">
-        <h3 id="本节内容："><a href="#本节内容：" class="headerlink" title="本节内容："></a><strong>本节内容：</strong></h3><ul>
+        <h1 id="本节内容："><a href="#本节内容：" class="headerlink" title="本节内容："></a><strong>本节内容：</strong></h1><ul>
 <li>常用的字符串处理。</li>
 <li>格式化输出字符串。</li>
 <li>字符串的替换。</li>
@@ -211,150 +208,31 @@ pri...">
 <li>字典的操作</li>
 </ul>
 <hr>
-<h3 id="字符串操作-nbsp"><a href="#字符串操作-nbsp" class="headerlink" title="字符串操作&nbsp;"></a>字符串操作&nbsp;</h3><p><strong>常用的字符串处理</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">name = 'vector'
-
-print(name.capitalize()) # 首字母大写
-print(name.count('e')) # 判断字符e在字符串中有多少个
-print(name.center(50,'-')) # 一共打印50个字符,将vector放在中间,两边用-填充
-print(name.endswith('r')) # 判断字符串以什么结尾, 如果是以r结尾则返回true
-print(name.expandtabs(tabsize=10)) # 如果在字符串中加入\t,则在该位置上加入tabsize个空格
-print(name.find('ec')) # 找到e在字符串中的位置
-print(name.isalnum()) # 如果字符串里面只包含英文和数字, 则返回True
-print(name.isalpha()) # 如果字符串里面是纯英文, 则返回True
-print(name.isdecimal()) # 如果字符串是十进制数字, 则返回True
-print(name.isdigit()) # 如果字符串是否为整数, 则返回True
-print(name.isidentifier()) # 判断是否是一个合法的标识符(变量名), 合法则返回True
-print(name.islower()) # 判断是否为小写, 是则返回True
-print(name.isupper()) # 判断是否为大写, 是则返回True
-print(name.isspace()) # 判断是否为空格, 是则返回True
-print('My Name Is'.istitle()) # 判断是否为标题(首字符大写), 是则返回True
-print('+'.join(['1','2','3'])) # 将列表里面的每个元素用'+'拼接起来
-print(name.ljust(50,"*")) # 如果字符串长度小于50, 则不够的在左侧用*补充
-print(name.rjust(50,"*")) # 如果字符串长度小于50, 则不够的在右侧用*补充
-print(name.lower()) # 将大写变成小写
-print(name.upper()) # 将小写变成大写
-print('\nvector'.lstrip()) # 去掉字符串左边的空格和回车
-print('vector\n'.rstrip()) # 去掉字符串右边的空格和回车
-print('\nvector\n'.strip()) # 去掉字符串两边的空格和回车
-print('name is a book'.rfind('a')) # 从右边开始找a,返回找到的位置
-print('name is a book'.split(' ')) # 将字符串按照空格为界分装成列表, 不写参数则分隔符默认为空格
-print('name is \na book'.splitlines()) # 将字符串根据换行符为界分装成列表
-print('name is a book'.swapcase()) # 大小写互换
-print('name is a book'.title()) # 将字符串变成标题(首字母大写)
-print('name'.zfill(50)) # 如果字符串不够50个,则在左边用0填充
-</pre>
-</div>
-
-<p><strong>格式化输出<strong>字符串</strong>&lt;/strong&gt;</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">name = 'vector {name} {age}'
-print(name.format(name = 'rev',age=123)) # 格式化字符串
-print(name.format_map({'name':'rev','age':123})) # 字典的形式格式化字符串
-</pre>
-</div>
-
+<h2 id="字符串操作-nbsp"><a href="#字符串操作-nbsp" class="headerlink" title="字符串操作&nbsp;"></a>字符串操作&nbsp;</h2><p><strong>常用的字符串处理</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'vector'</span></span><br><span class="line"></span><br><span class="line">print(name.capitalize()) <span class="comment"># 首字母大写</span></span><br><span class="line">print(name.count(<span class="string">'e'</span>)) <span class="comment"># 判断字符e在字符串中有多少个</span></span><br><span class="line">print(name.center(<span class="number">50</span>,<span class="string">'-'</span>)) <span class="comment"># 一共打印50个字符,将vector放在中间,两边用-填充</span></span><br><span class="line">print(name.endswith(<span class="string">'r'</span>)) <span class="comment"># 判断字符串以什么结尾, 如果是以r结尾则返回true</span></span><br><span class="line">print(name.expandtabs(tabsize=<span class="number">10</span>)) <span class="comment"># 如果在字符串中加入\t,则在该位置上加入tabsize个空格</span></span><br><span class="line">print(name.find(<span class="string">'ec'</span>)) <span class="comment"># 找到e在字符串中的位置</span></span><br><span class="line">print(name.isalnum()) <span class="comment"># 如果字符串里面只包含英文和数字, 则返回True</span></span><br><span class="line">print(name.isalpha()) <span class="comment"># 如果字符串里面是纯英文, 则返回True</span></span><br><span class="line">print(name.isdecimal()) <span class="comment"># 如果字符串是十进制数字, 则返回True</span></span><br><span class="line">print(name.isdigit()) <span class="comment"># 如果字符串是否为整数, 则返回True</span></span><br><span class="line">print(name.isidentifier()) <span class="comment"># 判断是否是一个合法的标识符(变量名), 合法则返回True</span></span><br><span class="line">print(name.islower()) <span class="comment"># 判断是否为小写, 是则返回True</span></span><br><span class="line">print(name.isupper()) <span class="comment"># 判断是否为大写, 是则返回True</span></span><br><span class="line">print(name.isspace()) <span class="comment"># 判断是否为空格, 是则返回True</span></span><br><span class="line">print(<span class="string">'My Name Is'</span>.istitle()) <span class="comment"># 判断是否为标题(首字符大写), 是则返回True</span></span><br><span class="line">print(<span class="string">'+'</span>.join([<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>])) <span class="comment"># 将列表里面的每个元素用'+'拼接起来</span></span><br><span class="line">print(name.ljust(<span class="number">50</span>,<span class="string">"*"</span>)) <span class="comment"># 如果字符串长度小于50, 则不够的在左侧用*补充</span></span><br><span class="line">print(name.rjust(<span class="number">50</span>,<span class="string">"*"</span>)) <span class="comment"># 如果字符串长度小于50, 则不够的在右侧用*补充</span></span><br><span class="line">print(name.lower()) <span class="comment"># 将大写变成小写</span></span><br><span class="line">print(name.upper()) <span class="comment"># 将小写变成大写</span></span><br><span class="line">print(<span class="string">'\nvector'</span>.lstrip()) <span class="comment"># 去掉字符串左边的空格和回车</span></span><br><span class="line">print(<span class="string">'vector\n'</span>.rstrip()) <span class="comment"># 去掉字符串右边的空格和回车</span></span><br><span class="line">print(<span class="string">'\nvector\n'</span>.strip()) <span class="comment"># 去掉字符串两边的空格和回车</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.rfind(<span class="string">'a'</span>)) <span class="comment"># 从右边开始找a,返回找到的位置</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.split(<span class="string">' '</span>)) <span class="comment"># 将字符串按照空格为界分装成列表, 不写参数则分隔符默认为空格</span></span><br><span class="line">print(<span class="string">'name is \na book'</span>.splitlines()) <span class="comment"># 将字符串根据换行符为界分装成列表</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.swapcase()) <span class="comment"># 大小写互换</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.title()) <span class="comment"># 将字符串变成标题(首字母大写)</span></span><br><span class="line">print(<span class="string">'name'</span>.zfill(<span class="number">50</span>)) <span class="comment"># 如果字符串不够50个,则在左边用0填充</span></span><br></pre></td></tr></table></figure>
+<p><strong>格式化输出字符串</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'vector &#123;name&#125; &#123;age&#125;'</span></span><br><span class="line">print(name.format(name = <span class="string">'rev'</span>,age=<span class="number">123</span>)) <span class="comment"># 格式化字符串</span></span><br><span class="line">print(name.format_map(&#123;<span class="string">'name'</span>:<span class="string">'rev'</span>,<span class="string">'age'</span>:<span class="number">123</span>&#125;)) <span class="comment"># 字典的形式格式化字符串</span></span><br></pre></td></tr></table></figure>
 <p><strong>字符串替换</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">#先用maketrans设置替换规则, 然后用translate执行替换
-p = str.maketrans('asdfgn','123456') #第一个参数是被替换的字符,第二个参数是替换的字符
-print('name'.translate(p)) # 将规则p传入,打印出来的就是61me,因为n和a被6和1替换掉了
-
-print('name'.replace('n','b',1)) # 将n换成b,第三个参数表示替换几个,如果不写则默认全部替换
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先用maketrans设置替换规则, 然后用translate执行替换</span></span><br><span class="line">p = str.maketrans(<span class="string">'asdfgn'</span>,<span class="string">'123456'</span>) <span class="comment">#第一个参数是被替换的字符,第二个参数是替换的字符</span></span><br><span class="line">print(<span class="string">'name'</span>.translate(p)) <span class="comment"># 将规则p传入,打印出来的就是61me,因为n和a被6和1替换掉了</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'name'</span>.replace(<span class="string">'n'</span>,<span class="string">'b'</span>,<span class="number">1</span>)) <span class="comment"># 将n换成b,第三个参数表示替换几个,如果不写则默认全部替换</span></span><br></pre></td></tr></table></figure>
 <p><strong>字符串和二进制的相互转化</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">msg = '我爱大延边日不落帝国'
-print(msg) # 字符串输出
-print(msg.encode(encoding='utf-8')) # 将字符串转换成二进制
-print(msg.encode(encoding='utf-8').decode(encoding='utf-8')) # 将二进制转换成字符串</pre>
-</div>
-> <pre><span>encode参数表示之前是什么格式的，decode参数表示要转换成什么格式的。
-> 如果encode和decode不写参数，默认就是utf-8。</span></pre>
-
-&nbsp;
-
-### 字典
-
-字典一种key - value 的数据类型，使用就像我们上学用的字典，通过笔划、字母来查对应页的详细内容。
-
-字典的特性：
-
-*   dict是无序的
-*   key必须是唯一的,so 天生去重
-
-语法：
-
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">info = {
-    'str1':'zhangsan',
-    'str2':'lisi',
-    'str3':'wangwu',
-    'str4':'zhaoliu'
-}
-</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="string">'我爱大延边日不落帝国'</span></span><br><span class="line">print(msg) <span class="comment"># 字符串输出</span></span><br><span class="line">print(msg.encode(encoding=<span class="string">'utf-8'</span>)) <span class="comment"># 将字符串转换成二进制</span></span><br><span class="line">print(msg.encode(encoding=<span class="string">'utf-8'</span>).decode(encoding=<span class="string">'utf-8'</span>)) <span class="comment"># 将二进制转换成字符串</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>encode参数表示之前是什么格式的，decode参数表示要转换成什么格式的。<br>如果encode和decode不写参数，默认就是utf-8。</p>
+</blockquote>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>字典一种key - value 的数据类型，使用就像我们上学用的字典，通过笔划、字母来查对应页的详细内容。</p>
+<p>字典的特性：</p>
+<ul>
+<li>dict是无序的</li>
+<li>key必须是唯一的,so 天生去重</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">info = &#123;</span><br><span class="line">    <span class="string">'str1'</span>:<span class="string">'zhangsan'</span>,</span><br><span class="line">    <span class="string">'str2'</span>:<span class="string">'lisi'</span>,</span><br><span class="line">    <span class="string">'str3'</span>:<span class="string">'wangwu'</span>,</span><br><span class="line">    <span class="string">'str4'</span>:<span class="string">'zhaoliu'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>常见的字典操作：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">info = {
-    'str1':'zhangsan',
-    'str2':'lisi',
-    'str3':'wangwu',
-    'str4':'zhaoliu'
-}
-
-print(info) # 打印全部字典
-print(info['str2']) # 根据键名打印字典元素
-info['str1'] = 'yangzirui' # 这样就会修改值, 如果键名不存在则会直接创建
-del info['str2'] # 删除该元素
-info.pop('str2') # 这也是删除
-print(info.popitem()) # 随机删除一个, 并返回他的键值对
-print(info['str1']) # 打印数据, 如果键名不存在, 就会报错,不推荐用
-print(info.get('str2')) # 打印数据, 如果键名不存在, 则返回none, 推荐
-print('str1' in info) # 判断键名是否存在,存在打印true,否则打印false
-aaa = info.setdefault('str5','liangsohohfefho') # 如果info里面有键为str5的,则直接返回对应的值;如果没有,则创建后返回对应的值
-
-a = {
-    'str1':'asdfsdfd',
-    1:2,
-    2:3
-}
-info.update(a) # 将字典a合并到info中,如果有交叉,则用a字典中的值
-info.items() # 将字典转成列表, 列表中的每个元素都由元组组成,每个元组又原字典的每个键值对组成
-
-c = dict.fromkeys([1,2,3],'test') # 创建一个新字典, 键为1,2,3, 值均为test, 如果不写值,则均为none;后面赋的值是三个键共有的, 所以改一个就全都改了
-</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">info = &#123;</span><br><span class="line">    <span class="string">'str1'</span>:<span class="string">'zhangsan'</span>,</span><br><span class="line">    <span class="string">'str2'</span>:<span class="string">'lisi'</span>,</span><br><span class="line">    <span class="string">'str3'</span>:<span class="string">'wangwu'</span>,</span><br><span class="line">    <span class="string">'str4'</span>:<span class="string">'zhaoliu'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(info) <span class="comment"># 打印全部字典</span></span><br><span class="line">print(info[<span class="string">'str2'</span>]) <span class="comment"># 根据键名打印字典元素</span></span><br><span class="line">info[<span class="string">'str1'</span>] = <span class="string">'yangzirui'</span> <span class="comment"># 这样就会修改值, 如果键名不存在则会直接创建</span></span><br><span class="line"><span class="keyword">del</span> info[<span class="string">'str2'</span>] <span class="comment"># 删除该元素</span></span><br><span class="line">info.pop(<span class="string">'str2'</span>) <span class="comment"># 这也是删除</span></span><br><span class="line">print(info.popitem()) <span class="comment"># 随机删除一个, 并返回他的键值对</span></span><br><span class="line">print(info[<span class="string">'str1'</span>]) <span class="comment"># 打印数据, 如果键名不存在, 就会报错,不推荐用</span></span><br><span class="line">print(info.get(<span class="string">'str2'</span>)) <span class="comment"># 打印数据, 如果键名不存在, 则返回none, 推荐</span></span><br><span class="line">print(<span class="string">'str1'</span> <span class="keyword">in</span> info) <span class="comment"># 判断键名是否存在,存在打印true,否则打印false</span></span><br><span class="line">aaa = info.setdefault(<span class="string">'str5'</span>,<span class="string">'liangsohohfefho'</span>) <span class="comment"># 如果info里面有键为str5的,则直接返回对应的值;如果没有,则创建后返回对应的值</span></span><br><span class="line"></span><br><span class="line">a = &#123;</span><br><span class="line">    <span class="string">'str1'</span>:<span class="string">'asdfsdfd'</span>,</span><br><span class="line">    <span class="number">1</span>:<span class="number">2</span>,</span><br><span class="line">    <span class="number">2</span>:<span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">info.update(a) <span class="comment"># 将字典a合并到info中,如果有交叉,则用a字典中的值</span></span><br><span class="line">info.items() <span class="comment"># 将字典转成列表, 列表中的每个元素都由元组组成,每个元组又原字典的每个键值对组成</span></span><br><span class="line"></span><br><span class="line">c = dict.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="string">'test'</span>) <span class="comment"># 创建一个新字典, 键为1,2,3, 值均为test, 如果不写值,则均为none;后面赋的值是三个键共有的, 所以改一个就全都改了</span></span><br></pre></td></tr></table></figure>
 <p>循环字典：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">info = {
-    'str1':'zhangsan',
-    'str2':'lisi',
-    'str3':'wangwu',
-    'str4':'zhaoliu'
-}
-#第一种循环方法
-for i in info:
-    print(i,info[i])
-# 这应该是最基本的循环了
-
-# 第二种循环方法
-for k,v in info.items():
-    print(k,v)
-# 这种循环方式的效率没有第一种循环效率高,因为这种需要将字典转换成列表
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">info = &#123;</span><br><span class="line">    <span class="string">'str1'</span>:<span class="string">'zhangsan'</span>,</span><br><span class="line">    <span class="string">'str2'</span>:<span class="string">'lisi'</span>,</span><br><span class="line">    <span class="string">'str3'</span>:<span class="string">'wangwu'</span>,</span><br><span class="line">    <span class="string">'str4'</span>:<span class="string">'zhaoliu'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#第一种循环方法</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> info:</span><br><span class="line">    print(i,info[i])</span><br><span class="line"><span class="comment"># 这应该是最基本的循环了</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种循环方法</span></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> info.items():</span><br><span class="line">    print(k,v)</span><br><span class="line"><span class="comment"># 这种循环方式的效率没有第一种循环效率高,因为这种需要将字典转换成列表</span></span><br></pre></td></tr></table></figure>
 <p>输出结果：（两种循环方式均是这样）</p>
 <p><img src="http://images2017.cnblogs.com/blog/1204715/201709/1204715-20170919154347134-325374193.png" alt></p>
-<p>&nbsp;</p>
 
     </div>
     
@@ -457,7 +335,7 @@ for k,v in info.items():
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#本节内容："><span class="toc-text">本节内容：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串操作-nbsp"><span class="toc-text">字符串操作 </span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本节内容："><span class="toc-text">本节内容：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串操作-nbsp"><span class="toc-text">字符串操作 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字典"><span class="toc-text">字典</span></a></li></ol></li></ol>
         
     </div>
 </aside>
@@ -511,20 +389,5 @@ for k,v in info.items():
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

@@ -207,144 +207,41 @@ yield
 <li>迭代器</li>
 </ul>
 <hr>
-<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>当我们要定义一个列表的时候，我们通常用这种方式a = [1,2,3]，但是如果我们定义了一个比较长的列表的时候，手动定义列表就会比较麻烦，这是我们通常的做法就是利用循环的手段来创建列表，例如创建如下的列表：</p>
-<p>L = [0,1,4,9,16,25,36,49,64,81]</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">L = []
-for x in range(1, 11):
-   L.append(x*x)
-</pre>
-</div>
-
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>当我们要定义一个列表的时候，我们通常用这种方式<code>a = [1,2,3]</code>，但是如果我们定义了一个比较长的列表的时候，手动定义列表就会比较麻烦，这是我们通常的做法就是利用循环的手段来创建列表，例如创建如下的列表：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">L = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>,<span class="number">36</span>,<span class="number">49</span>,<span class="number">64</span>,<span class="number">81</span>]</span><br><span class="line"></span><br><span class="line">L = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">   L.append(x*x)</span><br></pre></td></tr></table></figure></p>
 <p>　　这样我们就创建了一个较长的列表。</p>
 <p>但是这样写，我们用了三行代码，其实我们可以用一行代码就代替了它：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">L = [i*i for i in range(1,11)]
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L = [i*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br></pre></td></tr></table></figure>
 <p>　　这就是列表生成式。</p>
 <p>前面的i*i是运算式，也可以用函数，然后后面加上一个for循环就可以了。</p>
 <p>其实我们不难看出，for循环和列表生成式的关系，如下图：</p>
 <p><img src="http://images2017.cnblogs.com/blog/1204715/201711/1204715-20171122141227493-1577974351.jpg" alt></p>
 <p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">[x * x for x in range(1, 11) if x % 2 == 0]
-#结果为：
-#[4, 16, 36, 64, 100]</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"><span class="comment">#结果为：</span></span><br><span class="line"><span class="comment">#[4, 16, 36, 64, 100]</span></span><br></pre></td></tr></table></figure>
 <p>还可以使用两层循环，可以生成全排列：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">[m + n for m in 'ABC' for n in 'XYZ']
-#结果为：
-#['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>]</span><br><span class="line"><span class="comment">#结果为：</span></span><br><span class="line"><span class="comment">#['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']</span></span><br></pre></td></tr></table></figure>
 <p>三层用的就比较少了。</p>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>上面的列表生成式的最外面是用中括号括起来的，如果把中括号变成小括号，也就是这样：</p>
-<p>L = (i*i for i in range(1,11))</p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>上面的列表生成式的最外面是用中括号括起来的，如果把中括号变成小括号，也就是这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L = (i*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>))</span><br></pre></td></tr></table></figure></p>
 <p>这样就是一个生成器了。</p>
 <p><strong>那么生成器有什么好处呢？</strong></p>
 <p>我们用列表生成式直接生成列表后，列表会直接放在内存中等待被使用。但是如果列表过于长了，但是我们暂时又用不到全部的元素，就会造成内存的浪费。生成器的好处就在于(i*i for i in range(1,11))这句话执行完毕后将返回一个算法给L，并不是直接将所有的数据放到内存中，当我们访问数据时，生成器就会根据算法现生成我们需要的书库，这样就避免了内存的浪费。</p>
 <p>但是生成器不能像列表一样a[100]这样直接取出某个数据，因为生成器还没有访问到第100个元素。生成器其实就像一个递推公式一样，想要知道第100个元素是什么，就必须要先知道第99个元素是什么，以此类推…</p>
 <p>下面用生成器生成一个列表并且遍历所有的数据</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">L = (i*i for i in range(1,11))
-for i in L:
-    print(i)</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">L = (i*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
 <p>也可以一个一个数据的访问，调用生成器中下一个数据</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">a = (i*i for i in range(1,11))
-a.__next__()    #这样就调用了下一个数据</pre>
-</div>
-
-<p>并且生成器也只有一个方法，就是<strong>next</strong>()方法，只能往下走，不能回头。</p>
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = (i*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line">a.__next__()    <span class="comment">#这样就调用了下一个数据</span></span><br></pre></td></tr></table></figure>
+<p>并且生成器也只有一个方法，就是<code>__next__()</code>方法，只能往下走，不能回头。</p>
 <h2 id="yield-nbsp"><a href="#yield-nbsp" class="headerlink" title="yield&nbsp;"></a>yield&nbsp;</h2><p>先来看一个菲波那切数列的迭代算法。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">def fib(max):
-    n,a,b = 0,0,1
-    while n&lt;max:
-        #print(b)   #如果用print，那么这个函数就会直接输出数列的所有值
-        yield b     #如果用yield，那么这个函数就会变成一个生成器
-        a, b = b, a + b
-        n = n + 1
-    return '---done---' #如果程序抛异常，就会返回这个信息</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></span><br><span class="line">    n,a,b = <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n&amp;lt;max:</span><br><span class="line">        <span class="comment">#print(b)   #如果用print，那么这个函数就会直接输出数列的所有值</span></span><br><span class="line">        <span class="keyword">yield</span> b     <span class="comment">#如果用yield，那么这个函数就会变成一个生成器</span></span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'---done---'</span> <span class="comment">#如果程序抛异常，就会返回这个信息</span></span><br></pre></td></tr></table></figure>
 <p>yield可以保存当前循环的状态，然后可以先做其他的事情，做完其他的事情，可以回来继续进行下一个循环。</p>
-<p>&nbsp;</p>
 <p><strong>yield的一个稍微复杂的应用</strong> - 利用yield模拟多线程</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">import time
-def consumer(name):
-    print("%s 准备吃包子了！" %name)
-    while True:
-        baozi = yield
-        print("包子[%s]来了，被[%s]吃了！" %(baozi,name))
-#当函数中有yield时，这个函数就会变成一个生成器
-c = consumer('lisi')    #将这个生成器赋值给c
-c.__next__()    #然后执行一次这个生成器，但是一次调用只会执行到含有yield的语句前面，
-                # 因为yield可以暂停并保存当前的状态，一到yield就会暂停，所以while循环里面的输出语句没有执行
-c.send('猪肉')  #send()函数，用来向yield里面传值，然后继续执行一次，直到再次碰到yield时就会再次暂停
-                #注意，第一次执行时一定要执行__next__()函数，后面才可以执行send()函数
-c.send('牛肉')    #再次传值，再次执行while里面的语句，注意，不会执行上面的print("%s 准备吃包子了！" %name)语句
-c.send('niurou')    #再次传值，再次执行while里面的语句
-c.__next__()    #这里再次调用__next__()函数，同样还是执行while里面的输出语句，但是不会向yield里面传值</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">"%s 准备吃包子了！"</span> %name)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        baozi = <span class="keyword">yield</span></span><br><span class="line">        print(<span class="string">"包子[%s]来了，被[%s]吃了！"</span> %(baozi,name))</span><br><span class="line"><span class="comment">#当函数中有yield时，这个函数就会变成一个生成器</span></span><br><span class="line">c = consumer(<span class="string">'lisi'</span>)    <span class="comment">#将这个生成器赋值给c</span></span><br><span class="line">c.__next__()    <span class="comment">#然后执行一次这个生成器，但是一次调用只会执行到含有yield的语句前面，</span></span><br><span class="line">                <span class="comment"># 因为yield可以暂停并保存当前的状态，一到yield就会暂停，所以while循环里面的输出语句没有执行</span></span><br><span class="line">c.send(<span class="string">'猪肉'</span>)  <span class="comment">#send()函数，用来向yield里面传值，然后继续执行一次，直到再次碰到yield时就会再次暂停</span></span><br><span class="line">                <span class="comment">#注意，第一次执行时一定要执行__next__()函数，后面才可以执行send()函数</span></span><br><span class="line">c.send(<span class="string">'牛肉'</span>)    <span class="comment">#再次传值，再次执行while里面的语句，注意，不会执行上面的print("%s 准备吃包子了！" %name)语句</span></span><br><span class="line">c.send(<span class="string">'niurou'</span>)    <span class="comment">#再次传值，再次执行while里面的语句</span></span><br><span class="line">c.__next__()    <span class="comment">#这里再次调用__next__()函数，同样还是执行while里面的输出语句，但是不会向yield里面传值</span></span><br></pre></td></tr></table></figure>
 <p>上面是手动执行这个生成器，下面写一个函数来调用这个生成器。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">import time
-def consumer(name):
-    print("%s 准备吃包子了！" %name)
-    while True:
-        baozi = yield
-        print("包子[%s]来了，被[%s]吃了！" %(baozi,name))
-def producer():
-    c = consumer('A')
-    c2 = consumer('B')
-    c.__next__()
-    c2.__next__()
-    print('老子开始准备做包子了')
-    for i in range(10):
-        time.sleep(1)
-        print('做了一个包子，分两半')
-        c.send(i)
-        c2.send(i)
-producer()
-#这样就是一边做包子，一边吃包子了
-</pre>
-</div>
-
-<p>&nbsp;</p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以被next()函数调用并不断返回下一个值的对象成为迭代器：Iterator。</p>
-<p>可以使用isinstance()判断一个对象是否是Iterator对象或者Iterable对象</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">from collections import Iterator    #需要先导入这个模块
-isinstance((x for x in range(10)),Iterator)
-    #第一个参数为想要判断的东西，第二个参数是想要判断的类型
-isinstance({},Iterator)
-from collections import Iterable
-isinstance((),Iterator)
-isinstance('abc',Iterator)
-</pre>
-</div>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">"%s 准备吃包子了！"</span> %name)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        baozi = <span class="keyword">yield</span></span><br><span class="line">        print(<span class="string">"包子[%s]来了，被[%s]吃了！"</span> %(baozi,name))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">()</span>:</span></span><br><span class="line">    c = consumer(<span class="string">'A'</span>)</span><br><span class="line">    c2 = consumer(<span class="string">'B'</span>)</span><br><span class="line">    c.__next__()</span><br><span class="line">    c2.__next__()</span><br><span class="line">    print(<span class="string">'老子开始准备做包子了'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        print(<span class="string">'做了一个包子，分两半'</span>)</span><br><span class="line">        c.send(i)</span><br><span class="line">        c2.send(i)</span><br><span class="line">producer()</span><br><span class="line"><span class="comment">#这样就是一边做包子，一边吃包子了</span></span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以被<code>next()</code>函数调用并不断返回下一个值的对象成为迭代器：Iterator。</p>
+<p>可以使用<code>isinstance()</code>判断一个对象是否是Iterator对象或者Iterable对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterator    <span class="comment">#需要先导入这个模块</span></span><br><span class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)),Iterator)</span><br><span class="line">    <span class="comment">#第一个参数为想要判断的东西，第二个参数是想要判断的类型</span></span><br><span class="line">isinstance(&#123;&#125;,Iterator)</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line">isinstance((),Iterator)</span><br><span class="line">isinstance(<span class="string">'abc'</span>,Iterator)</span><br></pre></td></tr></table></figure>
 <p>生成器都是Iterator对象，但是list、dict、str虽然是Iterator，却不是Iterator。<br>把list、dict、str等Iterable变成Iterator可以使用iter()对象。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">isinstance(iter([]),Iterator)   #这样结果就是True了
-#例子
-a = [1,2,3]
-b = iter(a)
-b.__next__()
-</pre>
-</div>
-
-<p>&nbsp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isinstance(iter([]),Iterator)   <span class="comment">#这样结果就是True了</span></span><br><span class="line"><span class="comment">#例子</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = iter(a)</span><br><span class="line">b.__next__()</span><br></pre></td></tr></table></figure>
 
     </div>
     
@@ -501,20 +398,5 @@ b.__next__()
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

@@ -21,15 +21,8 @@
     <meta name="keywords" content="java">
 
 
-    <meta name="description" content="
-abstract class AbsDemo
-{
-    abstract void show1();
-    abstract void show2();
-}
-
-
-当一个抽象类中的方法都是抽...">
+    <meta name="description" content="12345abstract class AbsDemo&#123;	abstract void show1();	abstract void show2();&#125;
+当一个抽象类中的方法都...">
 
 
 
@@ -199,185 +192,28 @@ abstract class AbsDemo
     </div>
     
     <div class="post-body post-content">
-        <div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">abstract class AbsDemo
-{
-    abstract void show1();
-    abstract void show2();
-}</pre>
-</div>
-
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当一个抽象类中的方法都是抽象的时候，这时可以将该抽象类用另一种形式定义和表示——-接口 &nbsp;interface</p>
 <p>定义接口使用的关键字不是class，是interface。</p>
 <p>对于接口当中常见的成员：而且这些成员都有固定的修饰符<br>1. 全局常量：public static final<br>2. 抽象方法：public abstract</p>
 <p>由此得出结论，接口中的成员都是公共的权限。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface Demo
-{
-    public static final int NUM = 4;
-    public abstract void show1();
-    public abstract void show2();
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM = <span class="number">4</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果接口中不写固定修饰符，如下：</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface Demo
-{
-    int NUM = 4;
-    void show1();
-    void show2();
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> NUM = <span class="number">4</span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译的时候就会自动给你加上，所以这样写也是可以的。<br>但是不推荐这样写，影响阅读性。</p>
 <p><strong>实现implements</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface Demo
-{
-    public static final int NUM = 4;
-    public abstract void show1();
-    public abstract void show2();
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM = <span class="number">4</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>类与类之间是继承关系，类与接口之间是实现关系。</p>
 <p>接口不可以实例化。<br>只能由实现了接口的子类并覆盖了接口中所有的抽象方法后，该子类才可以实例化。<br>否则，这个子类就是一个抽象类。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class DemoImpl implements /*实现*/ Demo
-{
-    public void show1()
-    {}
-    public void show2()
-    {}
-}
-
-class InterfaceDemo
-{
-    public static void main(String[] args)
-    {
-        DemoImpl d = new DemoImpl();
-        System.out.println(d.NUM);
-        System.out.println(DemoImpl.NUM);
-        System.out.println(Demo.NUM);
-        //这3中输出方法都可以
-    }
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoImpl</span> <span class="keyword">implements</span> /*实现*/ <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InterfaceDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		DemoImpl d = <span class="keyword">new</span> DemoImpl();</span><br><span class="line">		System.out.println(d.NUM);</span><br><span class="line">		System.out.println(DemoImpl.NUM);</span><br><span class="line">		System.out.println(Demo.NUM);</span><br><span class="line">		<span class="comment">//这3中输出方法都可以</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>多实现</strong></p>
 <p>在java中不直接支持多继承，因为会出现调用的不确定性。<br>所以java将多继承机制进行改良，在java中变成了多实现。</p>
 <p>一个类可以实现多个接口。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface A
-{
-    public abstract void show();
-}
-
-interface Z
-{
-    public abstract void show();
-}
-
-class Test implements A，Z //多实现
-{
-    public void show()//把上面两个show方法都覆盖了.
-    {
-    }
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Z</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">implements</span> <span class="title">A</span>，<span class="title">Z</span> //多实现</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span><span class="comment">//把上面两个show方法都覆盖了.</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>一类在继承另一个类的同时，还可以实现多个接口。</strong></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">class Q
-{
-    public void method()
-    {}
-}
-class Test2 extends Q implements A，Z
-{
-}
-//接口的出现避免了单继承的局限性
-
-class InterfaceDemo
-{
-    public static void main(String[] args)
-    {
-        Test t = new Test();
-        t.show();
-    }
-}</pre>
-</div>
-
-<p>&nbsp;</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface CC
-{
-    void show();
-}
-interface MM
-{
-    void method();
-}
-
-interface QQ extends CC，MM //接口与接口之间是继承关系，可以多继承，因为没有方法体
-{
-}</pre>
-</div>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Q</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test2</span> <span class="keyword">extends</span> <span class="title">Q</span> <span class="keyword">implements</span> <span class="title">A</span>，<span class="title">Z</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//接口的出现避免了单继承的局限性</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InterfaceDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Test t = <span class="keyword">new</span> Test();</span><br><span class="line">		t.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">CC</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MM</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">QQ</span> <span class="keyword">extends</span> <span class="title">CC</span>，<span class="title">MM</span> //接口与接口之间是继承关系，可以多继承，因为没有方法体</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>笔记本电脑使用</strong><br>为了扩展笔记本的功能，但日后出现什么功能设备不知道。<br>就定义一个规则，只要日后出现的设备都符合这个规则就可以了。<br>规则在java中就是接口。</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:java;gutter:true;">interface USB//暴漏的规则
-{
-    public void open();
-    public void close();
-}
-class BookPC
-{
-    public static void main(String[] args)
-    {
-        //useMouse(null);
-        useUSB(new Upan()); //一年后  功能扩展
-        //接口类型的引用，用于接收(指向)接口的子类对象.
-        useUSB(new UsbMouse());
-    }
-
-    //使用规则
-    public static void useUSB(USB u)
-    {
-        u.open();
-        u.close();
-    }
-}
-//一年后，买了一个U盘
-//实现规则
-class Upan implements USB
-{
-    public void open()
-    {
-        System.out.println("upan open");
-    }
-    public void close()
-    {
-        System.out.println("upan close");
-    }
-}
-//这就是前期对外开放的接口，后期可以使用进来的设备
-class UsbMouse implements USB
-{
-    public void open()
-    {
-        System.out.println("UsbMouse open");
-    }
-    public void close()
-    {
-        System.out.println("UsbMouse close");
-    }
-}</pre>
-</div>
-
-<p>&nbsp;</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">USB</span>//暴漏的规则</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookPC</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//useMouse(null);</span></span><br><span class="line">		useUSB(<span class="keyword">new</span> Upan()); <span class="comment">//一年后  功能扩展</span></span><br><span class="line">		<span class="comment">//接口类型的引用，用于接收(指向)接口的子类对象.</span></span><br><span class="line">		useUSB(<span class="keyword">new</span> UsbMouse());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用规则</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">useUSB</span><span class="params">(USB u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		u.open();</span><br><span class="line">		u.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一年后，买了一个U盘</span></span><br><span class="line"><span class="comment">//实现规则</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Upan</span> <span class="keyword">implements</span> <span class="title">USB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"upan open"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"upan close"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这就是前期对外开放的接口，后期可以使用进来的设备</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsbMouse</span> <span class="keyword">implements</span> <span class="title">USB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"UsbMouse open"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"UsbMouse close"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     
         <div class="reward" ontouchstart>
@@ -533,20 +369,5 @@ class UsbMouse implements USB
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

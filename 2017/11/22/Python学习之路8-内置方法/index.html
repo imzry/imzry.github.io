@@ -21,10 +21,7 @@
     <meta name="keywords" content="Python">
 
 
-    <meta name="description" content="
-abs(-230)   #取绝对值
-all([0,1,-5])   #如果参数里面的所有值都为真就返回真，否则返回假
-any([0,1,-5])   #如果参数里面有一个值为真则返回真，否则返...">
+    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253...">
 
 
 
@@ -194,75 +191,7 @@ any([0,1,-5])   #如果参数里面有一个值为真则返回真，否则返...
     </div>
     
     <div class="post-body post-content">
-        <div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">abs(-230)   #取绝对值
-all([0,1,-5])   #如果参数里面的所有值都为真就返回真，否则返回假
-any([0,1,-5])   #如果参数里面有一个值为真则返回真，否则返回假
-ascii([1,2,'fds','浮点数'])#将参数变成字符串
-bin(8)  #十进制转二进制
-hex(255)    #转十六进制
-oct(4)  #转八进制
-bool(2) #判断参数真假
-a = bytes("abcde",encoding="utf-8") #将字符串转换成二进制
-b = bytearray("abcde",encoding="utf-8") #将字符串转换成二进制数组
-b[2] = 100  #然后就可以想数组一样修改值
-
-def test():pass
-callable(test)  #判断参数是否能被调用，test是函数，所以能被调用，返回True
-
-chr(100)    #把数字对应的ASCII码字符取出来
-ord('d')    #返回对应的ASCII码编号
-
-a = {}
-dir(a)  #查看a有什么方法
-
-divmod(5,2) #返回参数一处以参数二的结果和余数
-
-a = '''
-a = [1,2,3]
-b = iter(a)
-print(b.__next__())
-'''
-exec(a) #将字符串编译成代码，然后运行
-
-res = filter(lambda n:n&gt;5,range(10)) #用来过滤数据，第一个是条件，第二个是数据
-for i in res:
-    print(i)
-
-res = map(lambda n:n*n,range(10)) #用来处理数据，第一个是处理方式，第二个是数据
-for i in res:
-    print(i)
-
-import functools
-res = functools.reduce(lambda x,y:x*y,range(10))    #累计处理
-    #第一个参数是累计的方式，这里是累加
-    #第二个参数是需要运算的数据
-print(res)  #45
-
-a = frozenset([1,4,33,212,54])  #将一个列表变成不可修改的
-globals()   #返回当前文件的所有变量名和值
-globals().get('a')  #这样可以取出变量名对应的值
-hash('test')    #返回对象的哈希值
-max()   #返回最大值
-min()   #返回最小值
-pow(3,5)   #3的5次方
-repr(a)     #将一个对象转换成字符串
-round(1.5461,2) #保留2位小数
-
-a = {6:2,4:23,34:5,-5:99}
-sorted(a.items()) #按照key值进行排序
-sorted(a.items(),key=lambda x:x[1]) #按照value进行排序
-
-a = [1,2,3,4,5,6]
-b = ['a','b','c','d']
-for i in zip(a,b): #将a和b一一对应组成4个元组，a中的5,6没有对应的元组，所以就不显示
-    print(i)
-
-__import__('decorator') #将同目录下的decorator.py文件导入
-</pre>
-</div>
-
-<p>　　</p>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">abs(<span class="number">-230</span>)   <span class="comment">#取绝对值</span></span><br><span class="line">all([<span class="number">0</span>,<span class="number">1</span>,<span class="number">-5</span>])   <span class="comment">#如果参数里面的所有值都为真就返回真，否则返回假</span></span><br><span class="line">any([<span class="number">0</span>,<span class="number">1</span>,<span class="number">-5</span>])   <span class="comment">#如果参数里面有一个值为真则返回真，否则返回假</span></span><br><span class="line">ascii([<span class="number">1</span>,<span class="number">2</span>,<span class="string">'fds'</span>,<span class="string">'浮点数'</span>])<span class="comment">#将参数变成字符串</span></span><br><span class="line">bin(<span class="number">8</span>)  <span class="comment">#十进制转二进制</span></span><br><span class="line">hex(<span class="number">255</span>)    <span class="comment">#转十六进制</span></span><br><span class="line">oct(<span class="number">4</span>)  <span class="comment">#转八进制</span></span><br><span class="line">bool(<span class="number">2</span>) <span class="comment">#判断参数真假</span></span><br><span class="line">a = bytes(<span class="string">"abcde"</span>,encoding=<span class="string">"utf-8"</span>) <span class="comment">#将字符串转换成二进制</span></span><br><span class="line">b = bytearray(<span class="string">"abcde"</span>,encoding=<span class="string">"utf-8"</span>) <span class="comment">#将字符串转换成二进制数组</span></span><br><span class="line">b[<span class="number">2</span>] = <span class="number">100</span>  <span class="comment">#然后就可以想数组一样修改值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span><span class="keyword">pass</span></span><br><span class="line">callable(test)  <span class="comment">#判断参数是否能被调用，test是函数，所以能被调用，返回True</span></span><br><span class="line"></span><br><span class="line">chr(<span class="number">100</span>)    <span class="comment">#把数字对应的ASCII码字符取出来</span></span><br><span class="line">ord(<span class="string">'d'</span>)    <span class="comment">#返回对应的ASCII码编号</span></span><br><span class="line"></span><br><span class="line">a = &#123;&#125;</span><br><span class="line">dir(a)  <span class="comment">#查看a有什么方法</span></span><br><span class="line"></span><br><span class="line">divmod(<span class="number">5</span>,<span class="number">2</span>) <span class="comment">#返回参数一处以参数二的结果和余数</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">'''</span></span><br><span class="line"><span class="string">a = [1,2,3]</span></span><br><span class="line"><span class="string">b = iter(a)</span></span><br><span class="line"><span class="string">print(b.__next__())</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">exec(a) <span class="comment">#将字符串编译成代码，然后运行</span></span><br><span class="line"></span><br><span class="line">res = filter(<span class="keyword">lambda</span> n:n&amp;gt;<span class="number">5</span>,range(<span class="number">10</span>)) <span class="comment">#用来过滤数据，第一个是条件，第二个是数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">res = map(<span class="keyword">lambda</span> n:n*n,range(<span class="number">10</span>)) <span class="comment">#用来处理数据，第一个是处理方式，第二个是数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> functools</span><br><span class="line">res = functools.reduce(<span class="keyword">lambda</span> x,y:x*y,range(<span class="number">10</span>))    <span class="comment">#累计处理</span></span><br><span class="line">    <span class="comment">#第一个参数是累计的方式，这里是累加</span></span><br><span class="line">    <span class="comment">#第二个参数是需要运算的数据</span></span><br><span class="line">print(res)  <span class="comment">#45</span></span><br><span class="line"></span><br><span class="line">a = frozenset([<span class="number">1</span>,<span class="number">4</span>,<span class="number">33</span>,<span class="number">212</span>,<span class="number">54</span>])  <span class="comment">#将一个列表变成不可修改的</span></span><br><span class="line">globals()   <span class="comment">#返回当前文件的所有变量名和值</span></span><br><span class="line">globals().get(<span class="string">'a'</span>)  <span class="comment">#这样可以取出变量名对应的值</span></span><br><span class="line">hash(<span class="string">'test'</span>)    <span class="comment">#返回对象的哈希值</span></span><br><span class="line">max()   <span class="comment">#返回最大值</span></span><br><span class="line">min()   <span class="comment">#返回最小值</span></span><br><span class="line">pow(<span class="number">3</span>,<span class="number">5</span>)   <span class="comment">#3的5次方</span></span><br><span class="line">repr(a)     <span class="comment">#将一个对象转换成字符串</span></span><br><span class="line">round(<span class="number">1.5461</span>,<span class="number">2</span>) <span class="comment">#保留2位小数</span></span><br><span class="line"></span><br><span class="line">a = &#123;<span class="number">6</span>:<span class="number">2</span>,<span class="number">4</span>:<span class="number">23</span>,<span class="number">34</span>:<span class="number">5</span>,<span class="number">-5</span>:<span class="number">99</span>&#125;</span><br><span class="line">sorted(a.items()) <span class="comment">#按照key值进行排序</span></span><br><span class="line">sorted(a.items(),key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>]) <span class="comment">#按照value进行排序</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">b = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip(a,b): <span class="comment">#将a和b一一对应组成4个元组，a中的5,6没有对应的元组，所以就不显示</span></span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">__import__(<span class="string">'decorator'</span>) <span class="comment">#将同目录下的decorator.py文件导入</span></span><br></pre></td></tr></table></figure>
 
     </div>
     
@@ -419,20 +348,5 @@ __import__('decorator') #将同目录下的decorator.py文件导入
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
