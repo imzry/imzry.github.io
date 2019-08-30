@@ -232,7 +232,7 @@
 <h3 id="1-1-sigmoid-function-np-exp"><a href="#1-1-sigmoid-function-np-exp" class="headerlink" title="1.1 - sigmoid function, $np.exp()$"></a>1.1 - sigmoid function, $np.exp()$</h3><p>Before using $np.exp()$, you will use $math.exp()$ to implement the sigmoid function. You will then see why $np.exp()$ is preferable to $math.exp()$.</p>
 <p><strong>Exercise</strong>: Build a function that returns the sigmoid of a real number $x$. Use $math.exp(x)$ for the exponential function.</p>
 <p><strong>Reminder</strong>:<br>$sigmoid(x) = \frac{1}{1+e^{-x}}$ is sometimes also known as the logistic function. It is a non-linear function used not only in Machine Learning (Logistic Regression), but also in Deep Learning.</p>
-<p><img src="/Python-Basics-with-Numpy/Sigmoid.png" alt="img"></p>
+<p><img src="/images/Python-Basics-with-Numpy/Sigmoid.png" alt="img"></p>
 <p>To refer to a function belonging to a specific package you could call it using $package_name.function()$. Run the code below to see an example with $math.exp()$.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: basic_sigmoid</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">basic_sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Compute sigmoid of x.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    x -- A scalar</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Return:</span></span><br><span class="line"><span class="string">    s -- sigmoid(x)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line of code)</span></span><br><span class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+math.exp(-x))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic_sigmoid(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
@@ -330,7 +330,7 @@ sigmoid\_derivative(x) = \sigma'(x) = \sigma(x) (1 - \sigma(x))\tag{2}</script><
 <li><code>X.reshape(...)</code> is used to reshape X into some other dimension. </li>
 </ul>
 <p>For example, in computer science, an image is represented by a 3D array of shape $(length, height, depth = 3)$. However, when you read an image as the input of an algorithm you convert it to a vector of shape $(length<em>height</em>3, 1)$. In other words, you “unroll”, or reshape, the 3D array into a 1D vector.</p>
-<p><img src="/Python-Basics-with-Numpy/image2vector_kiank.png" alt="img"></p>
+<p><img src="/images/Python-Basics-with-Numpy/image2vector_kiank.png" alt="img"></p>
 <p><strong>Exercise</strong>: Implement <code>image2vector()</code> that takes an input of shape (length, height, 3) and returns a vector of shape $(length<em>height</em>3, 1)$. For example, if you would like to reshape an array v of shape $(a, b, c)$ into a vector of shape $(a*b,c)$ you would do:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v = v.reshape((v.shape[<span class="number">0</span>]*v.shape[<span class="number">1</span>], v.shape[<span class="number">2</span>])) <span class="comment"># v.shape[0] = a ; v.shape[1] = b ; v.shape[2] = c</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -659,5 +659,20 @@ x\_normalized = \frac{x}{\| x\|} = \begin{bmatrix}
 
 	
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
