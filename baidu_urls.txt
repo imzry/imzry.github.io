@@ -1,5 +1,5 @@
-https://imzry.github.io/2019/08/30/Python-Basics-with-Numpy/
 https://imzry.github.io/2019/07/23/配置本地访问远程Linux系统服务器的jupyter-notebook/
 https://imzry.github.io/2019/06/06/论文翻译：HetConv-Heterogeneous Kernel-Based Convolutions for Deep CNNs/
 https://imzry.github.io/2019/04/16/论文翻译：LP-3DCNN-Unveiling-Local-Phase-in-3D-Convolutional-Neural-Networks/
+https://imzry.github.io/2018/09/22/Python-Basics-with-Numpy/
 https://imzry.github.io/2017/11/22/Python学习之路8-内置方法/
