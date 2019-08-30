@@ -241,7 +241,7 @@
 </blockquote>
 <p><strong>Expected Output</strong>: </p>
 <center>
-    <table style="width:40%">
+    <table style="width:50%">
         <tr>
         <td><b>basic_sigmoid(3)</b></td> 
             <td>0.9525741268224334 </td> 
@@ -332,7 +332,7 @@ sigmoid\_derivative(x) = \sigma'(x) = \sigma(x) (1 - \sigma(x))\tag{2}</script><
 <p>For example, in computer science, an image is represented by a 3D array of shape $(length, height, depth = 3)$. However, when you read an image as the input of an algorithm you convert it to a vector of shape $(length<em>height</em>3, 1)$. In other words, you “unroll”, or reshape, the 3D array into a 1D vector.</p>
 <p><img src="/images/Python-Basics-with-Numpy/image2vector_kiank.png" alt="img"></p>
 <p><strong>Exercise</strong>: Implement <code>image2vector()</code> that takes an input of shape (length, height, 3) and returns a vector of shape $(length<em>height</em>3, 1)$. For example, if you would like to reshape an array v of shape $(a, b, c)$ into a vector of shape $(a*b,c)$ you would do:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v = v.reshape((v.shape[<span class="number">0</span>]*v.shape[<span class="number">1</span>], v.shape[<span class="number">2</span>])) <span class="comment"># v.shape[0] = a ; v.shape[1] = b ; v.shape[2] = c</span></span><br></pre></td></tr></table></figure>
+<p><code>v = v.reshape((v.shape[0]*v.shape[1], v.shape[2])) # v.shape[0] = a ; v.shape[1] = b ; v.shape[2] = c</code></p>
 <ul>
 <li>Please don’t hardcode the dimensions of image as a constant. Instead look up the quantities you need with <code>image.shape[0]</code>, etc. </li>
 </ul>
@@ -407,7 +407,7 @@ x\_normalized = \frac{x}{\| x\|} = \begin{bmatrix}
   x_{21} & x_{22} & x_{23} & \dots  & x_{2n} \\
   \vdots & \vdots & \vdots & \ddots & \vdots \\
   x_{m1} & x_{m2} & x_{m3} & \dots  & x_{mn}
-\end{bmatrix} = \begin{bmatrix}
+\end{bmatrix} \\ = \begin{bmatrix}
   \frac{e^{x_{11}}}{\sum_{j}e^{x_{1j}}} & \frac{e^{x_{12}}}{\sum_{j}e^{x_{1j}}} & \frac{e^{x_{13}}}{\sum_{j}e^{x_{1j}}} & \dots  & \frac{e^{x_{1n}}}{\sum_{j}e^{x_{1j}}} \\
   \frac{e^{x_{21}}}{\sum_{j}e^{x_{2j}}} & \frac{e^{x_{22}}}{\sum_{j}e^{x_{2j}}} & \frac{e^{x_{23}}}{\sum_{j}e^{x_{2j}}} & \dots  & \frac{e^{x_{2n}}}{\sum_{j}e^{x_{2j}}} \\
   \vdots & \vdots & \vdots & \ddots & \vdots \\
