@@ -332,7 +332,7 @@ sigmoid\_derivative(x) = \sigma'(x) = \sigma(x) (1 - \sigma(x))\tag{2}</script><
 <p>For example, in computer science, an image is represented by a 3D array of shape $(length, height, depth = 3)$. However, when you read an image as the input of an algorithm you convert it to a vector of shape $(length<em>height</em>3, 1)$. In other words, you “unroll”, or reshape, the 3D array into a 1D vector.</p>
 <p><img src="/images/Python-Basics-with-Numpy/image2vector_kiank.png" alt="img"></p>
 <p><strong>Exercise</strong>: Implement <code>image2vector()</code> that takes an input of shape (length, height, 3) and returns a vector of shape $(length<em>height</em>3, 1)$. For example, if you would like to reshape an array v of shape $(a, b, c)$ into a vector of shape $(a*b,c)$ you would do:</p>
-<p><code>v = v.reshape((v.shape[0]*v.shape[1], v.shape[2])) # v.shape[0] = a ; v.shape[1] = b ; v.shape[2] = c</code></p>
+<p><code>v = v.reshape((v.shape[0]*v.shape[1], v.shape[2]))</code><br>​            <code># v.shape[0] = a ; v.shape[1] = b ; v.shape[2] = c</code></p>
 <ul>
 <li>Please don’t hardcode the dimensions of image as a constant. Instead look up the quantities you need with <code>image.shape[0]</code>, etc. </li>
 </ul>
