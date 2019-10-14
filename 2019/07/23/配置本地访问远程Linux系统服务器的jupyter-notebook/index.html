@@ -237,14 +237,14 @@ jupyter notebo...">
 </ol>
 <h1 id="意外情况"><a href="#意外情况" class="headerlink" title="意外情况"></a>意外情况</h1><p>有些服务器可能只开放一个对外的端口，但是我们通过终端访问服务器需要一个对外端口，开启jupyter服务又需要一个端口，这样就需要同时占用两个端口才行。举个栗子，服务器为了保证安全性只开放了一个对外的端口，22号端口，我们使用终端通过22号端口登录到服务器上打开jupyter，jupyter创建的端口是8888号，但是服务器没有对外开放8888号端口，所以即使打开了jupyter，外面也无法正常访问。如果把jupyter的端口号改为22号，由于我们登录终端的时候正在占用22号，所以jupyter就会提示端口已被占用，无法创建。网上有很多教程说可以通过修改防火墙设置来开放端口，修改防火墙设置一般都需要管理员权限，但是通常我们使用服务器的时候大多数情况下是不可能有管理员权限的，这时候我们可以使用端口映射来解决这个问题。</p>
 <ol>
-<li><p>首先登录终端打开jupyter，这是根据配置信息jupyter占用的是8888端口。</p>
+<li><p>首先登录终端打开jupyter，这时根据配置信息jupyter占用的是8888端口。</p>
 </li>
 <li><p>然后我们在本地上使用命令行输入：</p>
 <p><code>ssh -N -f -L localhost:9999:localhost:8888 -p 端口号 username@远程地址</code></p>
 <p>例如<code>ssh -N -f -L localhost:9999:localhost:8888 -p 22 yzr@202.48.29.23</code></p>
-<p>这里说明一下：locahost:9999是指本地地址，localhost:8888是指远程地址，其中8888是jupyter notebook中设置的端口号，-p 22是指登录服务器的端口号 后面是用户名和服务器ip。</p>
+<p>这里说明一下：<code>locahost:9999</code>是指本地地址，<code>localhost:8888</code>是指远程地址，其中<code>8888</code>是jupyter notebook中设置的端口号，<code>-p 22</code>是指登录服务器的端口号 后面是用户名和服务器ip。</p>
 </li>
-<li><p>打开浏览器，输入localhost:9999就可以看到jupyter notebook的登录界面了。</p>
+<li><p>打开浏览器，输入<code>localhost:9999</code>就可以看到jupyter notebook的登录界面了。</p>
 </li>
 </ol>
 <p>这里原理上就是将服务器上的8888端口映射到本机的9999端口。</p>
