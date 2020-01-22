@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="小短腿努力奔跑的日子">
+    <meta name="apple-mobile-web-app-capable" content="小短腿儿努力奔跑的日子">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
@@ -29,8 +29,8 @@
 字典的操作
 
 
-字符串操作&nbsp;常用的字符串处理
-123456789101112131415...">
+字符串操作常用的字符串处理
+123456789101112131415161718...">
 
 
 
@@ -42,10 +42,10 @@
     <!--Title-->
 
 
-<title>Python学习之路3 - 字符串操作&amp;字典 | 小短腿努力奔跑的日子</title>
+<title>Python学习之路3 - 字符串操作&amp;字典 | 小短腿儿努力奔跑的日子</title>
 
 
-    <link rel="alternate" href="/atom.xml" title="小短腿努力奔跑的日子" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="小短腿儿努力奔跑的日子" type="application/atom+xml">
 
 
     <link rel="icon" href="/favicon.ico">
@@ -105,7 +105,7 @@
 <body>
     <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
     <div class="main-header-box">
-        <a class="header-avatar"  title='腿爷'>
+        <a class="header-avatar"  title='腿儿爷'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
@@ -124,7 +124,7 @@
                     <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="https://imzry.github.io">小短腿努力奔跑的日子</a>
+                    <a class="navbar-brand" href="https://imzry.github.io">小短腿儿努力奔跑的日子</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
@@ -213,7 +213,7 @@
 <li>字典的操作</li>
 </ul>
 <hr>
-<h2 id="字符串操作-nbsp"><a href="#字符串操作-nbsp" class="headerlink" title="字符串操作&nbsp;"></a>字符串操作&nbsp;</h2><p><strong>常用的字符串处理</strong></p>
+<h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><p><strong>常用的字符串处理</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'vector'</span></span><br><span class="line"></span><br><span class="line">print(name.capitalize()) <span class="comment"># 首字母大写</span></span><br><span class="line">print(name.count(<span class="string">'e'</span>)) <span class="comment"># 判断字符e在字符串中有多少个</span></span><br><span class="line">print(name.center(<span class="number">50</span>,<span class="string">'-'</span>)) <span class="comment"># 一共打印50个字符,将vector放在中间,两边用-填充</span></span><br><span class="line">print(name.endswith(<span class="string">'r'</span>)) <span class="comment"># 判断字符串以什么结尾, 如果是以r结尾则返回true</span></span><br><span class="line">print(name.expandtabs(tabsize=<span class="number">10</span>)) <span class="comment"># 如果在字符串中加入\t,则在该位置上加入tabsize个空格</span></span><br><span class="line">print(name.find(<span class="string">'ec'</span>)) <span class="comment"># 找到e在字符串中的位置</span></span><br><span class="line">print(name.isalnum()) <span class="comment"># 如果字符串里面只包含英文和数字, 则返回True</span></span><br><span class="line">print(name.isalpha()) <span class="comment"># 如果字符串里面是纯英文, 则返回True</span></span><br><span class="line">print(name.isdecimal()) <span class="comment"># 如果字符串是十进制数字, 则返回True</span></span><br><span class="line">print(name.isdigit()) <span class="comment"># 如果字符串是否为整数, 则返回True</span></span><br><span class="line">print(name.isidentifier()) <span class="comment"># 判断是否是一个合法的标识符(变量名), 合法则返回True</span></span><br><span class="line">print(name.islower()) <span class="comment"># 判断是否为小写, 是则返回True</span></span><br><span class="line">print(name.isupper()) <span class="comment"># 判断是否为大写, 是则返回True</span></span><br><span class="line">print(name.isspace()) <span class="comment"># 判断是否为空格, 是则返回True</span></span><br><span class="line">print(<span class="string">'My Name Is'</span>.istitle()) <span class="comment"># 判断是否为标题(首字符大写), 是则返回True</span></span><br><span class="line">print(<span class="string">'+'</span>.join([<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>])) <span class="comment"># 将列表里面的每个元素用'+'拼接起来</span></span><br><span class="line">print(name.ljust(<span class="number">50</span>,<span class="string">"*"</span>)) <span class="comment"># 如果字符串长度小于50, 则不够的在左侧用*补充</span></span><br><span class="line">print(name.rjust(<span class="number">50</span>,<span class="string">"*"</span>)) <span class="comment"># 如果字符串长度小于50, 则不够的在右侧用*补充</span></span><br><span class="line">print(name.lower()) <span class="comment"># 将大写变成小写</span></span><br><span class="line">print(name.upper()) <span class="comment"># 将小写变成大写</span></span><br><span class="line">print(<span class="string">'\nvector'</span>.lstrip()) <span class="comment"># 去掉字符串左边的空格和回车</span></span><br><span class="line">print(<span class="string">'vector\n'</span>.rstrip()) <span class="comment"># 去掉字符串右边的空格和回车</span></span><br><span class="line">print(<span class="string">'\nvector\n'</span>.strip()) <span class="comment"># 去掉字符串两边的空格和回车</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.rfind(<span class="string">'a'</span>)) <span class="comment"># 从右边开始找a,返回找到的位置</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.split(<span class="string">' '</span>)) <span class="comment"># 将字符串按照空格为界分装成列表, 不写参数则分隔符默认为空格</span></span><br><span class="line">print(<span class="string">'name is \na book'</span>.splitlines()) <span class="comment"># 将字符串根据换行符为界分装成列表</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.swapcase()) <span class="comment"># 大小写互换</span></span><br><span class="line">print(<span class="string">'name is a book'</span>.title()) <span class="comment"># 将字符串变成标题(首字母大写)</span></span><br><span class="line">print(<span class="string">'name'</span>.zfill(<span class="number">50</span>)) <span class="comment"># 如果字符串不够50个,则在左边用0填充</span></span><br></pre></td></tr></table></figure>
 <p><strong>格式化输出字符串</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'vector &#123;name&#125; &#123;age&#125;'</span></span><br><span class="line">print(name.format(name = <span class="string">'rev'</span>,age=<span class="number">123</span>)) <span class="comment"># 格式化字符串</span></span><br><span class="line">print(name.format_map(&#123;<span class="string">'name'</span>:<span class="string">'rev'</span>,<span class="string">'age'</span>:<span class="number">123</span>&#125;)) <span class="comment"># 字典的形式格式化字符串</span></span><br></pre></td></tr></table></figure>
@@ -340,7 +340,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本节内容："><span class="toc-text">本节内容：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串操作-nbsp"><span class="toc-text">字符串操作 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字典"><span class="toc-text">字典</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本节内容："><span class="toc-text">本节内容：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串操作"><span class="toc-text">字符串操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字典"><span class="toc-text">字典</span></a></li></ol></li></ol>
         
     </div>
 </aside>

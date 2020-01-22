@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="小短腿努力奔跑的日子">
+    <meta name="apple-mobile-web-app-capable" content="小短腿儿努力奔跑的日子">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
@@ -48,10 +48,10 @@ Python介绍
     <!--Title-->
 
 
-<title>Python学习之路1 - 基础入门 | 小短腿努力奔跑的日子</title>
+<title>Python学习之路1 - 基础入门 | 小短腿儿努力奔跑的日子</title>
 
 
-    <link rel="alternate" href="/atom.xml" title="小短腿努力奔跑的日子" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="小短腿儿努力奔跑的日子" type="application/atom+xml">
 
 
     <link rel="icon" href="/favicon.ico">
@@ -111,7 +111,7 @@ Python介绍
 <body>
     <header class="main-header" id="header_id"  style="background-image:url(/./img/banner.jpg);background-size:100%;background-position:center center;"  >
     <div class="main-header-box">
-        <a class="header-avatar"  title='腿爷'>
+        <a class="header-avatar"  title='腿儿爷'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
@@ -130,7 +130,7 @@ Python介绍
                     <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="https://imzry.github.io">小短腿努力奔跑的日子</a>
+                    <a class="navbar-brand" href="https://imzry.github.io">小短腿儿努力奔跑的日子</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
@@ -211,7 +211,7 @@ Python介绍
     </div>
     
     <div class="post-body post-content">
-        <p>本文内容</p>
+        <p><strong>本文内容</strong></p>
 <ol>
 <li>Python介绍</li>
 <li>安装Python解释器</li>
@@ -385,7 +385,7 @@ Python介绍
 <p><img src="http://images2017.cnblogs.com/blog/1204715/201709/1204715-20170905152420554-1608007279.png" alt></p>
 <h1 id="八、模块讲解"><a href="#八、模块讲解" class="headerlink" title="八、模块讲解"></a>八、模块讲解</h1><h2 id="模块之sys"><a href="#模块之sys" class="headerlink" title="模块之sys"></a>模块之sys</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(sys.path) <span class="comment"># 打印环境变量</span></span><br><span class="line">print(sys.argv) <span class="comment"># 打印当前脚本的路径，在pycharm中打印绝对路径，在命令行中打印相对路径（本来打印的就是相对路径）</span></span><br><span class="line">one = sys.argv[<span class="number">1</span>] <span class="comment">#用来在外部调用的时候传参, 1代表传入的第一个参数,</span></span><br><span class="line">two = sys.argv[<span class="number">2</span>] <span class="comment">#2代表传入的第二个参数, 这样外部调用的时候就可以传多个参数了</span></span><br></pre></td></tr></table></figure>
 <h2 id="模块之os"><a href="#模块之os" class="headerlink" title="模块之os"></a>模块之os</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print(os.system(<span class="string">'dir'</span>)) <span class="comment"># system函数就是命令行</span></span><br><span class="line">cmd = os.system(<span class="string">'dir'</span>)</span><br><span class="line">print(cmd) <span class="comment"># 这里输出的是 0 因为，system是直接把输出到屏幕上，并不是返回，如果输出成功则返回0</span></span><br><span class="line"></span><br><span class="line">cmd = os.popen(<span class="string">'dir'</span>).read() <span class="comment">#popen()方法返回的是该对象的地址，read()方法是将地址中的内容读出来</span></span><br><span class="line">print(cmd)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建目录函数</span></span><br><span class="line">os.mkdir(<span class="string">'new_dir'</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="九、三元运算"><a href="#九、三元运算" class="headerlink" title="九、三元运算"></a>九、三元运算</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//result = 值<span class="number">1</span> <span class="keyword">if</span> 条件 <span class="keyword">else</span> 值<span class="number">2</span></span><br><span class="line">a,b,c = <span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span></span><br><span class="line">d = a <span class="keyword">if</span> a&amp;gt;b <span class="keyword">else</span> c</span><br><span class="line">print(d) <span class="comment"># d = c = 5</span></span><br><span class="line"><span class="comment"># 如果条件为真：result = 值1</span></span><br><span class="line"><span class="comment"># 如果条件为假：result = 值2</span></span><br></pre></td></tr></table></figure>
+<h1 id="九、三元运算"><a href="#九、三元运算" class="headerlink" title="九、三元运算"></a>九、三元运算</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//result = 值<span class="number">1</span> <span class="keyword">if</span> 条件 <span class="keyword">else</span> 值<span class="number">2</span></span><br><span class="line">a,b,c = <span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span></span><br><span class="line">d = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> c</span><br><span class="line">print(d) <span class="comment"># d = c = 5</span></span><br><span class="line"><span class="comment"># 如果条件为真：result = 值1</span></span><br><span class="line"><span class="comment"># 如果条件为假：result = 值2</span></span><br></pre></td></tr></table></figure>
 <h1 id="十、字符串和二进制的相互转化"><a href="#十、字符串和二进制的相互转化" class="headerlink" title="十、字符串和二进制的相互转化"></a>十、字符串和二进制的相互转化</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="string">'我爱大延边日不落帝国'</span></span><br><span class="line">print(msg) <span class="comment"># 字符串输出</span></span><br><span class="line">print(msg.encode(encoding=<span class="string">'utf-8'</span>)) <span class="comment"># 将字符串转换成二进制</span></span><br><span class="line">print(msg.encode(encoding=<span class="string">'utf-8'</span>).decode(encoding=<span class="string">'utf-8'</span>)) <span class="comment"># 将二进制转换成字符串</span></span><br><span class="line"><span class="comment"># 如果encode和decode不写参数，默认就是utf-8</span></span><br></pre></td></tr></table></figure>
     </div>
     
